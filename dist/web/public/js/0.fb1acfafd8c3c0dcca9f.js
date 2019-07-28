@@ -1,0 +1,2 @@
+webpackJsonp([0],{CWES:function(r,e,g){"use strict";var t=g("JA1M");e.a={saveSysOrg:function(r){return t.a.post("/usrm/orgMgr/saveSysOrg",r)},getSysOrg:function(){return t.a.get("/usrm/orgMgr/getSysOrg")},delSysOrg:function(r){return t.a.delete("/usrm/orgMgr/delSysOrg/"+r)},getOrgTree:function(){return t.a.get("/usrm/orgMgr/getOrgTree")}}}});
+//# sourceMappingURL=0.fb1acfafd8c3c0dcca9f.js.map

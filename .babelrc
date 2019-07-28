@@ -1,0 +1,40 @@
+{
+  "comments": false,
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+        }
+      }
+    ],
+    "stage-2"
+  ],
+  "env": {
+    "main": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": { "node": 7 }
+          }
+        ],
+        "stage-2"
+      ]
+    },
+    "renderer": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ],
+        "stage-2"
+      ]
+    }
+  },
+  "plugins": ["transform-vue-jsx", "transform-runtime"]
+}

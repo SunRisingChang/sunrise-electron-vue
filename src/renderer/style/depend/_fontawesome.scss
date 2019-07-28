@@ -1,0 +1,38 @@
+[class^="icon-fa"],
+[class*="icon-fa"] {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome !important;
+  font-size: inherit;
+  text-rendering: auto;
+  width: 14px;
+  height: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$fa-css-prefix: icon-fa !default;
+//  -------------------------
+.#{$fa-css-prefix}-lg {
+  font-size: (4em / 3);
+  line-height: (3em / 4);
+  vertical-align: -15%;
+}
+.#{$fa-css-prefix}-1x:before {
+  font-size: 1.5em;
+}
+
+.#{$fa-css-prefix}-2x:before {
+  font-size: 2em;
+}
+
+.#{$fa-css-prefix}-3x:before {
+  font-size: 3em;
+}
+
+.#{$fa-css-prefix}-4x:before {
+  font-size: 4em;
+}
+
+.#{$fa-css-prefix}-5x:before {
+  font-size: 5em;
+}

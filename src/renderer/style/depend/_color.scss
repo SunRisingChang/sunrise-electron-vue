@@ -1,0 +1,55 @@
+/**
+ * @Author: Sun Rising 
+ * @Date: 2018-12-14 10:46:03 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2019-06-26 12:19:50
+ * @Description: 常用的颜色常量
+ */
+//主色
+$color_primary: #2d8cf0;
+$color_primary_light: #409eff;
+$color_primary_dark: #2b85e4;
+//辅助色
+$color_success: #66c039;
+$color_warning: #e6a23c;
+$color_danger: #f56c6c;
+$color_info: #909399;
+//中性色
+$color_title: #17233d; //标题
+$color_content: #515a6e; //正文
+$color_subcolor: #808695; //辅助/图标
+$color_disabled: #c5c8ce; //失效
+$color_border: #dcdee2; //边框
+$color_divider: #e8eaec; //分割线
+$color_background: #f8f8f9; //背景
+//颜色
+.icon-color-primary {
+  color: $color_primary;
+  i {
+    color: $color_primary;
+  }
+}
+.icon-color-success {
+  color: $color_success;
+  i {
+    color: $color_success;
+  }
+}
+.icon-color-warning {
+  color: $color_warning;
+  i {
+    color: $color_warning;
+  }
+}
+.icon-color-danger {
+  color: $color_danger;
+  i {
+    color: $color_danger;
+  }
+}
+.icon-color-info {
+  color: $color_info;
+  i {
+    color: $color_info;
+  }
+}

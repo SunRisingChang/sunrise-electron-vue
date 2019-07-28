@@ -1,0 +1,171 @@
+/**
+ * @Author: Sun Rising 
+ * @Date: 2018-12-14 11:35:23 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2019-07-02 11:26:56
+ * @Description: 布局常用样式
+ */
+//---------------- 布局 开始 -----------------
+.pull-left {
+  float: left;
+}
+.h-full {
+  height: 100%;
+}
+.w-full {
+  width: 100%;
+}
+.wh-full {
+  height: 100%;
+  width: 100%;
+}
+@for $i from 0 through 20 {
+  .margin-#{$i} {
+    margin: $i * 1px;
+  }
+  .margin-top-#{$i} {
+    margin-top: $i * 1px;
+  }
+  .margin-bottom-#{$i} {
+    margin-bottom: $i * 1px;
+  }
+  .margin-right-#{$i} {
+    margin-right: $i * 1px;
+  }
+  .margin-left-#{$i} {
+    margin-left: $i * 1px;
+  }
+  .padding-#{$i} {
+    padding: $i * 1px;
+  }
+  .padding-top-#{$i} {
+    padding-top: $i * 1px;
+  }
+  .padding-bottom-#{$i} {
+    padding-bottom: $i * 1px;
+  }
+  .padding-right-#{$i} {
+    padding-right: $i * 1px;
+  }
+  .padding-left-#{$i} {
+    padding-left: $i * 1px;
+  }
+}
+//---------------- 布局 结束 -----------------
+//---------------- 文本 开始 -----------------
+.inline-block {
+  display: inline-block;
+}
+.pull-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+@for $i from 1 through 10 {
+  .spac-#{$i*2} {
+    letter-spacing: $i * 2px;
+  }
+  .font-size-#{$i + 11} {
+    font-size: $i + 11px;
+    &::before {
+      font-size: $i + 11px;
+    }
+  }
+}
+//---------------- 文本 结束 -----------------
+//----------------------- flex布局 开始 ---------------------
+.flex-h {
+  display: flex;
+  flex-direction: row;
+}
+.flex-h-r {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flex-v {
+  display: flex;
+  flex-direction: column;
+}
+.flex-v-r {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-j-s {
+  justify-content: flex-start;
+}
+.flex-j-e {
+  justify-content: flex-end;
+}
+.flex-j-c {
+  justify-content: center;
+}
+.flex-j-s-b {
+  justify-content: space-between;
+}
+.flex-j-s-a {
+  justify-content: space-around;
+}
+.flex-a-s {
+  align-items: flex-start;
+}
+.flex-a-e {
+  align-items: flex-end;
+}
+.flex-a-c {
+  align-items: center;
+}
+.flex-a-b {
+  align-items: baseline;
+}
+.flex-a-stretch {
+  align-items: stretch;
+}
+.flex-self-start {
+  align-self: flex-start;
+}
+.flex-self-end {
+  align-self: flex-end;
+}
+.flex-self-center {
+  align-self: center;
+}
+.flex-self-baseline {
+  align-self: baseline;
+}
+.flex-self-stretch {
+  align-self: stretch;
+}
+@for $i from 1 through 12 {
+  .flex-#{$i} {
+    align-items: stretch;
+    flex-grow: #{$i};
+    flex-shrink: 0;
+  }
+}
+//----------------------- flex布局 结束 ---------------------
+//----------------------- 图标大小 开始 ----------------------
+@for $i from 12 through 50 {
+  .icon-size-#{$i} {
+    font-size: $i * 1px;
+    i {
+      font-size: $i * 1px;
+      margin-right: 4px;
+    }
+  }
+}
+//----------------------- 图标大小 结束 ----------------------

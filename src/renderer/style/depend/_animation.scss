@@ -1,0 +1,48 @@
+//-------------------------- css动画 开始 ---------------------------
+// 向上淡出
+@keyframes slideUp {
+  0% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+//-------------------------- css动画 结束 ---------------------------
+
+//--------------------- transition组件动画 开始 ----------------------
+// fade-transform
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+/*breadcrumb transition*/
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-move {
+  transition: all 0.5s;
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
+//--------------------- transition组件动画 结束 ----------------------

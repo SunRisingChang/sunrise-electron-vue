@@ -1,0 +1,235 @@
+//--------- 样式重置 开始 ---------
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: unset;
+}
+
+//--------- 样式重置 结束 ---------
+
+//--------- 布局样式 开始 ---------
+
+// 头部
+.sun-header {
+  height: 50px !important;
+  box-shadow: 12px 2px 12px 0 rgba(0, 0, 0, 0.1);
+  z-index: 3;
+  .el-dropdown-link {
+    cursor: pointer;
+  }
+}
+
+// 导航
+.sun-aside {
+  box-shadow: 0px 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 99;
+  .aside-logo {
+    background-image: url("../../assets/logo.png");
+    height: 100%;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+  }
+  .el-scrollbar {
+    width: 100%;
+    .el-scrollbar__wrap {
+      overflow-x: hidden;
+    }
+  }
+  .el-menu {
+    border-right-width: 0px;
+    &:not(.el-menu--collapse) {
+      width: 250px;
+    }
+  }
+  .menu-item-httpurl {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+// 页脚
+.sun-footer {
+  box-shadow: 0px 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background-color: #909399;
+  color: #303133;
+  font-size: 12px;
+}
+
+// 显示区.tabs
+.main-header {
+  height: 40px !important;
+  padding: 0px;
+  z-index: 2;
+  box-shadow: 0px 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid;
+  .tabs-block {
+    .tabs {
+      border-right: 1px solid;
+      overflow: hidden;
+      .el-tabs {
+        width: 100%;
+        .el-tabs__header {
+          margin: 0px;
+          border-bottom-width: 0px;
+          .el-tabs__nav {
+            border-radius: 0px;
+            border-top-width: 0px;
+            border-left-width: 0px;
+          }
+          .el-tabs__nav-prev,
+          .el-tabs__nav-next {
+            width: 20px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 显示区.main
+.main-main {
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  .main-scrollbar {
+    overflow: hidden;
+    width: 100%;
+    .el-scrollbar__wrap {
+      overflow-x: hidden;
+      .el-scrollbar__view {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+    }
+  }
+  .main-block {
+    padding: 15px;
+  }
+}
+
+//锁屏页面样式
+.lock-page {
+  background-position: center center;
+  background-repeat: no-repeat;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  & .user-icon {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    background-color: rgb(72, 75, 75);
+    border-radius: 50%;
+    border: 4px solid #f5f7fa;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    font-size: 40px;
+    color: #fff;
+    opacity: 0;
+    animation-name: slideUp;
+    animation-duration: 0.5s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  }
+  & .user-name-block {
+    opacity: 0;
+    color: #f5f7fa;
+    font-size: 24px;
+    letter-spacing: 2px;
+    animation-name: slideUp;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  & .user-paswd {
+    width: 300px;
+    opacity: 0;
+    animation-name: slideUp;
+    animation-duration: 0.5s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
+  }
+  & .msg-block {
+    opacity: 0;
+    color: #f5f7fa;
+    font-size: 12px;
+    animation-name: slideUp;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+}
+
+//--------- 布局样式 结束 ----------
+
+//-------- 滚动条样式 开始 ---------
+
+// 滚动条默认显示样式
+::-webkit-scrollbar-thumb {
+  background-color: #d8d8d8;
+  outline-offset: -2px;
+  outline: 2px solid #d8d8d8;
+  border-radius: 20px;
+  border: 2px solid #efefef;
+}
+
+// 鼠标点击滚动条显示样式
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b2b1b1;
+  border-radius: 20px;
+}
+
+// 滚动条大小
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+// 滚动框背景样式
+::-webkit-scrollbar-track-piece {
+  background-color: #efefef;
+  border-radius: 20px;
+}
+
+//-------- 滚动条样式 结束 ---------

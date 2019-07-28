@@ -1,0 +1,6 @@
+#禁止指定的文件夹或文件进行JS校验
+
+/build/
+/config/
+/dist/
+/*.js

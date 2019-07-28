@@ -1,0 +1,179 @@
+.light {
+  //导航栏背景颜色
+  $layout-aside-bg: #fff;
+  //导航遮罩颜色
+  $layout-aside-mask-bg: rgba(0, 0, 0, 0.3);
+  //导航栏logo区背景
+  $layout-aside-logo-bg: #fff;
+  //导航栏logo区logo颜色
+  $layout-aside-logo-img-color: #000;
+  //导航栏logo区主题颜色
+  $layout-aside-logo-font-color: #000;
+  //导航文字颜色
+  $layout-aside-menu-title-color: #000;
+  //导航ico颜色
+  $layout-aside-menu-ico-color: #000;
+  //导航文字hover颜色
+  $layout-aside-menu-title-hover-color: #000;
+  //导航ico hover颜色
+  $layout-aside-menu-ico-hover-color: #000;
+  //导航hover背景颜色
+  $layout-aside-menu-hover-bg: #fff;
+  //导航active背景颜色
+  $layout-aside-menu-active-bg: #fff;
+  //导航active标题颜色
+  $layout-aside-menu-active-font-color: #03a9f4;
+  //导航active图标颜色
+  $layout-aside-menu-active-ico-color: #03a9f4;
+  //head背景颜色
+  $layout-head-bg: #fff;
+  //head下边框颜色
+  $layout-head-bott-bor: #eee;
+  //head下边框阴影
+  $layout-head-bott-shadow: rgba(0, 0, 0, 0.2);
+  //head图标颜色
+  $layout-head-ico-color: #000;
+  //tab导航区背景
+  $layout-main-tabs-bg: #fff;
+  //tab文字颜色
+  $layout-main-tabs-font-color: #000;
+  //tab边框颜色
+  $layout-main-tabs-bor-color: #eee;
+  //tab hover 背景颜色
+  $layout-main-tabs-hover-bg: #eee;
+  //tab hover 文字颜色
+  $layout-main-tabs-hover-font-color: #000;
+  //tab active 背景颜色
+  $layout-main-tabs-active-bg: #eee;
+  //tab active 文字颜色
+  $layout-main-tabs-active-font-color: #000;
+  //tab边框阴影
+  $layout-main-tabs-bor-shadow: rgba(0, 0, 0, 0.2);
+  //内容区背景
+  $layout-main-con-bg: #fff;
+  //其余字体默认颜色
+  $layout-con-font-color: #000;
+  //锁屏背景颜色
+  $layout-lock-bg: #fff;
+  //锁屏背景图片
+  $layout-lock-bg-img: url("../../assets/lock-bg.jpg");
+  //transition过渡色
+  $layout-transition-bg: #000;
+  //内容区背景颜色
+  $layout-main-bg: #fff;
+  //页脚背景
+  $layout-footer-bg: #909399;
+  //页脚文字颜色
+  $layout-footer-font-color: #303133;
+
+  background-color: $layout-transition-bg;
+
+  // 头部
+  .sun-header {
+    background-color: $layout-head-bg;
+    border-bottom: 1px solid $layout-head-bott-bor;
+    i {
+      color: $layout-head-ico-color;
+    }
+  }
+
+  // 导航
+  .sun-aside {
+    background-color: $layout-aside-bg;
+    .log-block {
+      background-color: $layout-aside-logo-bg;
+      & i {
+        color: $layout-aside-logo-img-color;
+      }
+      & span {
+        color: $layout-aside-logo-font-color;
+      }
+    }
+    .el-menu {
+      background-color: $layout-aside-bg;
+      & .el-submenu__title,
+      & .el-menu-item {
+        background-color: $layout-aside-menu-active-bg;
+        color: $layout-aside-menu-title-color;
+        & i {
+          color: $layout-aside-menu-ico-color;
+        }
+        &:hover {
+          background-color: $layout-aside-menu-hover-bg;
+          & i {
+            color: $layout-aside-menu-ico-hover-color;
+            text-shadow: 0 0 0.1em $layout-aside-menu-ico-hover-color,
+              -0 -0 0.1em $layout-aside-menu-ico-hover-color;
+          }
+          color: $layout-aside-menu-title-hover-color;
+          text-shadow: 0 0 0.1em $layout-aside-menu-title-hover-color,
+            -0 -0 0.1em $layout-aside-menu-title-hover-color;
+        }
+        &.is-active {
+          background-color: $layout-aside-menu-active-bg;
+          & i {
+            color: $layout-aside-menu-active-ico-color;
+            text-shadow: 0 0 0.1em $layout-aside-menu-active-ico-color,
+              -0 -0 0.1em $layout-aside-menu-active-ico-color;
+          }
+          color: $layout-aside-menu-active-font-color;
+          text-shadow: 0 0 0.1em $layout-aside-menu-active-font-color,
+            -0 -0 0.1em $layout-aside-menu-active-font-color;
+        }
+      }
+    }
+  }
+
+  // 页脚
+  .sun-footer {
+    background-color: $layout-footer-bg;
+    color: $layout-footer-font-color;
+  }
+
+  // 显示区.tabs
+  .main-header {
+    background-color: $layout-main-tabs-bg;
+    border-color: $layout-main-tabs-bor-color;
+    .tabs-block {
+      .tabs {
+        border-color: $layout-main-tabs-bor-color;
+        .el-tabs {
+          & .el-tabs__header {
+            border-color: $layout-main-tabs-bor-color;
+            & .el-tabs__nav {
+              border-color: $layout-main-tabs-bor-color;
+              & .el-tabs__item {
+                border-color: $layout-main-tabs-bor-color;
+                color: $layout-main-tabs-font-color;
+                &:hover {
+                  background-color: $layout-main-tabs-hover-bg;
+                  color: $layout-main-tabs-hover-font-color;
+                }
+                &.is-active {
+                  background-color: $layout-main-tabs-active-bg;
+                  color: $layout-main-tabs-active-font-color;
+                }
+              }
+            }
+          }
+        }
+        .el-dropdown {
+          color: $layout-main-tabs-font-color;
+        }
+      }
+    }
+  }
+
+  // 显示区.main
+  .main-main {
+    background-color: $layout-main-bg;
+  }
+
+  //锁屏页面样式
+  .lock-page {
+    background-image: $layout-lock-bg-img;
+    &::before {
+      background-color: $layout-lock-bg;
+    }
+  }
+}
