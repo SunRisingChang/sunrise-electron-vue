@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:48:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 18:49:17
+ * @Last Modified time: 2019-07-15 15:32:00
  * @Description: 内容装配页
  */
 <template>
@@ -15,7 +15,7 @@
       <el-header class="sun-header">
         <Header />
       </el-header>
-      <el-main class="main padding-0">
+      <el-main class="padding-0 h-full">
         <el-container class="h-full">
           <el-header v-if="!$store.state.base.sysConfig.singlePage" class="main-header">
             <Tabs />
@@ -190,7 +190,7 @@ export default {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 9999;
+  z-index: 9001;
   background-color: rgba(0, 0, 0, 0.3);
 }
 </style>

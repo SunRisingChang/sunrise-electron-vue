@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:38:37
+ * @Last Modified time: 2019-07-12 21:55:22
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -60,7 +60,13 @@ export default {
     //菜单信息
     menuInfo: [],
     //通知信息
-    noticeMsg: []
+    noticeMsg: [
+      {
+        message: "字典修改",
+        value: "测试数据",
+        timestamp: new Date().getTime()
+      }
+    ]
     //---------------------- 需重置 结束 -------------
   },
   mutations: {

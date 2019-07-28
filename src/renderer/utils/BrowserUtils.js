@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 13:41:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-09 17:34:05
+ * @Last Modified time: 2019-07-14 13:26:17
  * @Description: 浏览器工具，内置 Web API 接口
  */
 import XEUtils from "xe-utils";

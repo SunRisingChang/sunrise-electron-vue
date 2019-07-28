@@ -84,7 +84,7 @@ import CrontabResult from "./Crontab-Result.vue";
 
 export default {
   props: {
-    value: { type: String | null, default: null }
+    value: { type: String, default: null }
   },
   data() {
     return {

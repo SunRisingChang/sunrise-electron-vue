@@ -2,13 +2,13 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-08 21:15:16 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:45:22
+ * @Last Modified time: 2019-07-15 16:18:22
  * @Description: 主页仪表盘
  */
 <template>
   <flex-container class="main-page" direction="column" wrap='nowrap'>
-    <flex-container class="margin-bottom-10" justifyContent='space-between'>
-      <flex-item :grow='1'>
+    <el-row :gutter="10">
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='6' :lg='6' :xl='6'>
         <div class="item-block item-block1">
           <div>
             <span>分类统计</span>
@@ -27,8 +27,8 @@
             <span>当前分类总记录数</span>
           </div>
         </div>
-      </flex-item>
-      <flex-item :grow='1' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='6' :lg='6' :xl='6'>
         <div class="item-block item-block2">
           <div>
             <span>附件统计</span>
@@ -47,8 +47,8 @@
             <span>当前分类总记录数</span>
           </div>
         </div>
-      </flex-item>
-      <flex-item :grow='1' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='6' :lg='6' :xl='6'>
         <div class="item-block item-block3">
           <div>
             <span>文章统计</span>
@@ -67,8 +67,8 @@
             <span>当前分类总记录数</span>
           </div>
         </div>
-      </flex-item>
-      <flex-item :grow='1' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='6' :lg='6' :xl='6'>
         <div class="item-block item-block4">
           <div>
             <span>新闻统计</span>
@@ -87,10 +87,10 @@
             <span>当前分类总记录数</span>
           </div>
         </div>
-      </flex-item>
-    </flex-container>
-    <flex-container class="margin-bottom-10" justifyContent='space-between'>
-      <flex-item :grow='1' width='49%'>
+      </el-col>
+    </el-row>
+    <el-row :gutter="10">
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='12' :lg='12' :xl='12'>
         <el-card>
           <flex-container direction="column" wrap='nowrap'>
             <flex-item class="margin-bottom-10" alignItems='center'>
@@ -102,8 +102,8 @@
             </flex-item>
           </flex-container>
         </el-card>
-      </flex-item>
-      <flex-item :grow='1' width='49%' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='12' :md='12' :lg='12' :xl='12'>
         <el-card>
           <flex-container direction="column" wrap='nowrap'>
             <flex-item class="margin-bottom-10" alignItems='center'>
@@ -115,10 +115,10 @@
             </flex-item>
           </flex-container>
         </el-card>
-      </flex-item>
-    </flex-container>
-    <flex-container justifyContent='space-between'>
-      <flex-item width='30%' :grow='1'>
+      </el-col>
+    </el-row>
+    <el-row :gutter="10">
+      <el-col class="margin-bottom-10" :xs='24' :sm='24' :md='8' :lg='8' :xl='8'>
         <el-card class="item3-block item3-block1">
           <flex-container direction="column" wrap='nowrap'>
             <flex-item class="margin-bottom-10" alignItems='center'>
@@ -138,8 +138,8 @@
             </flex-item>
           </flex-container>
         </el-card>
-      </flex-item>
-      <flex-item width='30%' :grow='1' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='24' :md='8' :lg='8' :xl='8'>
         <el-card class="item3-block item3-block2">
           <flex-container direction="column" wrap='nowrap'>
             <flex-item class="margin-bottom-10" alignItems='center'>
@@ -174,8 +174,8 @@
             </flex-item>
           </flex-container>
         </el-card>
-      </flex-item>
-      <flex-item width='30%' :grow='1' class="margin-left-10">
+      </el-col>
+      <el-col class="margin-bottom-10" :xs='24' :sm='24' :md='8' :lg='8' :xl='8'>
         <el-card class="item3-block item3-block3">
           <flex-container direction="column" wrap='nowrap'>
             <flex-item class="margin-bottom-10" alignItems='center'>
@@ -193,8 +193,8 @@
             </flex-container>
           </flex-container>
         </el-card>
-      </flex-item>
-    </flex-container>
+      </el-col>
+    </el-row>
   </flex-container>
 </template>
 
@@ -269,12 +269,15 @@ export default {
     }
   }
   .item-block1 {
-    /*! autoprefixer: off */
+    /* autoprefixer: ignore next */
     background: -webkit-gradient(linear, top, #0073b7, #0073b7);
+    /* autoprefixer: ignore next */
     background: -webkit-linear-gradient(top, #0073b7, #0073b7);
-    /* autoprefixer: on */
+    /* autoprefixer: ignore next */
     background: -moz-linear-gradient(top, #0073b7, #0073b7);
+    /* autoprefixer: ignore next */
     background: -o-linear-gradient(top, #0073b7, #0073b7);
+    /* autoprefixer: ignore next */
     background: linear-gradient(top, #0073b7, #0073b7);
     & > div {
       &:nth-child(1) {
@@ -285,12 +288,15 @@ export default {
     }
   }
   .item-block2 {
-    /*! autoprefixer: off */
+    /* autoprefixer: ignore next */
     background: -webkit-gradient(linear, top, #50a6e0, #3699db);
+    /* autoprefixer: ignore next */
     background: -webkit-linear-gradient(top, #50a6e0, #3699db);
-    /* autoprefixer: on */
+    /* autoprefixer: ignore next */
     background: -moz-linear-gradient(top, #50a6e0, #3699db);
+    /* autoprefixer: ignore next */
     background: -o-linear-gradient(top, #50a6e0, #3699db);
+    /* autoprefixer: ignore next */
     background: linear-gradient(top, #50a6e0, #3699db);
     & > div {
       &:nth-child(1) {
@@ -301,12 +307,15 @@ export default {
     }
   }
   .item-block3 {
-    /*! autoprefixer: off */
+    /* autoprefixer: ignore next */
     background: -webkit-gradient(linear, top, #918ec2, #635fa9);
+    /* autoprefixer: ignore next */
     background: -webkit-linear-gradient(top, #918ec2, #635fa9);
-    /* autoprefixer: on */
+    /* autoprefixer: ignore next */
     background: -moz-linear-gradient(top, #918ec2, #635fa9);
+    /* autoprefixer: ignore next */
     background: -o-linear-gradient(top, #918ec2, #635fa9);
+    /* autoprefixer: ignore next */
     background: linear-gradient(top, #918ec2, #635fa9);
     & > div {
       &:nth-child(1) {
@@ -317,12 +326,15 @@ export default {
     }
   }
   .item-block4 {
-    /*! autoprefixer: off */
+    /* autoprefixer: ignore next */
     background: -webkit-gradient(linear, top, #1cdab5, #18be9d);
+    /* autoprefixer: ignore next */
     background: -webkit-linear-gradient(top, #1cdab5, #18be9d);
-    /* autoprefixer: on */
+    /* autoprefixer: ignore next */
     background: -moz-linear-gradient(top, #1cdab5, #18be9d);
+    /* autoprefixer: ignore next */
     background: -o-linear-gradient(top, #1cdab5, #18be9d);
+    /* autoprefixer: ignore next */
     background: linear-gradient(top, #1cdab5, #18be9d);
     & > div {
       &:nth-child(1) {

@@ -59,10 +59,8 @@ Vue.use(Components);
 //------------ Vue插件装配 结束 -----------------
 
 export default new Vue({
-  el: "#app",
   router: VueRouter,
   store: Vuex,
   i18n: VueI18n,
-  components: { App },
-  template: "<App/>"
-});
+  render: h => h(App)
+}).$mount("#app");

@@ -2,13 +2,13 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-05 05:06:48 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 19:00:31
+ * @Last Modified time: 2019-07-12 22:32:08
  * @Description: 个人信息
  */
 <template>
   <el-card>
     <flex-container justifyContent='center'>
-      <flex-item width='70%' direction="column" wrap='nowrap'>
+      <flex-item width='300px' direction="column" wrap='nowrap'>
         <span class="user-info">{{$t('route.UserInfo')}}</span>
         <el-form ref="editForm" :model="formData" :rules="formRules" label-position="right" label-width="90px" class="form-style-line" :disabled="!isEdit" status-icon>
           <el-form-item label="姓名 :" prop="userName">

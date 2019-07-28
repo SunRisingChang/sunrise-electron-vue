@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2018-12-14 10:10:18 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-02 20:42:54
+ * @Last Modified time: 2019-07-15 16:59:34
  * @Description: 为可视化选择cron表达式
  */
 <template>
@@ -34,7 +34,7 @@ export default {
     title: { type: String, default: "高级设置" },
     readonly: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    value: { type: String | null, default: null }
+    value: { type: String, default: null }
   },
   data() {
     return {

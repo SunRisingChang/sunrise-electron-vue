@@ -6,6 +6,7 @@ body {
   width: 100%;
   display: flex;
   overflow: hidden;
+  min-width: 320px;
 }
 
 * {
@@ -48,7 +49,7 @@ a:active {
   top: 0px;
   bottom: 0px;
   left: 0px;
-  z-index: 99;
+  z-index: 9002;
   .aside-logo {
     background-image: url("../../assets/logo.png");
     height: 100%;
@@ -129,7 +130,7 @@ a:active {
     overflow: hidden;
     width: 100%;
     .el-scrollbar__wrap {
-      overflow-x: hidden;
+      overflow-x: auto;
       .el-scrollbar__view {
         width: 100%;
         height: 100%;
@@ -139,11 +140,13 @@ a:active {
   }
   .main-block {
     padding: 15px;
+    min-width: 500px;
   }
 }
 
 //锁屏页面样式
 .lock-page {
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   &::before {

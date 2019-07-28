@@ -1,2 +1,0 @@
-webpackJsonp([1],{wO0s:function(t,e,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var l={render:function(){var t=this.$createElement,e=this._self._c||t;return e("flex-container",{staticClass:"cron-tab-page",attrs:{direction:"column",wrap:"nowrap"}},[e("flex-item",[e("el-alert",{staticClass:"margin-bottom-10",attrs:{title:"多级路由",type:"success",closable:!1,description:this.$route.path}})],1)],1)},staticRenderFns:[]},n=s("VU/8")(null,l,!1,null,null,null);e.default=n.exports}});
-//# sourceMappingURL=1.f22b85dadc929ed2f972.js.map

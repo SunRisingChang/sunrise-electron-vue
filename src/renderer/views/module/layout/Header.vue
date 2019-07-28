@@ -1,15 +1,15 @@
 /**
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:06:08 
- * @Last Modified by: Sun Rising 
- * @Last Modified time: 2019-07-10 19:06:08 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2019-07-12 21:04:30
  * @Description: 头部显示区
  */
 <template>
   <flex-container height='100%' alignItems='center' justifyContent='space-between'>
     <flex-item>
       <i @click="$store.commit('base/setCollapse',{isCollapse:!$store.state.base.isCollapse})" :class="!$store.state.base.isCollapse?'icon-fa fa-outdent':'icon-fa fa-indent'" :title="$t('navbar.telescopicMenu')"></i>
-      <el-breadcrumb class="margin-left-20" separator="/">
+      <el-breadcrumb v-if='$store.state.base.defaultLayout === "defaultLayout"' class="margin-left-20" separator="/">
         <transition-group name="breadcrumb">
           <el-breadcrumb-item v-for="item in levelList" :key="item.path">{{$t('route.'+item.name)}}</el-breadcrumb-item>
         </transition-group>

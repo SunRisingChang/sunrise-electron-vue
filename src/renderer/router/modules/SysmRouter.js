@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-10 17:45:34
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:16:29
+ * @Last Modified time: 2019-07-15 15:30:57
  * @Description:系统管理
  *
  * 注意:各个路由是独立的懒加载时要保持路由拥有自己的组件
@@ -14,7 +14,7 @@ export default [
     path: "/sysm",
     icon: "el-icon-set-up",
     name: "SysMgr",
-    component: () => import("@/views/Home"),
+    component: () => import("@/views/Home.vue"),
     children: [
       // 菜单管理
       {

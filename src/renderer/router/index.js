@@ -2,20 +2,20 @@
  * @Author: Sun Rising
  * @Date: 2018-12-24 12:01:37
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:35:49
+ * @Last Modified time: 2019-07-17 17:46:48
  * @Description: vue-RouTer 配置
  */
 import Vue from "vue";
 import Router from "vue-router";
 import store from "@/vuex";
-import BaseRouter from "@/router/modules/baseRouter";
+import BaseRouter from "@/router/modules/BaseRouter";
 import dataStorage from "@/lib/dataStorage";
 import { getRouterUniqueKey } from "@/lib/util";
 
 Vue.use(Router);
 
 let routerObj = new Router({
-  mode: "history",
+  // mode: "history",
   routes: [].concat(BaseRouter)
 });
 

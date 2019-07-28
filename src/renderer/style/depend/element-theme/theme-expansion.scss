@@ -2,14 +2,14 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-31 09:21:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 12:33:31
+ * @Last Modified time: 2019-07-17 17:48:37
  * @Description: Element组件样式定制,class组件名为.[element组件名]+自定义，例如.form-flex
  */
 @import "./theme-var.scss";
 @import "~element-ui/packages/theme-chalk/src/index";
 
 .el-tree,
-.el-row,
+// .el-row,
 .el-card,
 .el-tabs,
 .el-select,
@@ -19,7 +19,7 @@
 }
 
 .el-backtop {
-  z-index: 9999;
+  z-index: 9000;
 }
 
 .form-style-line {
@@ -132,7 +132,10 @@
 
 .el-submenu [class^="el-icon-"],
 .el-submenu [class^="icon-fa"],
-.el-submenu [class^="icon-ali"] {
+.el-submenu [class^="icon-ali"],
+.el-menu--vertical [class^="el-icon-"],
+.el-menu--vertical [class^="icon-fa"],
+.el-menu--vertical [class^="icon-ali"] {
   vertical-align: middle;
   margin-right: 5px;
   width: 24px;

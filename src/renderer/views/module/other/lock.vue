@@ -1,12 +1,12 @@
 /**
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:02:24 
- * @Last Modified by: Sun Rising 
- * @Last Modified time: 2019-07-10 19:02:24 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2019-07-14 17:19:30
  * @Description: 锁屏页面
  */
 <template>
-  <flex-container height='100%' direction="column" alignItems='center' justifyContent='center' class='lock-page'>
+  <flex-container v-if='loading' height='100%' direction="column" alignItems='center' justifyContent='center' class='lock-page'>
     <flex-item class="margin-bottom-20" justifyContent='center'>
       <i class="icon-ali ali-yonghu2 user-icon"></i>
     </flex-item>
@@ -14,7 +14,7 @@
       <span class="user-name-block">{{$store.state.base.userInfo.acName}}</span>
     </flex-item>
     <flex-item class="margin-bottom-20" justifyContent='center'>
-      <el-input type="password" class="user-paswd" :placeholder="$t('login.passWd')" v-model="passwd" size='medium'>
+      <el-input type="password" class="user-paswd" :placeholder="$t('login.passWd')" v-model="passwd" size='medium' @keyup.enter.native="lockLogin">
         <el-button @click="lockLogin" slot="append" icon="icon-ali ali-denglu" :title="$t('login.button')"></el-button>
       </el-input>
     </flex-item>
@@ -29,8 +29,16 @@ import VuexApi from "@/api/vuexApi";
 export default {
   data() {
     return {
+      loading: false,
       passwd: null
     };
+  },
+  created() {
+    if (!this.$store.state.base.userInfo.acName) {
+      this.$router.push({ path: "/login" });
+    } else {
+      this.loading = true;
+    }
   },
   mounted: function() {
     this.$store.dispatch("base/changeTheme");

@@ -77,7 +77,7 @@ export default {
     userNotNull: "please enter user name!",
     userLength: "4 to 20 characters in length!",
     pawdNotNull: "Please enter your password!",
-    pawdLength: "10 to 30 characters in length!",
+    pawdLength: "8 to 30 characters in length!",
     captchaNotNull: "Please enter verification code!",
     captchaLength: "Please enter a 4-digit verification code!"
   },

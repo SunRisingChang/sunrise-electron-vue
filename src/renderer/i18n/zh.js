@@ -78,7 +78,7 @@ export default {
     userNotNull: "用户名不可为空 !",
     userLength: "用户名应输入 4 至 20 个字符 !",
     pawdNotNull: "密码不可为空 !",
-    pawdLength: "密码应输入 10 至 30 个字符 !",
+    pawdLength: "密码应输入 8 至 30 个字符 !",
     captchaNotNull: "验证码不可为空 !",
     captchaLength: "请输入 4 位验证码 !"
   },

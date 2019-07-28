@@ -2,16 +2,16 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-06 13:18:33 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 19:01:47
+ * @Last Modified time: 2019-07-12 22:27:59
  * @Description: 通知管理 
  */
 <template>
-  <flex-container wrap='nowrap'>
-    <flex-item width='30%' direction="column" wrap='nowrap' class="margin-right-10">
-      <el-card class="h-full">
+  <flex-container class="notice-msg" wrap='nowrap'>
+    <flex-item v-if="showMenu" :width='$store.state.base.defaultLayout==="defaultLayout"?"310px":"100%"' direction="column" wrap='nowrap'>
+      <el-card shadow="never" class="h-full">
         <flex-container slot="header" justifyContent='flex-end'>
           <flex-item alignItems='center'>
-            <el-radio-group v-model="readOptions">
+            <el-radio-group v-model="readOptions" size="mini">
               <el-radio-button label="1">全部</el-radio-button>
               <el-radio-button label="2">已读</el-radio-button>
               <el-radio-button label="3">未读</el-radio-button>
@@ -34,12 +34,13 @@
         </flex-container>
       </el-card>
     </flex-item>
-    <flex-item :grow='1' direction="column" wrap='nowrap'>
-      <el-card class="card-full">
+    <flex-item v-if="showMain" :grow='1' direction="column" wrap='nowrap'>
+      <el-card shadow="never" class="card-full">
         <flex-container v-if="currMsg" direction="column" wrap='nowrap' height='100%'>
           <flex-container justifyContent='space-between' class="margin-bottom-20">
             <flex-item alignItems='center'>
-              <i class="el-icon-arrow-right margin-right-6 font-size-16"></i>{{currMsg.message}}
+              <el-button v-if='$store.state.base.defaultLayout!=="defaultLayout"' type="text" icon="el-icon-back margin-right-6 font-size-16" @click="handleBackMenu" title="返回"></el-button>
+              <i class="el-icon-chat-line-square margin-right-6 font-size-16"></i>{{currMsg.message}}
             </flex-item>
             <flex-item alignItems='center'>
               <el-button type="primary" size="mini" @click="handleDelNoticeMsg" circle icon="el-icon-delete" title="删除"></el-button>
@@ -85,6 +86,20 @@ export default {
       }
     }
   },
+  computed: {
+    showMain() {
+      let isMinLayout =
+        this.$store.state.base.defaultLayout === "defaultLayout";
+      if (isMinLayout) return true;
+      return !!this.currMsg;
+    },
+    showMenu() {
+      let isMinLayout =
+        this.$store.state.base.defaultLayout === "defaultLayout";
+      if (isMinLayout) return true;
+      return !this.currMsg;
+    }
+  },
   methods: {
     rowClick(row, column, event) {
       this.$store.commit("base/setNoticeMsgReaded", row);
@@ -93,7 +108,11 @@ export default {
     handleDelNoticeMsg() {
       this.$store.commit("base/delNoticeMsg", this.currMsg);
       this.currMsg = null;
+    },
+    handleBackMenu() {
+      this.currMsg = null;
     }
   }
 };
 </script>
+
