@@ -25,11 +25,12 @@
 
 ## 简介
 
-[electron-vue-sunrise](https://gitee.com/sunrise-chang/electron-vue-sunrise) 是 SUNRISE 系列项目的前端和[spring-boot-sunrise](https://gitee.com/sunrise-chang/spring-boot-sunrise)是姊妹项目，该项目是一个后台前端解决方案，它基于 [vue.js](https://github.com/vuejs/vue) 开发堆栈和[electron](https://electronjs.org/)并使用 [element-ui](https://github.com/ElemeFE/element)实现。它使用了最新的前端技术栈，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+_sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electron-vue) [[GitHub]](https://github.com/SunRisingChang/sunrise-electron-vue) 是 _SUNRISE_ 系列项目的前端和 _sunrise-spring-boot_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-spring-boot) [[GitHub]](https://github.com/SunRisingChang/sunrise-spring-boot) 是姊妹项目，该项目是一个后台前端解决方案，它基于 [vue.js](https://github.com/vuejs/vue) 开发堆栈和 [electron](https://electronjs.org/) 并使用 [element-ui](https://github.com/ElemeFE/element) 实现。它使用了最新的前端技术栈，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
 
 ## 在线预览
 
-- [DEMO](http://sunrise-chang.gitee.io/electron-vue-sunrise)
+- [[Gitee]](https://sunrise-chang.gitee.io/sunrise-electron-vue)
+- [[GitHub]](https://sunrisingchang.github.io)
 
 ## 活动圈
 
@@ -44,7 +45,7 @@
 
 ## 前序准备
 
-你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、[vue](https://cn.vuejs.org/index.html)、[vuex](https://vuex.vuejs.org/zh-cn/)、[vue-router](https://router.vuejs.org/zh-cn/) 、[vue-cli](https://github.com/vuejs/vue-cli) 、[axios](https://github.com/axios/axios) 和 [element-ui](https://github.com/ElemeFE/element)等，所有的请求数据都使用[Mock.js](https://github.com/nuysoft/Mock)进行模拟，或使用[spring-boot-sunrise](https://gitee.com/sunrise-chang/spring-boot-sunrise)进行后端的快速搭建进行数据获取，提前了解和学习这些知识会对使用本项目有很大的帮助。
+你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、[vue](https://cn.vuejs.org/index.html)、[vuex](https://vuex.vuejs.org/zh-cn/)、[vue-router](https://router.vuejs.org/zh-cn/) 、[vue-cli](https://github.com/vuejs/vue-cli) 、[axios](https://github.com/axios/axios) 和 [element-ui](https://github.com/ElemeFE/element) 等，所有的请求数据都使用 [Mock.js](https://github.com/nuysoft/Mock) 进行模拟，或使用 _sunrise-spring-boot_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-spring-boot) [[GitHub]](https://github.com/SunRisingChang/sunrise-spring-boot) 进行后端的快速搭建进行数据获取，提前了解和学习这些知识会对使用本项目有很大的帮助。
 
  <p align="center">
   <img width="900" src="./docs/img/MainPage.png">
