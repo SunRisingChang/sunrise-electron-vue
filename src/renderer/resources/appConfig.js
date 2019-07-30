@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-15 16:38:00
+ * @Last Modified time: 2019-07-30 09:31:31
  * @Description:应用配置参数
  */
 export default {
@@ -43,7 +43,7 @@ export default {
   uiSize: "small",
   //浏览器支持列表
   browserMixVerList: {
-    ie: 0,
+    ie: 8,
     edge: 0,
     firefox: 0,
     chrome: 0,

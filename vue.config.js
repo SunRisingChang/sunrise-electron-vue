@@ -84,6 +84,11 @@ module.exports = {
         bypassOnDebug: true
       })
       .end();
+    // 分析插件
+    // config
+    //   .plugin("webpack-bundle-analyzer")
+    //   .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin)
+    //   .end();
   },
   //打包输出路径
   outputDir: "dist/web",
