@@ -106,6 +106,7 @@ _sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electro
   - 全局遮罩引导
   - 通知信息处理(后端长连接通知信息)
   - 前端异常捕获(会尝试调用后端日志记录接口)
+  - 浏览器版本检测
 
 ```
 
