@@ -12,7 +12,7 @@
       <el-row :span='12'>
         <el-col>
           <el-form-item label="账户名称 :" prop="acName">
-            <el-input v-model="formData.acName" maxlength="10" show-word-limit></el-input>
+            <el-input v-model="formData.acName" maxlength="20" show-word-limit></el-input>
           </el-form-item>
         </el-col>
         <el-col>
@@ -35,7 +35,7 @@
         </el-col>
         <el-col>
           <el-form-item label="初始密码 :" prop="acPwd">
-            <el-input v-model="formData.acPwd" maxlength="10" show-word-limit></el-input>
+            <el-input v-model="formData.acPwd" maxlength="30" show-word-limit></el-input>
           </el-form-item>
         </el-col>
         <el-col>
@@ -114,7 +114,10 @@ export default {
       formData: Object.assign({}, this.initData),
       formRules: {
         acName: [
-          { required: true, message: "请输入账户名称 !", trigger: "change" }
+          { required: true, message: "请输入账户名称且长度为4至20 !",min: 4, max: 20, trigger: "change" }
+        ],
+        acPwd: [
+          { min: 8, max: 30, message: "请输入的密码长度为8至30 !",trigger: "change" }
         ],
         acStat: [
           { required: true, message: "请选择账户状态 !", trigger: "change" }

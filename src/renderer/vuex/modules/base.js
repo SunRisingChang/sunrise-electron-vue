@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 21:55:22
+ * @Last Modified time: 2019-10-09 00:29:22
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -59,6 +59,8 @@ export default {
     },
     //菜单信息
     menuInfo: [],
+    //菜单源包含按钮级权限信息
+    menuSource: [],
     //通知信息
     noticeMsg: [
       {
@@ -93,6 +95,9 @@ export default {
     },
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo;
+    },
+    setMenuSource(state, menuSource) {
+      state.menuSource = menuSource;
     },
     setMenuInfo(state, menuInfo) {
       state.menuInfo = menuInfo;
@@ -330,6 +335,9 @@ export default {
     initSystem({ commit }) {
       return new Promise(async (resolve, reject) => {
         let resp = await VuexApi.initSystem();
+        commit("setMenuSource", Object.assign([], resp.data.sysMenu));
+        //过滤掉按钮菜单
+        XEUtils.remove(resp.data.sysMenu, item => item.menuType === "3");
         let sysMenu = XEUtils.toArrayTree(resp.data.sysMenu, {
           key: "menuUrl",
           parentKey: "menuParent",

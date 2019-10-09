@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-01-02 09:34:46 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 18:54:03
+ * @Last Modified time: 2019-10-09 09:33:01
  * @Description: 菜单管理
  */
 <template>
@@ -304,16 +304,16 @@ export default {
       try {
         this.treeLoading = true;
         let updata = [data];
-        if (
-          this.editSysMenu.menuVisible !== data.menuVisible &&
-          data.menuVisible !== "1"
-        ) {
-          let treeVNode = this.$refs["menuTree"].getNode(data.menuUrl);
-          this.$utils.eachTree(treeVNode.data.children, item => {
-            item.menuVisible = data.menuVisible;
-            updata.push(item);
-          });
-        }
+        // if (
+        //   this.editSysMenu.menuVisible !== data.menuVisible &&
+        //   data.menuVisible !== "1"
+        // ) {
+        //   let treeVNode = this.$refs["menuTree"].getNode(data.menuUrl);
+        //   this.$utils.eachTree(treeVNode.data.children, item => {
+        //     item.menuVisible = data.menuVisible;
+        //     updata.push(item);
+        //   });
+        // }
         await SysMenuMgrApi.saveSysMenu(updata);
         await this.doLoadTree();
       } catch (error) {
@@ -399,12 +399,12 @@ export default {
       let isHaveButtonMenu = [];
       //子节点有多少是按钮菜单节点
       if (data.children) {
-        isHaveButtonMenu = data.children.filter(value => value.menuType === 3);
+        isHaveButtonMenu = data.children.filter(value => value.menuType == 3);
       }
       //如果当前的孩子节点都是按钮菜单且当前节点不是按钮菜单
       if (
         isHaveButtonMenu.length === data.children.length &&
-        data.menuType !== 3
+        data.menuType != 3
       ) {
         addButtonMenu = (
           <el-button

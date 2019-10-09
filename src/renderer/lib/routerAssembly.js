@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-10 18:13:53
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-07 11:50:23
+ * @Last Modified time: 2019-10-08 23:59:22
  * @Description: 提供额外对路由的操作方法
  */
 import lazyRouters from "@/router/lazy";

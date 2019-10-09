@@ -22,7 +22,7 @@
     </flex-container>
 
     <flex-item>
-      <el-tree ref="menuTree" show-checkbox :data="data" :default-checked-keys='checkedKeys' @check-change='doCheckChange' :node-key="menuTreeProps.key" :props="menuTreeProps" default-expand-all draggable :render-content="doRenderTreeContent" :filter-node-method="doFilterNode"></el-tree>
+      <el-tree ref="menuTree" show-checkbox :data="data" :default-checked-keys='checkedKeys' @check-change='doCheckChange' :node-key="menuTreeProps.key" :props="menuTreeProps" default-expand-all draggable :render-content="doRenderTreeContent" check-strictly :filter-node-method="doFilterNode"></el-tree>
     </flex-item>
 
   </flex-container>
