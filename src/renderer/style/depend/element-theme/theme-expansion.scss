@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-31 09:21:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-17 17:48:37
+ * @Last Modified time: 2019-10-28 10:04:55
  * @Description: Element组件样式定制,class组件名为.[element组件名]+自定义，例如.form-flex
  */
 @import "./theme-var.scss";
@@ -141,4 +141,8 @@
   width: 24px;
   text-align: center;
   font-size: 18px;
+}
+
+.el-dialog__wrapper {
+  overflow: hidden;
 }

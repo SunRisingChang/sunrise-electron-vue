@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-19 11:31:28 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-13 00:56:01
+ * @Last Modified time: 2019-10-28 10:14:40
  * @Description: 多功能数据表格
  */
 <template>
@@ -416,6 +416,7 @@ export default {
   & .table-foot-wrap {
     display: flex;
     flex-direction: row-reverse;
+    overflow-x: auto;
     & .el-pagination {
       padding: 8px 0px;
       & .el-select .el-input {

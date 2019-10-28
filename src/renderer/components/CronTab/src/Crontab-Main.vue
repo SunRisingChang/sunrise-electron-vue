@@ -167,9 +167,12 @@ export default {
 </script>
 <style lang='scss'>
 .crontab-warp {
+  width: 100%;
   & .el-tabs {
-    height: 345px;
     box-shadow: unset;
+    & .el-tabs__content {
+      overflow: auto;
+    }
   }
   & .el-card {
     box-shadow: unset;
