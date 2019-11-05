@@ -12,7 +12,12 @@ export default {
   //登录之后手动启动服务
   run() {
     //长连接，服务器推送
-    if (!config.isDebug)
-      new SocketService("ws://" + location.host + "/socket/anon/systemMessage");
+    if (!config.isDebug) {
+      let baseUrl =
+        process.env.NODE_ENV === "development"
+          ? location.host
+          : config.prodProxyUrl.substring(7);
+      new SocketService("ws://" + baseUrl + "/socket/anon/systemMessage");
+    }
   }
 };

@@ -25,12 +25,16 @@ let transformResponse = function(data) {
 let ajax = axios.create({
   // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
   // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
-  baseURL: "/api",
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? AppConfig.devProxyUrl
+      : AppConfig.prodProxyUrl,
   headers: {
     "Content-Type": "application/json;charset=utf-8"
     // "Content-Type": "application/x-www-form-urlencoded"
     // "Content-Type": "multipart/form-data"
   },
+  withCredentials: true, //跨域请求带上cookie
   transformRequest: [transformRequest],
   transformResponse: [transformResponse],
   // `maxContentLength` 定义允许的响应内容的最大尺寸
