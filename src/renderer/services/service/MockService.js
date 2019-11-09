@@ -1,5 +1,6 @@
 import Mockjs from "mockjs";
 import XEUtils from "xe-utils";
+import AppConfig from "@/resources/appConfig";
 /**
  * 用于调试模式
  */
@@ -10,7 +11,10 @@ export class MockService {
     console.log("Mockjs 启动...");
 
     //跨域代理前缀，在paraConfig.js dev.proxyTable
-    const _P = "/api";
+    const _P =
+      process.env.NODE_ENV === "development"
+        ? AppConfig.devProxyUrl
+        : AppConfig.prodProxyUrl;
 
     // 服务器默认格式
     let _R = respData => {
