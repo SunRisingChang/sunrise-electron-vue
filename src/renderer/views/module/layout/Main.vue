@@ -8,7 +8,7 @@
 <template>
   <flex-container width='100%' height='100%' direction="column" wrap='nowrap'>
     <flex-container :grow='1' class="main-block" direction="column" wrap='nowrap' width='auto'>
-      <flex-item :grow='1'>
+      <flex-item :grow='1' class="transform-box">
         <!-- 这里使用transition-keep而不是使用transition是因为transition组件在过渡后会把其下的组件全部销毁（除keep-alive组件）这里使用的是keep-views会导致缓存路由信息丢失 -->
         <transition-keep name="fade-transform" mode="out-in">
           <keep-views :include='keepRouters'>

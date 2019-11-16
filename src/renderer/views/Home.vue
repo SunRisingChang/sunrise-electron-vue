@@ -190,7 +190,7 @@ export default {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 9001;
+  z-index: 2001;
   background-color: rgba(0, 0, 0, 0.3);
 }
 </style>
