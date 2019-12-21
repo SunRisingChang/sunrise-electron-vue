@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-24 12:01:37
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-17 17:46:48
+ * @Last Modified time: 2019-12-21 19:20:09
  * @Description: vue-RouTer 配置
  */
 import Vue from "vue";
@@ -58,6 +58,7 @@ routerObj.beforeEach(async (to, from, next) => {
   if (to.path !== "/login") {
     if (!(await dataStorage.getSessionStorage().getItem("user"))) {
       next({ path: "/login" });
+      return;
     } else {
       keepPage(to);
     }

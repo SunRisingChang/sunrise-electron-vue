@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-10-09 00:29:22
+ * @Last Modified time: 2019-12-21 19:13:10
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -319,6 +319,7 @@ export default {
     //注销
     async logout({ dispatch }) {
       await VuexApi.logout();
+      dataStorage.getSessionStorage().removeItem("user");
       dataStorage.getCookie().remove("user");
       //清空缓存的vuex状态
       window.localStorage.removeItem("vuex");
