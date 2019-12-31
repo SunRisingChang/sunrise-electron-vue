@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:48:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-15 15:32:00
+ * @Last Modified time: 2019-12-31 19:24:51
  * @Description: 内容装配页
  */
 <template>
@@ -28,7 +28,7 @@
           </el-main>
         </el-container>
       </el-main>
-      <el-footer class="sun-footer" height='25px' v-if="$store.state.base.sysConfig.footerOption.show&&$store.state.base.sysConfig.footerOption.type==='fixed'">
+      <el-footer class="sun-footer" height='25px' v-if="$store.state.base.sysConfig.footerOption.show">
         <Footer />
       </el-footer>
     </el-container>

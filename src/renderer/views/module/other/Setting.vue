@@ -1,8 +1,8 @@
 /**
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:01:02 
- * @Last Modified by: Sun Rising 
- * @Last Modified time: 2019-07-10 19:01:02 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2019-12-31 19:26:29
  * @Description: 系统设置
  */
 <template>
@@ -26,15 +26,6 @@
         </div>
       </flex-item>
       <flex-item class="cfg-block" direction="column">
-        <span>页脚类型</span>
-        <div>
-          <el-radio-group v-model="footerType">
-            <el-radio-button label="fixed">Fixed</el-radio-button>
-            <el-radio-button label="inline">Inline</el-radio-button>
-          </el-radio-group>
-        </div>
-      </flex-item>
-      <flex-item class="cfg-block" direction="column">
         <span>页脚显隐</span>
         <div>
           <el-radio-group v-model="footerShow">
@@ -53,7 +44,6 @@ export default {
     return {
       currTheme: this.$store.state.base.sysConfig.currTheme,
       singlePage: this.$store.state.base.sysConfig.singlePage,
-      footerType: this.$store.state.base.sysConfig.footerOption.type,
       footerShow: this.$store.state.base.sysConfig.footerOption.show
     };
   },
@@ -68,17 +58,10 @@ export default {
         this.$store.commit("base/setSysConfig", { singlePage: val });
       }
     },
-    footerType: {
-      handler(val) {
-        this.$store.commit("base/setSysConfig", {
-          footerOption: { type: val, show: this.footerShow }
-        });
-      }
-    },
     footerShow: {
       handler(val) {
         this.$store.commit("base/setSysConfig", {
-          footerOption: { type: this.footerType, show: val }
+          footerOption: { show: val }
         });
       }
     }

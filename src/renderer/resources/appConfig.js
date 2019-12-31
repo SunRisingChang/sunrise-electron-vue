@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-11-09 12:31:31
+ * @Last Modified time: 2019-12-31 19:26:54
  * @Description:应用配置参数
  */
 export default {
@@ -52,9 +52,8 @@ export default {
     safari: 0,
     opera: 0
   },
-  //是否显示页脚 type[fixed|inline]
+  //是否显示页脚
   footerOption: {
-    type: "fixed",
     show: false
   },
   httpConst: {

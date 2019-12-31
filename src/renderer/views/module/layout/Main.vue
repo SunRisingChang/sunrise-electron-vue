@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:05:20 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:03:14
+ * @Last Modified time: 2019-12-31 19:23:36
  * @Description: 内容显示区
  */
 <template>
@@ -16,9 +16,6 @@
           </keep-views>
         </transition-keep>
       </flex-item>
-      <flex-item class="margin-top-4" height='25px' v-if="$store.state.base.sysConfig.footerOption.show&&$store.state.base.sysConfig.footerOption.type==='inline'">
-        <Footer class="sun-footer" />
-      </flex-item>
     </flex-container>
   </flex-container>
 </template>
@@ -28,7 +25,6 @@ import { mapGetters } from "vuex";
 import Footer from "./Footer";
 
 export default {
-  components: { Footer },
   computed: {
     ...mapGetters(["keepRouters"])
   }
