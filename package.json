@@ -15,7 +15,8 @@
     "electron:build:win:t2": "npm run electron:build && cross-env Template=t2 node build/winBaleTool/main.js",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "update:icon": "node build/updateIcon.js"
   },
   "main": "background.js",
   "dependencies": {
