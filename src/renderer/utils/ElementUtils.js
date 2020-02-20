@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-03 09:03:50
+ * @Last Modified time: 2020-02-20 14:30:10
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
@@ -138,8 +138,31 @@ export default {
     return result;
   },
   //表格时间列反显格式化
-  tableColTimeFormt(row, column, cellValue, index){
-    if(!cellValue)return null
-    return XEUtils.toDateString(cellValue,'yyyy-MM-dd HH:mm:ss')
+  tableColTimeFormt(row, column, cellValue, index) {
+    if (!cellValue) return null
+    return XEUtils.toDateString(cellValue, 'yyyy-MM-dd HH:mm:ss')
+  },
+  /**
+   * 纵向合并单元格,数据必须有序
+   * @param {*} row 数据行源
+   * @param {*} column 数据列源
+   * @param {*} rowIndex 行索引
+   * @param {*} columnIndex 列索引
+   * @param {*} tableData 表格数据源
+   * @param {*} mergeKeys 需要合并的列标识支持标识和索引
+   */
+  tableMergeVertical(row, column, rowIndex, columnIndex, tableData, mergeKeys = []) {
+    if (mergeKeys.includes(column.property) || mergeKeys.includes(columnIndex)) {
+      // 获取起始行
+      let startRowIndex = tableData.findIndex(t_row => t_row[column.property] === row[column.property]);
+      // 获取最后一行
+      let endRowIndex = XEUtils.findLastIndexOf(tableData, t_row => t_row[column.property] === row[column.property]);
+      if (startRowIndex === endRowIndex) {
+        return [1, 1];
+      } else {
+        let span = endRowIndex - startRowIndex + 1;
+        return startRowIndex === rowIndex ? [span, 1] : [0, 0];
+      }
+    }
   }
 };
