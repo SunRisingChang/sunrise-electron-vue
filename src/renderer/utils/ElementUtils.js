@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-02-20 14:30:10
+ * @Last Modified time: 2020-02-21 15:17:06
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
@@ -153,10 +153,12 @@ export default {
    */
   tableMergeVertical(row, column, rowIndex, columnIndex, tableData, mergeKeys = []) {
     if (mergeKeys.includes(column.property) || mergeKeys.includes(columnIndex)) {
+      let values = XEUtils.pluck(tableData, column.property);
       // 获取起始行
-      let startRowIndex = tableData.findIndex(t_row => t_row[column.property] === row[column.property]);
-      // 获取最后一行
-      let endRowIndex = XEUtils.findLastIndexOf(tableData, t_row => t_row[column.property] === row[column.property]);
+      let startRowIndex = values.indexOf(row[column.property]);
+      // 获取结束行
+      let _endRowIndex = values.indexOf(row[column.property], startRowIndex + 1);
+      let endRowIndex = _endRowIndex === -1 ? startRowIndex : _endRowIndex;
       if (startRowIndex === endRowIndex) {
         return [1, 1];
       } else {

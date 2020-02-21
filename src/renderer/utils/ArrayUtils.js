@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 11:52:03
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-06-04 09:24:21
+ * @Last Modified time: 2020-02-21 15:19:28
  * @Description: 数组工具
  */
 import XEUtils from "xe-utils";
@@ -56,5 +56,24 @@ export default {
         XEUtils.addTreeSort(item.children, sortStr);
       }
     });
+  },
+  /**
+   * 获取数组中全部的目标索引,不支持对象数组
+   * @param {*} arrary 数组
+   * @param {*} target 目标
+   */
+  findAllIndex(arrary, target) {
+    let results = [];
+    if (Array.isArray(arrary)) {
+      let len = arrary.length, pos = 0;
+      while (pos < len) {
+        pos = arrary.indexOf(target, pos);
+        if (pos === -1)
+          break;
+        results.push(pos);
+        pos = pos + 1;
+      }
+    }
+    return results;
   }
 };
