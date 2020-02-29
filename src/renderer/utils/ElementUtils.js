@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-02-21 15:17:06
+ * @Last Modified time: 2020-02-29 16:20:15
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
@@ -143,28 +143,54 @@ export default {
     return XEUtils.toDateString(cellValue, 'yyyy-MM-dd HH:mm:ss')
   },
   /**
-   * 纵向合并单元格,数据必须有序
-   * @param {*} row 数据行源
-   * @param {*} column 数据列源
-   * @param {*} rowIndex 行索引
-   * @param {*} columnIndex 列索引
-   * @param {*} tableData 表格数据源
-   * @param {*} mergeKeys 需要合并的列标识支持标识和索引
-   */
-  tableMergeVertical(row, column, rowIndex, columnIndex, tableData, mergeKeys = []) {
+     * 纵向合并单元格,数据必须有序
+     * @param {*} row 数据行源
+     * @param {*} column 数据列源
+     * @param {*} rowIndex 行索引
+     * @param {*} columnIndex 列索引
+     * @param {*} tableData 表格数据源
+     * @param {*} mergeKeys 需要合并的列标识支持标识和索引
+     * @param {*} isIndex 是否开启索引列合并
+     * @param {*} targetIndex 索引合并参考列索引
+     * @param {*} indexKey 合并列的标识
+     */
+  tableMergeVertical(row, column, rowIndex, columnIndex, tableData, mergeKeys = [], isIndex = false, targetIndex, indexKey) {
     if (mergeKeys.includes(column.property) || mergeKeys.includes(columnIndex)) {
-      let values = XEUtils.pluck(tableData, column.property);
       // 获取起始行
-      let startRowIndex = values.indexOf(row[column.property]);
-      // 获取结束行
-      let _endRowIndex = values.indexOf(row[column.property], startRowIndex + 1);
-      let endRowIndex = _endRowIndex === -1 ? startRowIndex : _endRowIndex;
+      let startRowIndex = tableData.findIndex(t_row => t_row[column.property] === row[column.property]);
+      // 获取最后一行
+      let endRowIndex = XEUtils.findLastIndexOf(tableData, t_row => t_row[column.property] === row[column.property]);
+      // 占几行
+      let rowspan = 0;
+      // 占几列
+      let colspan = 0;
       if (startRowIndex === endRowIndex) {
-        return [1, 1];
+        rowspan = 1;
+        colspan = 1;
       } else {
         let span = endRowIndex - startRowIndex + 1;
-        return startRowIndex === rowIndex ? [span, 1] : [0, 0];
+        if (startRowIndex === rowIndex) {
+          rowspan = span;
+          colspan = 1;
+        } else {
+          rowspan = 0;
+          colspan = 0;
+        }
       }
+      // 处理索引行
+      if (isIndex && columnIndex === targetIndex) {
+        let index = 1;
+        if (rowIndex !== 0) {
+          let lastIndex = parseInt(tableData[rowIndex - 1][indexKey]);
+          if (rowspan === 0 && colspan === 0) {
+            index = lastIndex;
+          } else {
+            index = lastIndex + 1;
+          }
+        }
+        this.$set(row, indexKey, index);
+      }
+      return [rowspan, colspan];
     }
   }
 };
