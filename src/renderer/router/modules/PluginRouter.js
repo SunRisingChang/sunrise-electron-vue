@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-10 17:45:34
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:15:45
+ * @Last Modified time: 2020-03-07 12:40:42
  * @Description:插件管理
  *
  * 注意:各个路由是独立的懒加载时要保持路由拥有自己的组件
@@ -64,6 +64,13 @@ export default [
         icon: "el-icon-place",
         component: () => import("@/views/module/plugin/countToPage.vue"),
         name: "CountToPage"
+      },
+      //可记忆的select输入框
+      {
+        path: "autocompleteInputPage",
+        icon: "el-icon-coin",
+        component: () => import("@/views/module/plugin/autocompleteInputPage.vue"),
+        name: "AutocompleteInputPage"
       },
       //路由嵌套
       {

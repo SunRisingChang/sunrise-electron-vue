@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-06-07 09:22:44
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-01 13:03:30
+ * @Last Modified time: 2020-03-07 13:54:44
  * @Description: 前端数据库工厂，单例模式
  */
 import Localforage from "localforage";
@@ -17,6 +17,7 @@ class DataStorageFactory {
   static storage;
   static dictStorage;
   static cookie;
+  static autoInputStorage;
 
   static getSessionStorage() {
     if (SessionStorageDriver._support) {
@@ -63,6 +64,16 @@ class DataStorageFactory {
       DataStorageFactory.storage = _Localforage;
     }
     return DataStorageFactory.storage;
+  }
+  //组件记忆输入框仓库,优先级 INDEXEDDB > WEBSQL > LOCALSTORAGE
+  static getAutoInputStorage() {
+    if (!DataStorageFactory.autoInputStorage) {
+      let _Localforage = Localforage.createInstance({
+        name: "autoInputStorage"
+      });
+      DataStorageFactory.autoInputStorage = _Localforage;
+    }
+    return DataStorageFactory.autoInputStorage;
   }
   //字典仓库,优先级 INDEXEDDB > WEBSQL > LOCALSTORAGE
   static getDictStorage() {

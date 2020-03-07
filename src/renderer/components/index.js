@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-31 12:26:06
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 12:17:16
+ * @Last Modified time: 2020-03-07 12:31:37
  * @Description: 自定义组件装配器
  */
 import KeepViews from "./KeepViews";
@@ -17,6 +17,7 @@ import DictSelect from "./DictSelect/index.vue";
 import RoutersView from "./RoutersView/index.vue";
 import MarkdownEditor from "./MarkdownEditor/index.vue";
 import DialogDrag from "./DialogDrag/index.vue";
+import AutocompleteInput from "./AutocompleteInput/index.vue";
 
 export default {
   install(Vue, option) {
@@ -47,5 +48,8 @@ export default {
 
     //弹出层组件
     Vue.component("dialog-drag", DialogDrag);
+
+    //可记忆的select输入框
+    Vue.component("autocomplete-input", AutocompleteInput);
   }
 };

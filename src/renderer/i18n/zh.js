@@ -30,6 +30,7 @@ export default {
     DataTablePage: "数据分页组件",
     IconFontPage: "IconFont",
     MarkdownPage: "Markdown",
+    AutocompleteInputPage: '可记忆输入框',
     RouterPage1: "嵌套路由",
     RouterPage11: "路由1",
     RouterPage12: "路由2",
