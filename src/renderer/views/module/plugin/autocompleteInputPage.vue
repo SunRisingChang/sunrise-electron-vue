@@ -14,15 +14,20 @@
       <flex-item class="count-block" justifyContent="center" alignItems="center">
         <autocomplete-input code-key="AutocompleteInput" v-model="value"></autocomplete-input>
       </flex-item>
-      <flex-item justifyContent="center"></flex-item>
+      <flex-item>
+        <markdown-editor class="margin-top-20" v-model="content" view></markdown-editor>
+      </flex-item>
     </flex-container>
   </flex-container>
 </template>
 
 <script>
+import api from "@/components/AutocompleteInput/api.md";
+
 export default {
   data() {
     return {
+      content: api,
       value: ""
     };
   }

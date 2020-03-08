@@ -45,8 +45,8 @@ export default {
   },
   watch: {
     value: {
-      handler(val) {
-        this.updateOption(val);
+      async handler(val) {
+        await this.updateOption(val);
       }
     }
   },
