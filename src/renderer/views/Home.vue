@@ -8,7 +8,7 @@
 <template>
   <el-container v-loading="loading" :element-loading-text="$t('loading')" element-loading-spinner="icon-ali ali-jiazai1" element-loading-background="rgba(0, 0, 0, 0.6)">
     <vue-progress-bar></vue-progress-bar>
-    <el-aside ref="aside" class="sun-aside" width='auto'>
+    <el-aside ref="aside" class="sun-aside" width="auto">
       <Aside />
     </el-aside>
     <el-container>
@@ -28,7 +28,7 @@
           </el-main>
         </el-container>
       </el-main>
-      <el-footer class="sun-footer" height='25px' v-if="$store.state.base.sysConfig.footerOption.show">
+      <el-footer class="sun-footer" height="25px" v-if="$store.state.base.sysConfig.footerOption.show">
         <Footer />
       </el-footer>
     </el-container>
@@ -41,7 +41,6 @@
 import { Header, Aside, Tabs, Main, Footer } from "./module/layout";
 import ChangePwd from "./module/other/ChangePwd";
 import SysServices from "@/services";
-import { setTimeout } from "timers";
 
 export default {
   components: { Header, Aside, Tabs, Main, Footer, ChangePwd },
