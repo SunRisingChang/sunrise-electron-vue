@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-02-29 16:20:15
+ * @Last Modified time: 2020-03-24 20:59:55
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
@@ -159,7 +159,7 @@ export default {
       // 获取起始行
       let startRowIndex = tableData.findIndex(t_row => t_row[column.property] === row[column.property]);
       // 获取最后一行
-      let endRowIndex = XEUtils.findLastIndexOf(tableData, t_row => t_row[column.property] === row[column.property]);
+      let endRowIndex = XEUtils.findIndexNext(tableData, t_row => t_row[column.property] === row[column.property], startRowIndex);
       // 占几行
       let rowspan = 0;
       // 占几列

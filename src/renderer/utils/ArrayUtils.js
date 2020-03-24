@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 11:52:03
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-02-21 15:19:28
+ * @Last Modified time: 2020-03-24 20:58:27
  * @Description: 数组工具
  */
 import XEUtils from "xe-utils";
@@ -59,15 +59,15 @@ export default {
   },
   /**
    * 获取数组中全部的目标索引,不支持对象数组
-   * @param {*} arrary 数组
+   * @param {*} array 数组
    * @param {*} target 目标
    */
-  findAllIndex(arrary, target) {
+  findAllIndex(array, target) {
     let results = [];
-    if (Array.isArray(arrary)) {
-      let len = arrary.length, pos = 0;
+    if (Array.isArray(array)) {
+      let len = array.length, pos = 0;
       while (pos < len) {
-        pos = arrary.indexOf(target, pos);
+        pos = array.indexOf(target, pos);
         if (pos === -1)
           break;
         results.push(pos);
@@ -75,5 +75,22 @@ export default {
       }
     }
     return results;
+  },
+  /**
+   * 寻找下一个符合目标的元素
+   * @param {*} array 数组集合
+   * @param {*} startIndex 开始索引
+   * @param {*} callback 符合的判定回调 返回Boolean
+   */
+  findIndexNext(array, callback, startIndex = -1) {
+    if (Array.isArray(array) && typeof callback === "function") {
+      for (let index = startIndex + 1; index < array.length; index++) {
+        const item = array[index];
+        if (callback(item)) {
+          return index;
+        }
+      }
+    }
+    return -1;
   }
 };
