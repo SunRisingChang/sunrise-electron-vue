@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 11:44:39
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-11-05 17:37:02
+ * @Last Modified time: 2020-04-02 14:35:24
  * @Description: 其它工具
  */
 import appConfig from "@/resources/appConfig";
