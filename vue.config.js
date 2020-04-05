@@ -135,6 +135,7 @@ module.exports = {
         win: {
           // 图标路径 windows系统中icon需要256*256的ico格式图片，更换应用图标亦在此处
           icon: "build/electron-icon/icon.ico",
+          artifactName: "${productName}_Setup_${version}.${ext}",
           target: [
             {
               // 打包成一个独立的 exe 安装程序
@@ -193,7 +194,7 @@ module.exports = {
           ]
         },
         files: ["**/*"],
-        asar: false,
+        asar: true,
         nsis: {
           // 是否一键安装，建议为 false，可以让用户点击下一步、下一步、下一步的形式安装程序，如果为true，当用户双击构建好的程序，自动安装程序并打开，即：一键安装（one-click installer）
           oneClick: false,

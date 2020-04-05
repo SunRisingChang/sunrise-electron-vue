@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2020-04-02 11:10:38
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-02 17:43:46
+ * @Last Modified time: 2020-04-02 19:22:09
  * @Description: 系统更新
  */
 import { app } from "electron";
@@ -10,7 +10,7 @@ import GistClient from "gist-client";
 import XEUtils from "../utils";
 
 const gistClient = new GistClient()
-const Token = 'aa6539435866889be1fc4f320e95655b8efdbbd5'
+const Token = 'f82c38976e62765dd0a65d33e0845cdc50cd8009'
 const GistId = '0865c9b7d8b80e2e234369192d18aeb4'
 
 /**
@@ -18,8 +18,7 @@ const GistId = '0865c9b7d8b80e2e234369192d18aeb4'
  */
 async function checkUpdate() {
 	try {
-		gistClient.setToken(Token)
-		let resp = await gistClient.getOneById(GistId + '?r=' + Math.random())
+		let resp = await gistClient.setToken(Token).getOneById(GistId)
 		let versionInfo = JSON.parse(resp.files.version.content)
 		// 解析版本清单
 		if (Array.isArray(versionInfo.versions) && versionInfo.versions.length > 0) {
