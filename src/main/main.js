@@ -48,7 +48,7 @@ app.on("activate", () => {
 app.on("ready", () => {
   createWindow();
   // Update.checkUpdate();
-  updateHandle()
+  // updateHandle()
 });
 
 if (isDevelopment) {

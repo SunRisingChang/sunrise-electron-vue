@@ -25,6 +25,7 @@
     "core-js": "^2.6.5",
     "driver.js": "^0.9.7",
     "echarts": "^4.2.1",
+    "electron-updater": "^4.2.5",
     "element-ui": "^2.13.0",
     "font-awesome": "^4.7.0",
     "gist-client": "^1.1.1",

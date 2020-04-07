@@ -219,12 +219,15 @@ module.exports = {
           args[0]["IS_ELECTRON"] = true;
           return args;
         });
+        // config.resolve.alias.set('@', resolve("src/renderer"))
+        // config.resolve.extensions.add('.js').add('.vue').add(".json").add(".ts")
       },
       chainWebpackRendererProcess: config => {
         config.plugin("define").tap(args => {
           args[0]["IS_ELECTRON"] = true;
           return args;
         });
+        config.resolve.alias.set('@', resolve("src/renderer"))
       },
       outputDir: "dist/electron",
       mainProcessFile: "src/main/main.js",
