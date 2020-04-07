@@ -1,7 +1,6 @@
 import { app, protocol, BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import "./menu";
-import Update from "./update";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 let win;
@@ -45,7 +44,6 @@ app.on("activate", () => {
 
 app.on("ready", () => {
   createWindow();
-  Update.checkUpdate();
 });
 
 if (isDevelopment) {
