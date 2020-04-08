@@ -1,132 +1,85 @@
-import { app, protocol, BrowserWindow, ipcMain } from "electron";
-import { autoUpdater } from 'electron-updater'
+/**
+ * app Electron整个生命周期的监控
+ * protocol 协议管理
+ * BrowserWindow 窗口管理
+ */
+import { app, protocol, BrowserWindow } from "electron";
+/**
+ * createProtocol 关联协议
+ */
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
-const path = require('path')
-import "./menu";
-import Update from "./update";
 
+import update from "./update";
+
+// 是否是开发模式
 const isDevelopment = process.env.NODE_ENV !== "production";
 let win;
 
+// 生产环境，作为安全的标准注册，绕过资源的内容安全策略，允许注册ServiceWorker并支持访存API。
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } }
 ]);
 
+// 创建主窗口
 function createWindow() {
   win = new BrowserWindow({
     width: 1465,
     height: 920,
+    //  设置界面特性
     webPreferences: {
+      // 是否完整支持node
       nodeIntegration: true
     }
   });
 
+  // 开发模式下使用http协议
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
   } else {
+    // 关联协议
     createProtocol("app");
     win.loadURL("app://./index.html");
   }
 
+  // 窗口关闭时的回调
   win.on("closed", () => {
     win = null;
   });
 }
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
+// OS X 当应用被激活时触发，常用于点击应用的 dock 图标的时候。
 app.on("activate", () => {
   if (win === null) {
     createWindow();
   }
 });
 
+// 当 Electron 完成初始化时被触发。
 app.on("ready", () => {
   createWindow();
-  // Update.checkUpdate();
-  // updateHandle()
+  update.updateHandle()
+});
+
+// 当所有的窗口都被关闭时触发。
+app.on("window-all-closed", () => {
+  // 排除darwin平台只是为了复制该OS行为：在Windows和Linux上，惯例是在用户关闭其窗口时终止（退出）该软件； 而在macOS上，约定是将进程保留在后台。
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
 });
 
 if (isDevelopment) {
   if (process.platform === "win32") {
+    // 如果使用 IPC 通道衍生 Node.js 进程，则只要子进程收到父进程使用 childprocess.send() 发送的消息，就会触发 'message' 事件。
     process.on("message", data => {
       if (data === "graceful-exit") {
         app.quit();
       }
     });
   } else {
+    // 信号事件，'SIGTERM' 在 Windows 中不支持
     process.on("SIGTERM", () => {
       app.quit();
     });
   }
-}
-
-// 检测更新
-function updateHandle() {
-  console.log(1);
-
-  let message = {
-    error: { type: 1, info: '检查更新出错' },
-    checking: { type: 2, info: '正在检查更新……' },
-    updateAva: { type: 3, info: '检测到新版本，正在下载……' },
-    updateNotAva: { type: 4, info: '现在使用的就是最新版本，不用更新' },
-  };
-  autoUpdater.updateConfigPath = 'app-update.yml'
-  autoUpdater.on('error', function (error) {
-    console.log(error);
-    sendUpdateMessage(message.error)
-  });
-  autoUpdater.on('checking-for-update', function () {
-    console.log("检测版本信息");
-    sendUpdateMessage(message.checking)
-  });
-  autoUpdater.on('update-available', function (info) {
-    console.log("检测到新版本，正在下载:****");
-    console.log(info);
-    sendUpdateMessage(message.updateAva)
-  });
-  autoUpdater.on('update-not-available', function () {
-    console.log(3);
-    sendUpdateMessage(message.updateNotAva)
-  });
-
-  // 更新下载进度事件
-  autoUpdater.on('download-progress', function (progressObj) {
-    console.log(4);
-    win.webContents.send('downloadProgress', progressObj)
-  });
-  autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
-    console.log(event);
-    console.log(releaseNotes);
-    console.log(releaseName);
-    console.log(releaseDate);
-    console.log(updateUrl);
-    console.log(quitAndUpdate);
-    ipcMain.on('isUpdateNow', (e, arg) => {
-      console.log(e);
-      console.log(arg);
-      console.log(arguments);
-      console.log("开始更新");
-      //some code here to handle event
-      autoUpdater.quitAndInstall();
-    });
-
-    win.webContents.send('isUpdateNow')
-  });
-
-  // ipcMain.on("checkForUpdate", () => {
-  //   console.log(5);
-  //   //执行自动更新检查
-  //   autoUpdater.checkForUpdates();
-  // })
-  autoUpdater.checkForUpdates();
-};
-
-// 通过main进程发送事件给renderer进程，提示更新信息
-function sendUpdateMessage(text) {
-  win.webContents.send('message', text)
 }
