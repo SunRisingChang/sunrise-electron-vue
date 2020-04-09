@@ -8,9 +8,9 @@ import { app, ipcMain, protocol, BrowserWindow } from "electron";
  * createProtocol 关联协议
  */
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
-
-
+// 自动更新
 import update from "./update";
+// 菜单栏事件处理
 import "./titleBar";
 
 // 是否是开发模式
@@ -28,7 +28,7 @@ function createWindow() {
     width: 1465,
     height: 920,
     // 隐藏标题栏
-    frame: true,
+    frame: false,
     //  设置界面特性
     webPreferences: {
       // 是否完整支持node
@@ -61,7 +61,7 @@ app.on("activate", () => {
 // 当 Electron 完成初始化时被触发。
 app.on("ready", () => {
   createWindow();
-  update.updateHandle()
+  // update.updateHandle()
 });
 
 // 当所有的窗口都被关闭时触发。

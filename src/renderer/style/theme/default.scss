@@ -222,7 +222,7 @@ a:active {
     & > span {
        -webkit-user-select: none;
       line-height: 30px;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
   .tittle-bar-icon {
@@ -234,10 +234,11 @@ a:active {
       text-align: center;
       font-size: 12px;
       cursor: pointer;
+      font-weight: bold;
       &:hover {
         background: #ccc;
       }
-      &:nth-child(3):hover {
+      &:nth-last-child(1):hover {
         background: red;
         color: #fff;
       }
