@@ -1,24 +1,41 @@
 /**
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:46:23 
- * @Last Modified by: Sun Rising 
- * @Last Modified time: 2019-07-10 18:46:23 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2020-04-09 14:05:31
  * @Description: 核心路由
  */
 <template>
-  <transition name="fade" mode="out-in" :duration="1000">
-    <router-view />
-  </transition>
+  <flex-container height="100%" direction="column" wrap="nowrap">
+    <!-- 标题栏组件 -->
+    <component :is="tittleBar"></component>
+    <flex-item :grow="1">
+      <transition name="fade" mode="out-in" :duration="1000">
+        <router-view />
+      </transition>
+    </flex-item>
+  </flex-container>
 </template>
 
 <script>
 import appConfig from "@/resources/appConfig.js";
 
 export default {
+  data() {
+    return {
+      // 标题栏
+      tittleBar: null
+    };
+  },
   created() {
     this.checkBrowser();
+    this.initTittleBar();
   },
   methods: {
+    // 初始化标题栏
+    initTittleBar() {
+      if (process.env.IS_ELECTRON) this.tittleBar = () => import("./views/module/layout/TittleBar.vue");
+    },
     //检查浏览器兼容性
     checkBrowser() {
       let agent = navigator.userAgent.toLowerCase();
@@ -85,26 +102,14 @@ export default {
       }
 
       if (!isOK) {
-        this.$alert(
-          "当前浏览器: " +
-            browserName +
-            " .ver " +
-            browserVersion +
-            " 请使用 " +
-            browserName +
-            " .ver " +
-            mixVer +
-            "&#8743; </br>推荐使用Chrome的最新版本 !",
-          "浏览器检测异常...",
-          {
-            type: "info",
-            showClose: false,
-            showCancelButton: false,
-            showConfirmButton: false,
-            center: true,
-            dangerouslyUseHTMLString: true
-          }
-        );
+        this.$alert("当前浏览器: " + browserName + " .ver " + browserVersion + " 请使用 " + browserName + " .ver " + mixVer + "&#8743; </br>推荐使用Chrome的最新版本 !", "浏览器检测异常...", {
+          type: "info",
+          showClose: false,
+          showCancelButton: false,
+          showConfirmButton: false,
+          center: true,
+          dangerouslyUseHTMLString: true
+        });
       }
     }
   }

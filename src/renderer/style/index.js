@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 11:32:25
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-17 13:39:50
+ * @Last Modified time: 2020-04-09 14:36:07
  * @Description: 样式配置
  */
 //element-ui依赖库,可深度定制
@@ -11,7 +11,7 @@ import "./depend/element-theme/theme-expansion.scss";
 import "font-awesome/scss/font-awesome.scss";
 import "./depend/_fontawesome.scss";
 //扩展图标库，加入阿里巴巴iconfont。
-import "./depend/iconfont/iconfont.css";
+import "./depend/iconfont/font_747224_32w6r6pgs5.css";
 import "./depend/_iconfont.scss";
 //扩展动画库,基于vue2的动画库animate
 import "vue2-animate/dist/vue2-animate.min.css";

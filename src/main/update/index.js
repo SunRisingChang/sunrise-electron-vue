@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2020-04-02 11:10:38
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-08 12:48:45
+ * @Last Modified time: 2020-04-09 13:39:19
  * @Description: 系统更新
  */
 import { autoUpdater } from 'electron-updater'
@@ -42,7 +42,7 @@ autoUpdater.on('download-progress', function (progressObj) {
 // 在更新下载完成的时候触发
 autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
 	sendUpdateMessage(message.updateDownloaded)
-	autoUpdater.quitAndInstall();
+	// autoUpdater.quitAndInstall();
 });
 
 // 当更新发生错误的时候触发

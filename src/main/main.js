@@ -3,13 +3,15 @@
  * protocol 协议管理
  * BrowserWindow 窗口管理
  */
-import { app, protocol, BrowserWindow } from "electron";
+import { app, ipcMain, protocol, BrowserWindow } from "electron";
 /**
  * createProtocol 关联协议
  */
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 
+
 import update from "./update";
+import "./titleBar";
 
 // 是否是开发模式
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -25,6 +27,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1465,
     height: 920,
+    // 隐藏标题栏
+    frame: true,
     //  设置界面特性
     webPreferences: {
       // 是否完整支持node
