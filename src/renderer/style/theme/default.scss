@@ -207,6 +207,49 @@ a:active {
   }
 }
 
+//electron标题栏
+.tittle-bar {
+  -webkit-app-region: drag;
+  .tittle-bar-text {
+     -webkit-app-region: no-drag;
+    .tittle-bar-logo {
+      background-image: url("../../assets/logo.png");
+      height: 30px;
+      width: 30px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 60%;
+    }
+    & > span {
+       -webkit-user-select: none;
+      line-height: 30px;
+      font-size: 14px;
+    }
+  }
+  .tittle-bar-icon {
+    -webkit-app-region: no-drag;
+    & .update-progress{
+      width: 200px;
+    }
+    & i {
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      &:hover {
+        background: #ccc;
+      }
+      &:nth-last-child(1):hover {
+        background: red;
+        color: #fff;
+      }
+    }
+  }
+}
+
 //--------- 布局样式 结束 ----------
 
 //-------- 滚动条样式 开始 ---------

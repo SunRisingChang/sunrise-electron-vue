@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-31 09:21:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-12-31 20:44:53
+ * @Last Modified time: 2020-04-12 14:57:50
  * @Description: Element组件样式定制,class组件名为.[element组件名]+自定义，例如.form-flex
  */
 @import "./theme-var.scss";
@@ -26,9 +26,9 @@
 .el-drawer__wrapper {
   z-index: 2005 !important;
 }
-.v-modal {
-  z-index: 2003 !important;
-}
+// .v-modal {
+//   z-index: 2003 !important;
+// }
 //
 
 .form-style-line {

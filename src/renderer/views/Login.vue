@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 12:10:57 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-15 16:18:39
+ * @Last Modified time: 2020-04-09 21:46:33
  * @Description: 登陆页面
  */
 <template>
@@ -10,25 +10,28 @@
     <div class="msg-layer">
       <div class="info-block">
         <p>
-          <span class="log"></span><span>SUNRISE</span>
+          <span class="log"></span>
+          <span>SUNRISE</span>
         </p>
         <p>{{$t('login.infoH1')}}</p>
         <p>{{$t('login.infoH2')}}</p>
         <p>{{$t('login.infoH3')}}</p>
-        <p><a target="_blank" href="https://gitee.com/sunrise-chang">{{$t('login.infoButton')}}</a></p>
+        <p>
+          <a target="_blank" href="https://gitee.com/sunrise-chang">{{$t('login.infoButton')}}</a>
+        </p>
       </div>
     </div>
     <div class="login-layer">
       <div class="login-bg" />
       <div class="i18-icon">
-        <el-dropdown trigger='click' placement='bottom' @command="handleSetLanguage">
+        <el-dropdown trigger="click" placement="bottom" @command="handleSetLanguage">
           <span class="el-dropdown-link">
             <span>
               <i class="icon-ali ali-yuyanqiehuan" :title="$t('navbar.language')"></i>
             </span>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item v-for="item in $store.state.base.sysConfig.language" :disabled="$store.state.base.sysConfig.currLanguage===item.code" :command='item.code' :key='item.code'>{{item.title}}</el-dropdown-item>
+            <el-dropdown-item v-for="item in $store.state.base.sysConfig.language" :disabled="$store.state.base.sysConfig.currLanguage===item.code" :command="item.code" :key="item.code">{{item.title}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -37,37 +40,38 @@
         <p class="login-title">{{$t('login.title')}}</p>
         <ul class="login-body">
           <li>
-            <input :placeholder="$t('login.userName')" v-model="loginForm.userName" maxlength="10">
+            <input :placeholder="$t('login.userName')" v-model="loginForm.userName" maxlength="10" />
           </li>
           <li>
-            <input :placeholder="$t('login.passWord')" :type="showPw?'':'password'" v-model="loginForm.passWd" maxlength="50" @keyup.enter="submitLoginForm">
+            <input :placeholder="$t('login.passWord')" :type="showPw?'':'password'" v-model="loginForm.passWd" maxlength="50" @keyup.enter="submitLoginForm" />
             <i @click="showPw=!showPw" :class="showPw?'icon-ali ali-chakanmima1':'icon-ali ali-chakanmima'"></i>
           </li>
           <li class="captcha" v-if="$store.state.base.isShowCaptcha">
-            <span @click="updateCaptcha"><img :src="captchaURL" alt="验证码" /></span><input :placeholder="$t('login.kaptchaCode')" v-model="loginForm.captcha" maxlength="4" @keyup.enter="submitLoginForm">
+            <span @click="updateCaptcha">
+              <img :src="captchaURL" alt="验证码" />
+            </span>
+            <input :placeholder="$t('login.kaptchaCode')" v-model="loginForm.captcha" maxlength="4" @keyup.enter="submitLoginForm" />
           </li>
           <li class="button">
-            <button :disabled='subButton' @click="submitLoginForm">{{$t('login.button')}}</button>
+            <button :disabled="subButton" @click="submitLoginForm">{{$t('login.button')}}</button>
           </li>
         </ul>
       </div>
-      <div class="copyright">
-        {{pageInfo.copyright}}
-      </div>
+      <div class="copyright">{{pageInfo.copyright}}</div>
     </div>
   </div>
   <div v-else class="login-page-mini">
     <div class="login-layer">
       <div class="login-bg" />
       <div class="i18-icon">
-        <el-dropdown trigger='click' placement='bottom' @command="handleSetLanguage">
+        <el-dropdown trigger="click" placement="bottom" @command="handleSetLanguage">
           <span class="el-dropdown-link">
             <span>
               <i class="icon-ali ali-yuyanqiehuan" :title="$t('navbar.language')"></i>
             </span>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item v-for="item in $store.state.base.sysConfig.language" :disabled="$store.state.base.sysConfig.currLanguage===item.code" :command='item.code' :key='item.code'>{{item.title}}</el-dropdown-item>
+            <el-dropdown-item v-for="item in $store.state.base.sysConfig.language" :disabled="$store.state.base.sysConfig.currLanguage===item.code" :command="item.code" :key="item.code">{{item.title}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -76,23 +80,24 @@
         <p class="login-title">{{$t('login.title')}}</p>
         <ul class="login-body">
           <li>
-            <input :placeholder="$t('login.userName')" v-model="loginForm.userName" maxlength="50">
+            <input :placeholder="$t('login.userName')" v-model="loginForm.userName" maxlength="50" />
           </li>
           <li>
-            <input :placeholder="$t('login.passWord')" :type="showPw?'':'password'" v-model="loginForm.passWd" maxlength="50" @keyup.enter="submitLoginForm">
+            <input :placeholder="$t('login.passWord')" :type="showPw?'':'password'" v-model="loginForm.passWd" maxlength="50" @keyup.enter="submitLoginForm" />
             <i @click="showPw=!showPw" :class="showPw?'icon-ali ali-chakanmima1':'icon-ali ali-chakanmima'"></i>
           </li>
           <li class="captcha" v-if="$store.state.base.isShowCaptcha">
-            <span @click="updateCaptcha"><img :src="captchaURL" alt="验证码" /></span><input :placeholder="$t('login.kaptchaCode')" v-model="loginForm.captcha" maxlength="4" @keyup.enter="submitLoginForm">
+            <span @click="updateCaptcha">
+              <img :src="captchaURL" alt="验证码" />
+            </span>
+            <input :placeholder="$t('login.kaptchaCode')" v-model="loginForm.captcha" maxlength="4" @keyup.enter="submitLoginForm" />
           </li>
           <li class="button">
-            <button :disabled='subButton' @click="submitLoginForm">{{$t('login.button')}}</button>
+            <button :disabled="subButton" @click="submitLoginForm">{{$t('login.button')}}</button>
           </li>
         </ul>
       </div>
-      <div class="copyright">
-        {{pageInfo.copyright}}
-      </div>
+      <div class="copyright">{{pageInfo.copyright}}</div>
     </div>
   </div>
 </template>
@@ -152,20 +157,14 @@ export default {
         if (!this.loginForm.userName) {
           throw new Error(this.$t("verify.userNotNull"));
         }
-        if (
-          this.loginForm.userName.length < 4 ||
-          this.loginForm.userName.length > 20
-        ) {
+        if (this.loginForm.userName.length < 4 || this.loginForm.userName.length > 20) {
           throw new Error(this.$t("verify.userLength"));
         }
         //密码
         if (!this.loginForm.passWd) {
           throw new Error(this.$t("verify.pawdNotNull"));
         }
-        if (
-          this.loginForm.passWd.length < 8 ||
-          this.loginForm.passWd.length > 30
-        ) {
+        if (this.loginForm.passWd.length < 8 || this.loginForm.passWd.length > 30) {
           throw new Error(this.$t("verify.pawdLength"));
         }
         //验证码
@@ -198,6 +197,7 @@ export default {
   height: 100%;
   background-color: #1f66dc;
   overflow: hidden;
+  position: relative;
   .msg-layer {
     display: flex;
     width: 100%;
@@ -285,7 +285,7 @@ export default {
     }
   }
   .login-layer {
-    position: fixed;
+    position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -493,6 +493,7 @@ export default {
     height: 100%;
     display: flex;
     justify-content: center;
+    position: relative;
     .login-bg {
       display: none;
     }

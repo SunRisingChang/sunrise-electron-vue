@@ -46,6 +46,13 @@ Vue.prototype.$utils = XEUtils; //工具函数库
 Vue.prototype.$mainLoading = false; //内容区loading开关
 //------------ 自定义的VUE全局对象 结束 ----------
 
+//------------ 动态加载electron 开始 ------------
+if (process.env.IS_ELECTRON) {
+  const electron = require('electron');
+  Vue.prototype.$electron = electron;
+}
+//------------ 动态加载electron 结束 ------------
+
 //------------ Vue插件装配 开始 -----------------
 Vue.use(ElementUI, {
   size: AppConfig.uiSize, //设置 element-ui 默认的大小

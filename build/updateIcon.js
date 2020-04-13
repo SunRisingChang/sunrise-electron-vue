@@ -2,32 +2,43 @@
  * @Author: Sun Rising
  * @Date: 2020-02-17 16:25:28
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-02-17 17:13:34
+ * @Last Modified time: 2020-04-09 15:00:21
  * @Description: 更新图标库
  */
-const request = require('request');
+const http = require('http');
 const fs = require('fs');
 const chalk = require("chalk");
 
 // 待更新文件列表
 const updateFileList = [
-    'font_747224_5bg39cfwo4q.eot',
-    'font_747224_5bg39cfwo4q.woff2',
-    'font_747224_5bg39cfwo4q.woff',
-    'font_747224_5bg39cfwo4q.ttf',
-    'font_747224_5bg39cfwo4q.svg'
+    'font_747224_62nz49y6ivm.css'
 ]
 // 请求路径
-const updateUrl = 'https://at.alicdn.com/t/'
+const updateUrl = 'http://at.alicdn.com/t/'
 // 存放路径
 const downDir = './src/renderer/style/depend/iconfont/'
 
+function goHttp(url) {
+    let promise = new Promise(function (resolve, rejecte) {
+        let req = http.get(url)
+        req.on("response", function (res) {
+            let finalData = '';
+            res.on("data", function (data) {
+                finalData += data;
+            });
+            res.on('end', function (date) {
+                resolve(finalData.toString())
+            })
+        });
+    })
+    return promise;
+}
 
 const updateFile = async (_url, filename) => {
     try {
-        var fileStream = fs.createWriteStream(downDir + filename);
-        var reqStream = await request(_url + filename);
-        reqStream.pipe(fileStream)
+        var reqStream = await goHttp(_url + filename);
+        // var fileStream = fs.createWriteStream(downDir + filename);
+        fs.writeFile(_url + filename, reqStream, { 'flag': 'a' }, function (err) { })
         console.log(filename + " Update Success ! ");
     } catch (error) {
         console.log(error);

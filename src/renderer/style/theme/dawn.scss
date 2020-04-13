@@ -167,4 +167,9 @@
       background-color: $layout-lock-bg;
     }
   }
+
+  //electron标题栏
+  .tittle-bar {
+    background-color: $layout-head-bg;
+  }
 }
