@@ -2,14 +2,14 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:46:23 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-09 21:15:08
+ * @Last Modified time: 2020-04-13 08:38:24
  * @Description: 核心路由
  */
 <template>
   <flex-container height="100%" direction="column" wrap="nowrap">
     <!-- 标题栏组件 -->
     <component :is="tittleBar"></component>
-    <flex-item :grow="1">
+    <flex-item :height="contentHeight">
       <transition name="fade" mode="out-in" :duration="1000">
         <router-view />
       </transition>
@@ -24,7 +24,9 @@ export default {
   data() {
     return {
       // 标题栏
-      tittleBar: null
+      tittleBar: null,
+      // 内容体高度
+      contentHeight: "100%"
     };
   },
   created() {
@@ -34,7 +36,10 @@ export default {
   methods: {
     // 初始化标题栏
     initTittleBar() {
-      if (process.env.IS_ELECTRON) this.tittleBar = () => import("./views/module/layout/TittleBar.vue");
+      if (this.$electron) {
+        this.tittleBar = () => import("./views/module/layout/TittleBar.vue");
+        this.contentHeight = "calc(100% - 30px)";
+      }
     },
     //检查浏览器兼容性
     checkBrowser() {

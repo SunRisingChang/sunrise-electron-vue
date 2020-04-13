@@ -211,6 +211,7 @@ a:active {
 .tittle-bar {
   -webkit-app-region: drag;
   .tittle-bar-text {
+     -webkit-app-region: no-drag;
     .tittle-bar-logo {
       background-image: url("../../assets/logo.png");
       height: 30px;
@@ -227,6 +228,9 @@ a:active {
   }
   .tittle-bar-icon {
     -webkit-app-region: no-drag;
+    & .update-progress{
+      width: 200px;
+    }
     & i {
       height: 30px;
       width: 30px;

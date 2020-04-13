@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-06-07 09:22:44
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-03-07 13:54:44
+ * @Last Modified time: 2020-04-12 10:07:46
  * @Description: 前端数据库工厂，单例模式
  */
 import Localforage from "localforage";

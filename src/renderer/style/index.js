@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 11:32:25
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-09 14:36:07
+ * @Last Modified time: 2020-04-11 20:52:31
  * @Description: 样式配置
  */
 //element-ui依赖库,可深度定制
@@ -22,5 +22,6 @@ import "./theme";
 import "./depend/_color.scss";
 import "./depend/_layout.scss";
 import "./depend/_animation.scss";
+import "./depend/_other.scss";
 //自定义样式，主要用于自己写定制项目需要
 import "./project-custom.scss";
