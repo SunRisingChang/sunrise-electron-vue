@@ -111,44 +111,50 @@ export default {
       });
       // 有更新时
       ipcRenderer.on("renderer-update-available", async (event, arg) => {
-        this.newVersionInfo = arg;
-        this.isUpdate = true;
-        await this.$confirm(`检测到新版本${arg.version}，是否立即下载?`, "提示", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "info",
-          showClose: false,
-          closeOnClickModal: false,
-          closeOnPressEscape: false,
-          closeOnHashChange: false
-        });
-        this.handleNewDownload();
-      });
-      // 检查更新错误
-      ipcRenderer.on("renderer-update-error", async (event, arg) => {
-        if (!this.isInitUpdate)
-          await this.$confirm("检查更新失败", "提示", {
+        try {
+          this.newVersionInfo = arg;
+          this.isUpdate = true;
+          await this.$confirm(`检测到新版本${arg.version}，是否立即下载?`, "提示", {
             confirmButtonText: "确定",
-            showCancelButton: false,
-            type: "error",
+            cancelButtonText: "取消",
+            type: "info",
             showClose: false,
             closeOnClickModal: false,
             closeOnPressEscape: false,
             closeOnHashChange: false
           });
+          this.handleNewDownload();
+        } catch (error) {}
+      });
+      // 检查更新错误
+      ipcRenderer.on("renderer-update-error", async (event, arg) => {
+        try {
+          if (!this.isInitUpdate)
+            await this.$confirm("检查更新失败", "提示", {
+              confirmButtonText: "确定",
+              showCancelButton: false,
+              type: "error",
+              showClose: false,
+              closeOnClickModal: false,
+              closeOnPressEscape: false,
+              closeOnHashChange: false
+            });
+        } catch (error) {}
       });
       // 更新包下载结束
       ipcRenderer.on("renderer-package-downloaded", async () => {
-        await this.$confirm("更新包下载完成，是否立即重启安装?", "提示", {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: "success",
-          showClose: false,
-          closeOnClickModal: false,
-          closeOnPressEscape: false,
-          closeOnHashChange: false
-        });
-        ipcRenderer.send("main-quit-install");
+        try {
+          await this.$confirm("更新包下载完成，是否立即重启安装?", "提示", {
+            confirmButtonText: "确定",
+            cancelButtonText: "取消",
+            type: "success",
+            showClose: false,
+            closeOnClickModal: false,
+            closeOnPressEscape: false,
+            closeOnHashChange: false
+          });
+          ipcRenderer.send("main-quit-install");
+        } catch (error) {}
       });
     },
     // 最小化
