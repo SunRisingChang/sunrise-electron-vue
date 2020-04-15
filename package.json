@@ -19,6 +19,7 @@
     "update:icon": "node build/updateIcon.js"
   },
   "main": "background.js",
+  "iconfontId": "font_747224_opsdvookjul",
   "dependencies": {
     "axios": "^0.18.0",
     "codemirror": "^5.48.0",
