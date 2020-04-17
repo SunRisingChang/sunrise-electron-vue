@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2020-02-17 16:25:28
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-15 13:39:12
+ * @Last Modified time: 2020-04-17 14:19:47
  * @Description: 更新图标库
  */
 const fs = require('fs');
@@ -18,7 +18,7 @@ if (iconfontId) {
             console.log(error);
             return;
         }
-        fs.writeFile(downFile, response.body, { 'flag': 'a' }, (error2) => {
+        fs.writeFile(downFile, response.body, (error2) => {
             if (error2) {
                 console.log(error2);
                 return;
