@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
   </a>
   <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.10.0-brightgreen.svg" alt="element-ui">
+    <img src="https://img.shields.io/badge/element--ui-2.13.0-brightgreen.svg" alt="element-ui">
   </a>
   <a href="https://spring.io/projects/spring-boot/#learn">
     <img src="https://img.shields.io/badge/spring--boot-2.1.6-brightgreen.svg" alt="license">
@@ -80,6 +80,15 @@ _sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electro
   - Markdown 编辑组件
   - Json编辑器
   - 数字滚动
+  - 记忆输入框
+  - 可拖拽弹出层
+  - 响应式栅格布局
+  - 字典下拉
+  - 文件上传
+  - JSON编辑器
+  - 页面缓存
+  - 菜单显示
+  - 模板表单
 
 - 其它页面
   - 404
@@ -108,6 +117,10 @@ _sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electro
   - 前端异常捕获(会尝试调用后端日志记录接口)
   - 浏览器版本检测
   - 按钮级权限
+
+- Electron
+  - 自定义标题栏
+  - 自动检查版本更新
 
 ```
 
@@ -160,6 +173,9 @@ npm run inspect
 
 # 代码格式检查
 npm run lint
+
+# 更新 iconfont 图标库
+npm run update:icon
 
 ```
 
