@@ -39,6 +39,7 @@ export default {
     SinglePageOpen: "单路由多开",
     JsonEditPage: "Json Edit",
     CountToPage: "Count To",
+    TplFormCreatePage: 'Template Form',
     //----------插件示例 结束----------
     //----------其它页面 开始----------
     OtherPage: "Other Page",
