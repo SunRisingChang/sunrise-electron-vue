@@ -2,14 +2,17 @@
  * @Author: Sun Rising 
  * @Date: 2020-04-12 09:44:37 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-13 09:07:38
+ * @Last Modified time: 2020-04-23 17:15:27
  * @Description: 主窗体 生命周期管理类
  */
-import { BrowserWindow } from "electron";
+import { BrowserWindow, Tray, Menu } from "electron";
 /**
  * createProtocol 关联协议
  */
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
+
+// 应用图标
+const iconImgUrl = 'build/electron-icon/icon.ico';
 
 class Window {
 
@@ -21,6 +24,8 @@ class Window {
 			minWidth: 470,
 			// 隐藏标题栏
 			frame: false,
+			// 窗口图标
+			icon: iconImgUrl,
 			//  设置界面特性
 			webPreferences: {
 				// 是否完整支持node
@@ -36,6 +41,17 @@ class Window {
 			createProtocol("app");
 			this.win.loadURL("app://./index.html");
 		}
+
+		// 托盘图标
+		this.tray = new Tray(iconImgUrl);
+		const contextMenu = Menu.buildFromTemplate([
+			{ label: '退出', click: () => { this.win.destroy() } },//我们需要在这里有一个真正的退出（这里直接强制退出）
+		])
+		this.tray.setContextMenu(contextMenu)
+		// 我们这里模拟桌面程序点击通知区图标实现打开关闭应用的功能
+		this.tray.on('click', () => {
+			this.win.isVisible() ? this.win.hide() : this.win.show()
+		})
 
 		// 窗口关闭时的回调
 		this.win.on("closed", () => {
