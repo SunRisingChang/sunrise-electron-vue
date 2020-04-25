@@ -2,12 +2,12 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-22 10:26:29 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-05-22 12:04:14
+ * @Last Modified time: 2020-04-25 14:21:48
  * @Description: markdown-edit插件
  */
 <template>
   <div class="markdown-edit-warp" :style="warpHeight">
-    <mavon-editor v-model="value" v-bind='attrs' />
+    <mavon-editor v-model="value" v-bind="attrs" v-on="this.$listeners" />
   </div>
 </template>
 
@@ -90,6 +90,8 @@ export default {
   width: 100%;
   & .markdown-body {
     width: 100%;
+    // 覆盖官方默认的1500
+    z-index: auto;
   }
 }
 </style>

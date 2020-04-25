@@ -49,7 +49,7 @@ a:active {
   top: 0px;
   bottom: 0px;
   left: 0px;
-  z-index: 2002;
+  z-index: 5;
   .aside-logo {
     background-image: url("../../assets/logo.png");
     height: 100%;
@@ -152,6 +152,7 @@ a:active {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  position: relative;
   &::before {
     content: "";
     position: absolute;

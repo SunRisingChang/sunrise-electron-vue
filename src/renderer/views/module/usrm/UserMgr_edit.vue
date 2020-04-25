@@ -6,10 +6,9 @@
  * @Description: 用户编辑
  */
 <template>
-  <flex-container v-loading='loading'>
-
+  <flex-container v-loading="loading">
     <el-form ref="editForm" :model="formData" :rules="formRules" label-position="right" label-width="90px" class="form-style-line">
-      <el-row :span='12'>
+      <el-row :span="12">
         <el-col>
           <el-form-item label="账户名称 :" prop="acName">
             <el-input v-model="formData.acName" maxlength="20" show-word-limit></el-input>
@@ -17,19 +16,18 @@
         </el-col>
         <el-col>
           <el-form-item label="账户状态 :" prop="acStat">
-            <dict-select v-model="formData.acStat" dict-key='AcStat' placeholder="请选择" clearable></dict-select>
+            <dict-select v-model="formData.acStat" dict-key="AcStat" placeholder="请选择" clearable></dict-select>
           </el-form-item>
         </el-col>
         <el-col>
           <el-form-item label="隶属组织 :" prop="orgUuid">
-            <el-cascader :options="orgTree" v-model="formData.orgUuid" :props="orgTreeProps" clearable @change='orgUuidChange'></el-cascader>
+            <el-cascader :options="orgTree" v-model="formData.orgUuid" :props="orgTreeProps" clearable @change="orgUuidChange"></el-cascader>
           </el-form-item>
         </el-col>
         <el-col>
           <el-form-item label="拥有角色 :" prop="roleUuids">
             <el-select v-model="formData.roleUuids" multiple placeholder="请选择">
-              <el-option v-for="item in roles" :key="item.uuid" :label="item.roleName" :value="item.uuid">
-              </el-option>
+              <el-option v-for="item in roles" :key="item.uuid" :label="item.roleName" :value="item.uuid"></el-option>
             </el-select>
           </el-form-item>
         </el-col>
@@ -45,7 +43,7 @@
         </el-col>
         <el-col>
           <el-form-item label="用户性别 :" prop="userSex">
-            <dict-select v-model="formData.userSex" dict-key='Sex' placeholder="请选择" clearable></dict-select>
+            <dict-select v-model="formData.userSex" dict-key="Sex" placeholder="请选择" clearable></dict-select>
           </el-form-item>
         </el-col>
         <el-col>
@@ -55,8 +53,7 @@
         </el-col>
         <el-col>
           <el-form-item label="出生日期 :" prop="userBirthday">
-            <el-date-picker v-model="formData.userBirthday" type="date" placeholder="选择日期">
-            </el-date-picker>
+            <el-date-picker v-model="formData.userBirthday" type="date" placeholder="选择日期"></el-date-picker>
           </el-form-item>
         </el-col>
         <el-col>
@@ -89,11 +86,10 @@
       </el-row>
     </el-form>
 
-    <flex-container class="footer" justifyContent='flex-end'>
+    <flex-container class="footer" justifyContent="flex-end">
       <el-button @click="$emit('close')">取 消</el-button>
       <el-button @click="handleUpdateData" type="primary">确 定</el-button>
     </flex-container>
-
   </flex-container>
 </template>
 
@@ -113,21 +109,11 @@ export default {
       roles: [],
       formData: Object.assign({}, this.initData),
       formRules: {
-        acName: [
-          { required: true, message: "请输入账户名称且长度为4至20 !",min: 4, max: 20, trigger: "change" }
-        ],
-        acPwd: [
-          { min: 8, max: 30, message: "请输入的密码长度为8至30 !",trigger: "change" }
-        ],
-        acStat: [
-          { required: true, message: "请选择账户状态 !", trigger: "change" }
-        ],
-        orgUuid: [
-          { required: true, message: "请选择隶属组织 !", trigger: "change" }
-        ],
-        roleUuids: [
-          { required: true, message: "请选择拥有角色 !", trigger: "change" }
-        ]
+        acName: [{ required: true, message: "请输入账户名称且长度为4至20 !", min: 4, max: 20, trigger: "change" }],
+        acPwd: [{ min: 8, max: 30, message: "请输入的密码长度为8至30 !", trigger: "change" }],
+        acStat: [{ required: true, message: "请选择账户状态 !", trigger: "change" }],
+        orgUuid: [{ required: true, message: "请选择隶属组织 !", trigger: "change" }],
+        roleUuids: [{ required: true, message: "请选择拥有角色 !", trigger: "change" }]
       }
     };
   },

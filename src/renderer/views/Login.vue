@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 12:10:57 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-09 21:46:33
+ * @Last Modified time: 2020-04-25 12:09:45
  * @Description: 登陆页面
  */
 <template>
@@ -502,7 +502,7 @@ export default {
       top: 20px;
       right: 40px;
       cursor: pointer;
-      z-index: 3;
+      z-index: 1;
       i {
         color: #00162f;
         font-size: 18px;

@@ -2,11 +2,12 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-03-24 20:59:55
+ * @Last Modified time: 2020-04-25 19:26:14
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
 import { Message, Notification } from "element-ui";
+import ClipboardCopy from "clipboard-copy";
 
 let duration = 1500;
 
@@ -191,6 +192,31 @@ export default {
         this.$set(row, indexKey, index);
       }
       return [rowspan, colspan];
+    }
+  },
+  /**
+   * 将内容放入剪贴板
+   * @param {*} str 复制内容
+   */
+  async copy(str) {
+    try {
+      if (!XEUtils.isString(str)) {
+        Message({
+          message: '请传入字符串!',
+          type: "error"
+        });
+        return;
+      }
+      await ClipboardCopy(str)
+      Message({
+        message: '已复制至剪贴板!',
+        type: "success"
+      });
+    } catch (error) {
+      Message({
+        message: error.message,
+        type: "error"
+      });
     }
   }
 };

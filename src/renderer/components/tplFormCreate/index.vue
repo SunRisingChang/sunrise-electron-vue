@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-12-03 10:53:44
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-23 13:08:27
+ * @Last Modified time: 2020-04-25 13:20:48
  * @Description: 模板表单Json生成工具
  */
 <template>
@@ -55,12 +55,12 @@
       </el-table>
     </el-form>
     <!-- dom配置层 -->
-    <el-drawer title="DOM配置" :visible.sync="isDrawerShow" append-to-body :modal="false">
+    <el-drawer title="DOM配置" :visible.sync="isDrawerShow" append-to-body :size="300">
       <option-dom v-if="isDrawerShow" v-model="currEditDOM"></option-dom>
     </el-drawer>
     <!-- 生成JSON -->
     <dialog-drag title="生成JSON" :visible.sync="jsonVisible">
-      <pre class="json-show">{{JSON.stringify(this.formJsonArray,null,2)}}</pre>
+      <pre>{{JSON.stringify(this.formJsonArray,null,2)}}</pre>
     </dialog-drag>
     <!-- 生成表单 -->
     <dialog-drag title="生成表单" :visible.sync="formVisible">
@@ -247,11 +247,6 @@ export default {
 
 <style lang="scss" scoped>
 .tpl-form-create {
-  width: 100%;
-}
-.json-show {
-  max-height: 500px;
-  overflow-y: auto;
   width: 100%;
 }
 .button-block {

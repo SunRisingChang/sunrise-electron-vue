@@ -2,24 +2,28 @@
  * @Author: Sun Rising 
  * @Date: 2018-12-14 10:10:18 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-15 16:59:34
+ * @Last Modified time: 2020-04-25 13:11:42
  * @Description: 为可视化选择cron表达式
  */
 <template>
-  <div style='width: 100%;'>
-    <el-input v-model="cronStr" @blur='cronblur' :readonly='readonly' clearable :disabled='disabled'>
+  <div style="width: 100%;">
+    <el-input v-model="cronStr" @blur="cronblur" :readonly="readonly" clearable :disabled="disabled">
       <el-button @click="showCronDia" slot="append" icon="icon-ali ali-gaojixuangu" :title="title" :disabled="disabled||readonly"></el-button>
     </el-input>
-    <dialog-drag :visible.sync='showCron' width='80%' :show-close='false' append-to-body>
-      <template slot='title' class="flex-h flex-a-c">
-        <i class="icon-ali ali-gaojixuangu"></i>
-        <span> {{ title}}</span>
-        <div class="pull-right">
-          <el-button size="mini" icon="icon-ali ali-baocun" type="primary" circle @click="$refs.cronTab.submitFill();showCron=!showCron"></el-button>
-          <el-button size="mini" icon="el-icon-close" type="info" circle @click="showCron=!showCron"></el-button>
-        </div>
+    <dialog-drag :visible.sync="showCron" width="80%" :show-close="false">
+      <template slot="title">
+        <flex-container wrap="nowrap" justifyContent="space-between">
+          <flex-item alignItems="center">
+            <i class="icon-ali ali-gaojixuangu margin-right-4"></i>
+            <span>{{ title}}</span>
+          </flex-item>
+          <flex-item alignItems="center">
+            <el-button size="mini" icon="icon-ali ali-baocun" type="primary" circle @click="$refs.cronTab.submitFill();showCron=!showCron"></el-button>
+            <el-button size="mini" icon="el-icon-close" type="info" circle @click="showCron=!showCron"></el-button>
+          </flex-item>
+        </flex-container>
       </template>
-      <cron-main ref='cronTab' v-model="cronStr"></cron-main>
+      <cron-main ref="cronTab" v-model="cronStr"></cron-main>
     </dialog-drag>
   </div>
 </template>

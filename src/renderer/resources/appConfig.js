@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-12-31 19:26:54
+ * @Last Modified time: 2020-04-25 11:34:15
  * @Description:应用配置参数
  */
 export default {
@@ -13,9 +13,9 @@ export default {
   //默认布局
   defaultLayout: 948,
   //精简布局
-  streamLayout: [948, 500],
+  streamLayout: [948, 768],
   //迷你布局
-  miniLayout: 500,
+  miniLayout: 768,
   //是否使用伪多页应用
   singlePage: false,
   //主题列表

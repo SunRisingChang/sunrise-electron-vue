@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:48:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-12-31 19:24:51
+ * @Last Modified time: 2020-04-25 12:29:20
  * @Description: 内容装配页
  */
 <template>
@@ -189,7 +189,7 @@ export default {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 2001;
+  z-index: 4;
   background-color: rgba(0, 0, 0, 0.3);
 }
 </style>

@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-12-21 19:13:10
+ * @Last Modified time: 2020-04-25 20:09:52
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -286,6 +286,10 @@ export default {
           state.sysConfig.currTheme.toLowerCase()
         );
       }
+      // 兼容electron模式
+      if (this.$electron) {
+        window.document.body.classList.add("electron");
+      }
     },
     //切换国际化
     changeI18n({ commit }, languageCode) {
@@ -314,7 +318,7 @@ export default {
       try {
         let resp = await VuexApi.isLogged();
         commit("setUserInfo", resp.data);
-      } catch (error) {}
+      } catch (error) { }
     },
     //注销
     async logout({ dispatch }) {
