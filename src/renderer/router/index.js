@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-24 12:01:37
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-12-21 19:20:09
+ * @Last Modified time: 2020-04-29 08:27:00
  * @Description: vue-RouTer 配置
  */
 import Vue from "vue";
@@ -23,7 +23,7 @@ let routerObj = new Router({
 let excludePages = ["Login", "Lock"];
 
 //加入页面缓存
-let keepPage = function(to) {
+let keepPage = function (to) {
   //在排除名单外且在路由表中
   if (excludePages.indexOf(to.name) === -1 && to.matched.length !== 0) {
     if (!store.getters.sysConfig.singlePage) {
@@ -55,13 +55,16 @@ routerObj.beforeEach(async (to, from, next) => {
     store.dispatch("base/checkTabsData");
   }
 
-  if (to.path !== "/login") {
-    if (!(await dataStorage.getSessionStorage().getItem("user"))) {
-      next({ path: "/login" });
-      return;
-    } else {
-      keepPage(to);
-    }
+  if (to.path === '/lock' || to.path === "/login") {
+    next();
+    return;
+  }
+
+  if (!(await dataStorage.getSessionStorage().getItem("user"))) {
+    next({ path: "/login" });
+    return;
+  } else {
+    keepPage(to);
   }
   next();
 });

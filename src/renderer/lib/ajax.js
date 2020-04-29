@@ -10,7 +10,7 @@ import router from "@/router/index";
  * 函数必须返回一个字符串，或 ArrayBuffer，或 Stream
  * @param {*} data
  */
-let transformRequest = function(data) {
+let transformRequest = function (data) {
   return JSON.stringify(data);
 };
 
@@ -18,7 +18,7 @@ let transformRequest = function(data) {
  * 在传递给 then/catch 前，允许修改响应数据
  * @param {*} data
  */
-let transformResponse = function(data) {
+let transformResponse = function (data) {
   return JSON.parse(data);
 };
 
@@ -40,7 +40,7 @@ let ajax = axios.create({
   // `maxContentLength` 定义允许的响应内容的最大尺寸
   maxContentLength: 2000,
   // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 reject
-  validateStatus: function(status) {
+  validateStatus: function (status) {
     return status >= 200 && status < 300; // 默认的
   },
   // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)
@@ -68,6 +68,7 @@ ajax.interceptors.response.use(
     return new Promise((resolve, reject) => {
       try {
         let _handle = response.data.handle;
+        // 服务器处理异常
         if (_handle && _handle.code !== AppConfig.httpConst.HTTP_HANDLE_OK) {
           //需要登陆
           if (_handle.code === AppConfig.httpConst.SHIRO_CREDENTITALS)
@@ -77,6 +78,10 @@ ajax.interceptors.response.use(
           XEUtils.sayOpWarn(_handle.code + " , " + _handle.message);
           reject(_handle);
         }
+        // post请求且处理成功
+        if (response.config.method === 'post')
+          XEUtils.sayOpSuccess(_handle.code + " , " + _handle.message);
+        // 请求成功
         resolve(_handle);
       } catch (error) {
         console.log(error);

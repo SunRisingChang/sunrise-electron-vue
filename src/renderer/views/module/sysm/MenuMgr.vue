@@ -2,19 +2,19 @@
  * @Author: Sun Rising 
  * @Date: 2019-01-02 09:34:46 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-10-09 09:33:01
+ * @Last Modified time: 2020-04-26 08:41:23
  * @Description: 菜单管理
  */
 <template>
-  <flex-container direction="column" wrap='nowrap'>
+  <flex-container direction="column" wrap="nowrap">
     <!-- 查询面板 -->
     <flex-item class="margin-bottom-10" v-show="showQuery">
       <el-card>
-        <flex-container slot="header" justifyContent='space-between'>
-          <flex-item alignItems='center'>
+        <flex-container slot="header" justifyContent="space-between">
+          <flex-item alignItems="center">
             <i class="el-icon-s-operation margin-right-6 font-size-16"></i>查询参数
           </flex-item>
-          <flex-item alignItems='center'>
+          <flex-item alignItems="center">
             <el-button type="primary" size="mini" @click="handleQuery" circle icon="el-icon-search" title="查询"></el-button>
             <el-button size="mini" @click="$refs['queryForm'].resetFields()" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
           </flex-item>
@@ -34,10 +34,8 @@
             <col-pr>
               <el-form-item label="打开方式 :" prop="menuOpenWay">
                 <el-select v-model="queryForm.menuOpenWay" placeholder="请选择">
-                  <el-option label="当前窗口" :value="1">
-                  </el-option>
-                  <el-option label="弹出窗口" :value="2">
-                  </el-option>
+                  <el-option label="当前窗口" :value="1"></el-option>
+                  <el-option label="弹出窗口" :value="2"></el-option>
                 </el-select>
               </el-form-item>
             </col-pr>
@@ -49,10 +47,9 @@
                 </el-radio-group>
               </el-form-item>
             </col-pr>
-            <col-pr :xs='24' :sm='24' :md='16' :lg='12' :xl='8'>
+            <col-pr :xs="24" :sm="24" :md="16" :lg="12" :xl="8">
               <el-form-item label="更新时间 :" prop="updatedTime">
-                <el-date-picker v-model="queryForm.updatedTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
-                </el-date-picker>
+                <el-date-picker v-model="queryForm.updatedTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
               </el-form-item>
             </col-pr>
           </el-row>
@@ -60,25 +57,25 @@
       </el-card>
     </flex-item>
     <!-- 结果面板 -->
-    <flex-item :grow='1'>
+    <flex-item :grow="1">
       <el-card>
-        <flex-container slot="header" justifyContent='space-between'>
-          <flex-item alignItems='center'>
+        <flex-container slot="header" justifyContent="space-between">
+          <flex-item alignItems="center">
             <i class="icon-fa fa-bars margin-right-6 font-size-16"></i>
             <span class="margin-right-4">系统菜单</span>
             <el-tooltip v-if="isSort&&sysMenu.length>0" content="排序已修改,请保存 !" placement="right">
               <i class="el-icon-warning icon-color-danger"></i>
             </el-tooltip>
           </flex-item>
-          <flex-item alignItems='center'>
-            <el-button :loading='treeLoading' type="primary" size="mini" @click="handleShowMenuAddDia" circle icon="el-icon-plus" title="添加"></el-button>
-            <el-button :loading='treeLoading' size="mini" @click="handleSaveSysMenu" circle icon="icon-ali ali-gongju" title="排序整理"></el-button>
-            <el-button :loading='treeLoading' size="mini" @click="doLoadTree" circle icon="el-icon-refresh" title="刷新"></el-button>
-            <el-button :loading='treeLoading' size="mini" plain @click="handleExpandSwitch" circle :icon="isTreeExpand?'icon-ali ali-tuceng':'icon-ali ali-tuceng1'" :title="isTreeExpand?'全部折叠':'全部展开'"></el-button>
-            <el-button :loading='treeLoading' size="mini" plain @click="handleShowQuery" circle :icon="!showQuery?'el-icon-caret-top':'el-icon-caret-bottom'" :title="!showQuery?'显示查询面板':'隐藏查询面板'"></el-button>
+          <flex-item alignItems="center">
+            <el-button :loading="treeLoading" type="primary" size="mini" @click="handleShowMenuAddDia" circle icon="el-icon-plus" title="添加"></el-button>
+            <el-button :loading="treeLoading" size="mini" @click="handleSaveSysMenu" circle icon="icon-ali ali-gongju-" title="排序整理"></el-button>
+            <el-button :loading="treeLoading" size="mini" @click="doLoadTree" circle icon="el-icon-refresh" title="刷新"></el-button>
+            <el-button :loading="treeLoading" size="mini" plain @click="handleExpandSwitch" circle :icon="isTreeExpand?'icon-ali ali-tuceng':'icon-ali ali-tuceng1'" :title="isTreeExpand?'全部折叠':'全部展开'"></el-button>
+            <el-button :loading="treeLoading" size="mini" plain @click="handleShowQuery" circle :icon="!showQuery?'el-icon-caret-top':'el-icon-caret-bottom'" :title="!showQuery?'显示查询面板':'隐藏查询面板'"></el-button>
           </flex-item>
         </flex-container>
-        <el-tree v-loading='treeLoading' ref="menuTree" :data="sysMenu" :node-key="menuTreeProps.key" :props="menuTreeProps" default-expand-all draggable :allow-drop="doAllowDropNode" :render-content="doRenderTreeContent" :filter-node-method="doFilterNode"></el-tree>
+        <el-tree v-loading="treeLoading" ref="menuTree" :data="sysMenu" :node-key="menuTreeProps.key" :props="menuTreeProps" default-expand-all draggable :allow-drop="doAllowDropNode" :render-content="doRenderTreeContent" :filter-node-method="doFilterNode"></el-tree>
       </el-card>
     </flex-item>
     <!-- 添加面板 -->
@@ -86,14 +83,14 @@
       <span slot="title">
         <i class="icon-fa fa-bars margin-right-4"></i>开发菜单
       </span>
-      <menu-add :initData='sysMenuKeys' @updataTree='doUpdataTree' @close='MenuAddVisible=false'></menu-add>
+      <menu-add :initData="sysMenuKeys" @updataTree="doUpdataTree" @close="MenuAddVisible=false"></menu-add>
     </dialog-drag>
     <!-- 编辑面板 -->
     <dialog-drag title="编辑数据" :visible.sync="MenuEditVisible">
       <span slot="title">
         <i class="el-icon-edit margin-right-4"></i>编辑数据
       </span>
-      <menu-edit :initData='editSysMenu' @updataData='doUpdataData' @close='MenuEditVisible=false'></menu-edit>
+      <menu-edit :initData="editSysMenu" @updataData="doUpdataData" @close="MenuEditVisible=false"></menu-edit>
     </dialog-drag>
   </flex-container>
 </template>
@@ -210,14 +207,8 @@ export default {
     handleShowMenuAddDia() {
       //获取目前所有的菜单树的子节点
       let allNode = this.$utils.filterTree(this.sysMenu, item => {
-        let _buttonSysMenu = item.children
-          ? item.children.filter(item => item.menuType === 3)
-          : [];
-        if (
-          (!item.children || _buttonSysMenu.length === item.children.length) &&
-          item.menuType !== 3
-        )
-          return item[this.menuTreeProps.key];
+        let _buttonSysMenu = item.children ? item.children.filter(item => item.menuType == 3) : [];
+        if ((!item.children || _buttonSysMenu.length === item.children.length) && item.menuType !== 3) return item[this.menuTreeProps.key];
       });
       let sysMenuKeys = [];
       //获取全部子节点的key值
@@ -257,8 +248,7 @@ export default {
         for (var model of addChildrenNode) {
           for (var index in model.chain) {
             let key = model.chain[index]["fullPath"];
-            let parentKey =
-              index == 0 ? key : model.chain[index - 1]["fullPath"];
+            let parentKey = index == 0 ? key : model.chain[index - 1]["fullPath"];
             let parentNode = treeVNode.getNode(parentKey);
             let childrenNode = treeVNode.getNode(key);
             let newNode = Object.assign({}, DefaultMenuModel, {
@@ -340,29 +330,18 @@ export default {
     doFilterNode(value, data) {
       let isMenuName = data.menuName.includes(value.menuName);
       let isMenuUrl = data.menuUrl.includes(value.menuUrl);
-      let isMenuOpenWay =
-        data.menuOpenWay === value.menuOpenWay || !value.menuOpenWay;
+      let isMenuOpenWay = data.menuOpenWay === value.menuOpenWay || !value.menuOpenWay;
       //value.menuVisible === null解决!0为true
-      let isMenuVisible =
-        data.menuVisible === value.menuVisible || value.menuVisible === null;
+      let isMenuVisible = data.menuVisible === value.menuVisible || value.menuVisible === null;
       let isUpdatedTime = true;
       if (value.updatedTime && value.updatedTime.length === 2) {
-        isUpdatedTime =
-          value.updatedTime[0].getTime() <= data.updatedTime &&
-          data.updatedTime <= value.updatedTime[1].getTime();
+        isUpdatedTime = value.updatedTime[0].getTime() <= data.updatedTime && data.updatedTime <= value.updatedTime[1].getTime();
       }
-      return (
-        isMenuName &&
-        isMenuUrl &&
-        isMenuOpenWay &&
-        isMenuVisible &&
-        isUpdatedTime
-      );
+      return isMenuName && isMenuUrl && isMenuOpenWay && isMenuVisible && isUpdatedTime;
     },
     //可否放置
     doAllowDropNode(draggingNode, dropNode, type) {
-      let is =
-        draggingNode.parent.id === dropNode.parent.id && type !== "inner";
+      let is = draggingNode.parent.id === dropNode.parent.id && type !== "inner";
       if (is) this.isSort = true;
       return is;
     },
@@ -382,15 +361,11 @@ export default {
     },
     //通用的操作确认弹出层
     doMessageBox(message, title, type) {
-      return this.$confirm(
-        message ? message : "确定进行此操作!",
-        title ? title : "提示",
-        {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: type ? type : "warning"
-        }
-      );
+      return this.$confirm(message ? message : "确定进行此操作!", title ? title : "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: type ? type : "warning"
+      });
     },
     //渲染树
     doRenderTreeContent(h, { node, data, store }) {
@@ -402,10 +377,7 @@ export default {
         isHaveButtonMenu = data.children.filter(value => value.menuType == 3);
       }
       //如果当前的孩子节点都是按钮菜单且当前节点不是按钮菜单
-      if (
-        isHaveButtonMenu.length === data.children.length &&
-        data.menuType != 3
-      ) {
+      if (isHaveButtonMenu.length === data.children.length && data.menuType != 3) {
         addButtonMenu = (
           <el-button
             type="text"
@@ -421,25 +393,15 @@ export default {
       }
       //----------------- 添加按钮菜单 结束 -------------------------------
       //----------------- 图标区 开始 ------------------------------------
-      let _menuIcon =
-        data.menuIcon +
-        (data.menuVisible == 1 ? " icon-color-success" : " icon-color-info");
+      let _menuIcon = data.menuIcon + (data.menuVisible == 1 ? " icon-color-success" : " icon-color-info");
       //----------------- 图标区 结束 ------------------------------------
       return (
-        <flex-container
-          wrap="nowrap"
-          alignItems="center"
-          justifyContent="space-between"
-        >
+        <flex-container wrap="nowrap" alignItems="center" justifyContent="space-between">
           <flex-item alignItems="center">
             <span class="margin-right-2">
               <i class={_menuIcon} />
             </span>
-            <el-tooltip
-              content={data.menuUrl}
-              placement="right"
-              effect={data.menuOpenWay == 1 ? "dark" : "light"}
-            >
+            <el-tooltip content={data.menuUrl} placement="right" effect={data.menuOpenWay == 1 ? "dark" : "light"}>
               <span class="icon-size-14">{node.label}</span>
             </el-tooltip>
           </flex-item>

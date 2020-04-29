@@ -2,51 +2,47 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-26 12:57:43 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 18:52:22
+ * @Last Modified time: 2020-04-25 22:42:40
  * @Description: 组织管理
  */
 <template>
-  <flex-container direction="column" wrap='nowrap'>
+  <flex-container direction="column" wrap="nowrap">
     <!-- 查询面板 -->
     <flex-item class="margin-bottom-10" v-show="showQuery">
       <el-card>
-        <flex-container slot="header" justifyContent='space-between'>
-          <flex-item alignItems='center'>
+        <flex-container slot="header" justifyContent="space-between">
+          <flex-item alignItems="center">
             <i class="el-icon-s-operation margin-right-6 font-size-16"></i>查询参数
           </flex-item>
-          <flex-item alignItems='center'>
+          <flex-item alignItems="center">
             <el-button type="primary" size="mini" @click="handleQuery" circle icon="el-icon-search" title="查询"></el-button>
             <el-button size="mini" @click="$refs['queryForm'].resetFields()" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
           </flex-item>
         </flex-container>
         <el-form ref="queryForm" :model="queryForm" label-position="right" label-width="80px" class="form-style-line">
           <el-row>
-            <col-pr :xs='24' :sm='24' :md='12' :lg='12' :xl='8'>
+            <col-pr :xs="24" :sm="24" :md="12" :lg="12" :xl="8">
               <el-form-item label="组织名称 :" prop="orgName">
                 <el-input v-model="queryForm.orgName" maxlength="10" show-word-limit></el-input>
               </el-form-item>
             </col-pr>
-            <col-pr :xs='24' :sm='24' :md='12' :lg='12' :xl='8'>
+            <col-pr :xs="24" :sm="24" :md="12" :lg="12" :xl="8">
               <el-form-item label="组织简称 :" prop="orgBrfName">
                 <el-input v-model="queryForm.orgBrfName" maxlength="50" show-word-limit></el-input>
               </el-form-item>
             </col-pr>
-            <col-pr :xs='24' :sm='24' :md='12' :lg='12' :xl='8'>
+            <col-pr :xs="24" :sm="24" :md="12" :lg="12" :xl="8">
               <el-form-item label="组织状态 :" prop="orgStat">
                 <el-select v-model="queryForm.orgStat" placeholder="请选择">
-                  <el-option label="正常" value="1">
-                  </el-option>
-                  <el-option label="禁用" value="2">
-                  </el-option>
-                  <el-option label="注销" value="3">
-                  </el-option>
+                  <el-option label="正常" value="1"></el-option>
+                  <el-option label="禁用" value="2"></el-option>
+                  <el-option label="注销" value="3"></el-option>
                 </el-select>
               </el-form-item>
             </col-pr>
-            <col-pr :xs='24' :sm='24' :md='12' :lg='12' :xl='8'>
+            <col-pr :xs="24" :sm="24" :md="12" :lg="12" :xl="8">
               <el-form-item label="更新时间 :" prop="updatedTime">
-                <el-date-picker v-model="queryForm.updatedTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
-                </el-date-picker>
+                <el-date-picker v-model="queryForm.updatedTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
               </el-form-item>
             </col-pr>
           </el-row>
@@ -54,24 +50,24 @@
       </el-card>
     </flex-item>
     <!-- 结果面板 -->
-    <flex-item :grow='1'>
+    <flex-item :grow="1">
       <el-card>
-        <flex-container slot="header" justifyContent='space-between'>
-          <flex-item alignItems='center'>
+        <flex-container slot="header" justifyContent="space-between">
+          <flex-item alignItems="center">
             <i class="icon-fa fa-sitemap margin-right-6 font-size-16"></i>
             <span class="margin-right-4">系统组织</span>
             <el-tooltip v-if="isSort&&sysOrg.children&&sysOrg.sysOrg.length>0" content="排序已修改,请保存 !" placement="right">
               <i class="el-icon-warning icon-color-danger"></i>
             </el-tooltip>
           </flex-item>
-          <flex-item alignItems='center'>
-            <el-button :loading='treeLoading' size="mini" @click="handleSaveSysOrg" circle icon="icon-ali ali-gongju" title="排序整理"></el-button>
-            <el-button :loading='treeLoading' size="mini" @click="doLoadTree" circle icon="el-icon-refresh" title="刷新"></el-button>
-            <el-button :loading='treeLoading' size="mini" plain @click="handleExpandSwitch" circle :icon="isTreeExpand?'icon-ali ali-tuceng':'icon-ali ali-tuceng1'" :title="isTreeExpand?'全部折叠':'全部展开'"></el-button>
-            <el-button :loading='treeLoading' size="mini" plain @click="handleShowQuery" circle :icon="!showQuery?'el-icon-caret-top':'el-icon-caret-bottom'" :title="!showQuery?'显示查询面板':'隐藏查询面板'"></el-button>
+          <flex-item alignItems="center">
+            <el-button :loading="treeLoading" size="mini" @click="handleSaveSysOrg" circle icon="icon-ali ali-gongju-" title="排序整理"></el-button>
+            <el-button :loading="treeLoading" size="mini" @click="doLoadTree" circle icon="el-icon-refresh" title="刷新"></el-button>
+            <el-button :loading="treeLoading" size="mini" plain @click="handleExpandSwitch" circle :icon="isTreeExpand?'icon-ali ali-tuceng':'icon-ali ali-tuceng1'" :title="isTreeExpand?'全部折叠':'全部展开'"></el-button>
+            <el-button :loading="treeLoading" size="mini" plain @click="handleShowQuery" circle :icon="!showQuery?'el-icon-caret-top':'el-icon-caret-bottom'" :title="!showQuery?'显示查询面板':'隐藏查询面板'"></el-button>
           </flex-item>
         </flex-container>
-        <el-tree v-loading='treeLoading' ref="orgTree" :data="sysOrg" :node-key="orgTreeProps.key" :props="orgTreeProps" default-expand-all draggable :allow-drop="doAllowDropNode" :render-content="doRenderTreeContent" :filter-node-method="doFilterNode"></el-tree>
+        <el-tree v-loading="treeLoading" ref="orgTree" :data="sysOrg" :node-key="orgTreeProps.key" :props="orgTreeProps" default-expand-all draggable :allow-drop="doAllowDropNode" :render-content="doRenderTreeContent" :filter-node-method="doFilterNode"></el-tree>
       </el-card>
     </flex-item>
     <!-- 编辑面板 -->
@@ -79,7 +75,7 @@
       <span slot="title">
         <i class="el-icon-edit margin-right-4"></i>编辑数据
       </span>
-      <org-edit :initData='editSysOrg' @updataData='doUpdataData' @close='OrgEditVisible=false'></org-edit>
+      <org-edit :initData="editSysOrg" @updataData="doUpdataData" @close="OrgEditVisible=false"></org-edit>
     </dialog-drag>
   </flex-container>
 </template>
@@ -264,16 +260,13 @@ export default {
       let isOrgStat = data.orgStat.includes(value.orgStat);
       let isUpdatedTime = true;
       if (value.updatedTime && value.updatedTime.length === 2) {
-        isUpdatedTime =
-          value.updatedTime[0].getTime() <= data.updatedTime &&
-          data.updatedTime <= value.updatedTime[1].getTime();
+        isUpdatedTime = value.updatedTime[0].getTime() <= data.updatedTime && data.updatedTime <= value.updatedTime[1].getTime();
       }
       return isOrgName && isOrgBrfName && isOrgStat && isUpdatedTime;
     },
     //可否放置
     doAllowDropNode(draggingNode, dropNode, type) {
-      let is =
-        draggingNode.parent.id === dropNode.parent.id && type !== "inner";
+      let is = draggingNode.parent.id === dropNode.parent.id && type !== "inner";
       if (is) this.isSort = true;
       return is;
     },
@@ -293,15 +286,11 @@ export default {
     },
     //通用的操作确认弹出层
     doMessageBox(message, title, type) {
-      return this.$confirm(
-        message ? message : "确定进行此操作!",
-        title ? title : "提示",
-        {
-          confirmButtonText: "确定",
-          cancelButtonText: "取消",
-          type: type ? type : "warning"
-        }
-      );
+      return this.$confirm(message ? message : "确定进行此操作!", title ? title : "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: type ? type : "warning"
+      });
     },
     //渲染树
     doRenderTreeContent(h, { node, data, store }) {
@@ -366,11 +355,7 @@ export default {
       }
       //----------------- 图标区 结束 ------------------------------------
       return (
-        <flex-container
-          wrap="nowrap"
-          alignItems="center"
-          justifyContent="space-between"
-        >
+        <flex-container wrap="nowrap" alignItems="center" justifyContent="space-between">
           <flex-item alignItems="center">
             <el-tooltip content={data.orgCode} placement="right">
               <span class={_orgIcon}>{node.label}</span>

@@ -9,3 +9,9 @@ export function dictMsg(message) {
   XEUtils.delDict(message.value);
   store.commit("base/putNoticeMsg", message);
 }
+
+//处理session过期
+export function sessionMsg(message) {
+  store.dispatch("base/lock");
+  XEUtils.sayOpInfo(message.value, 4000)
+}

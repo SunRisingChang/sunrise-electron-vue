@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:06:08 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 12:45:13
+ * @Last Modified time: 2020-04-29 08:28:59
  * @Description: 头部显示区
  */
 <template>
@@ -90,7 +90,7 @@ export default {
       this.$store.dispatch("base/changeI18n", lang);
     },
     handleLockScreen() {
-      this.$store.dispatch("base/lock");
+      this.$store.dispatch("base/lock", "button");
     },
     //用户下拉
     handleUserOpButton(op) {

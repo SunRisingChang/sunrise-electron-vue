@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 20:09:52
+ * @Last Modified time: 2020-04-29 08:38:18
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -287,7 +287,7 @@ export default {
         );
       }
       // 兼容electron模式
-      if (this.$electron) {
+      if (process.env.IS_ELECTRON) {
         window.document.body.classList.add("electron");
       }
     },
@@ -331,10 +331,14 @@ export default {
       dispatch("resetVuex");
       router.push({ path: "/login" });
     },
-    //页面锁定
-    async lock() {
-      await VuexApi.logout();
-      router.push({ path: "/lock" });
+    /**
+     * 页面锁定
+     * @param {*} triggerType 触发类型，[按钮触发|长连接触发]
+     */
+    async lock({ state }, triggerType) {
+      if (triggerType === 'button')
+        await VuexApi.logout();
+      router.push({ path: "/lock", query: { userName: state.userInfo.acName } });
     },
     //向后台拉取必要的初始化信息
     initSystem({ commit }) {

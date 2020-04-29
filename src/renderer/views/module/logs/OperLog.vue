@@ -6,72 +6,69 @@
  * @Description: 交互日志
  */
 <template>
-  <flex-container wrap='nowrap' justifyContent='space-between'>
-
-    <flex-item :grow='1' width='100%'>
+  <flex-container wrap="nowrap" justifyContent="space-between">
+    <flex-item :grow="1" width="100%">
       <el-card>
-        <flex-container slot="header" justifyContent='space-between'>
-          <flex-item alignItems='center'>
+        <flex-container slot="header" justifyContent="space-between">
+          <flex-item alignItems="center">
             <i class="el-icon-connection margin-right-6 font-size-16"></i>交互日志
           </flex-item>
-          <flex-item alignItems='center'>
+          <flex-item alignItems="center">
             <el-button type="primary" @click="handleQueryLogOper" size="mini" circle icon="el-icon-search" title="查询"></el-button>
             <el-button size="mini" @click="$refs['logOperForm'].resetFields();startTime=[];" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
           </flex-item>
         </flex-container>
-        <flex-container direction="column" wrap='nowrap'>
+        <flex-container direction="column" wrap="nowrap">
           <flex-item class="margin-bottom-10">
             <el-form ref="logOperForm" :model="logOperForm" label-position="right" label-width="90px" class="form-style-line">
               <el-row>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='6' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                   <el-form-item label="请求路径 :" prop="reqUrl">
                     <el-input v-model="logOperForm.reqUrl" maxlength="10" show-word-limit></el-input>
                   </el-form-item>
                 </col-pr>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='6' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                   <el-form-item label="路径说明 :" prop="urlDesc">
                     <el-input v-model="logOperForm.urlDesc" maxlength="10" show-word-limit></el-input>
                   </el-form-item>
                 </col-pr>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='6' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                   <el-form-item label="服务器地址 :" prop="svrAdrr">
                     <el-input v-model="logOperForm.svrAdrr" maxlength="10" show-word-limit></el-input>
                   </el-form-item>
                 </col-pr>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='6' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                   <el-form-item label="服务器名称 :" prop="svrName">
                     <el-input v-model="logOperForm.svrName" maxlength="10" show-word-limit></el-input>
                   </el-form-item>
                 </col-pr>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='6' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
                   <el-form-item label="响应代码 :" prop="respCode">
                     <el-input v-model="logOperForm.respCode" maxlength="10" show-word-limit></el-input>
                   </el-form-item>
                 </col-pr>
-                <col-pr :xs='24' :sm='24' :md='12' :lg='12' :xl='6'>
+                <col-pr :xs="24" :sm="24" :md="12" :lg="12" :xl="6">
                   <el-form-item label="开始时间 :" prop="startTime">
-                    <el-date-picker v-model="startTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
-                    </el-date-picker>
+                    <el-date-picker v-model="startTime" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
                   </el-form-item>
                 </col-pr>
               </el-row>
             </el-form>
           </flex-item>
           <flex-item>
-            <data-table ref="logOperTable" border index auto-load highlight-current-row auto-update column-button csv-button title="Data Table" :load-data-func='loadLogOper'>
+            <data-table ref="logOperTable" border index auto-load highlight-current-row auto-update column-button csv-button title="Data Table" :load-data-func="loadLogOper" :row-class-name="doRowClassName">
               <data-table-column prop="reqUrl" label="请求路径" show-overflow-tooltip></data-table-column>
               <data-table-column prop="urlDesc" label="路径说明" show-overflow-tooltip></data-table-column>
               <data-table-column prop="svrAdrr" label="服务器地址" show-overflow-tooltip></data-table-column>
               <data-table-column prop="svrName" label="服务器名称" show-overflow-tooltip></data-table-column>
               <data-table-column prop="cliAdrr" label="客户端地址" show-overflow-tooltip></data-table-column>
               <data-table-column prop="cliDesc" label="客户端说明" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="startTime" label="操作开始" width='140' :formatter='$utils.tableColTimeFormt'></data-table-column>
-              <data-table-column prop="procTime" label="耗时(ms)" width='80'></data-table-column>
-              <data-table-column prop="respCode" label="响应代码" width='70'></data-table-column>
+              <data-table-column prop="startTime" label="操作开始" width="140" :formatter="$utils.tableColTimeFormt"></data-table-column>
+              <data-table-column prop="procTime" label="耗时(μs)" width="80"></data-table-column>
+              <data-table-column prop="respCode" label="响应代码" width="70"></data-table-column>
               <data-table-column prop="respDesc" label="响应说明" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="opUser" label="操作人" width='70' show-overflow-tooltip></data-table-column>
-              <data-table-column prop="execInfo" label="异常堆栈" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="op" label="操作" align='center' width='80'>
+              <data-table-column prop="opUser" label="操作人" width="70" show-overflow-tooltip></data-table-column>
+              <data-table-column prop="op" label="操作" align="center" width="80">
                 <template slot-scope="scope">
                   <el-button type="text" @click="handleEyeLogOper(scope.row)" size="mini" icon="el-icon-more" title="查看" />
                 </template>
@@ -87,9 +84,8 @@
       <span slot="title">
         <i class="el-icon-edit margin-right-4"></i>交互日志详情
       </span>
-      <oper-log-eye :initData='logOper' @close='showLogOperDia=false'></oper-log-eye>
+      <oper-log-eye :initData="logOper" @close="showLogOperDia=false"></oper-log-eye>
     </dialog-drag>
-
   </flex-container>
 </template>
 
@@ -120,6 +116,14 @@ export default {
     };
   },
   methods: {
+    // 动态显示行数据的颜色来表示是否执行成功
+    doRowClassName({ row, rowIndex }) {
+      if (row.execInfo) {
+        return "error-row";
+      } else {
+        return "success-row";
+      }
+    },
     //任务查询接口
     loadLogOper(params) {
       return LogOperApi.queryLogOper(params);
@@ -144,3 +148,12 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+/deep/.el-table .error-row {
+  background: #fef0f0;
+}
+
+/deep/.el-table .success-row {
+  background: #f0f9eb;
+}
+</style>

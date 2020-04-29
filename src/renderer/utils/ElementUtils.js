@@ -2,14 +2,14 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 10:35:24
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 19:26:14
+ * @Last Modified time: 2020-04-29 09:02:24
  * @Description: element ui Dom元素操作工具
  */
 import XEUtils from "xe-utils";
 import { Message, Notification } from "element-ui";
 import ClipboardCopy from "clipboard-copy";
 
-let duration = 1500;
+let default_duration = 1500;
 
 export default {
   /**
@@ -61,7 +61,7 @@ export default {
     }
   },
   //系统级警告
-  saySysWarn(message) {
+  saySysWarn(message, duration = default_duration) {
     Notification({
       title: "警告",
       message: message,
@@ -70,7 +70,7 @@ export default {
     });
   },
   //系统级消息
-  saySysInfo(message) {
+  saySysInfo(message, duration = default_duration) {
     Notification({
       title: "消息",
       message: message,
@@ -79,7 +79,7 @@ export default {
     });
   },
   //系统级成功
-  saySysSuccess(message) {
+  saySysSuccess(message, duration = default_duration) {
     Notification({
       title: "成功",
       message: message,
@@ -88,7 +88,7 @@ export default {
     });
   },
   //系统级错误
-  saySysError(message) {
+  saySysError(message, duration = default_duration) {
     Notification({
       title: "错误",
       message: message,
@@ -97,7 +97,7 @@ export default {
     });
   },
   //操作级警告
-  sayOpWarn(message) {
+  sayOpWarn(message, duration = default_duration) {
     Message({
       title: "警告",
       message: message,
@@ -106,7 +106,7 @@ export default {
     });
   },
   //操作级消息
-  sayOpInfo(message) {
+  sayOpInfo(message, duration = default_duration) {
     Message({
       title: "消息",
       message: message,
@@ -115,7 +115,7 @@ export default {
     });
   },
   //操作级成功
-  sayOpSuccess(message) {
+  sayOpSuccess(message, duration = default_duration) {
     Message({
       title: "成功",
       message: message,
@@ -124,7 +124,7 @@ export default {
     });
   },
   //操作级错误
-  sayOpError(message) {
+  sayOpError(message, duration = default_duration) {
     Message({
       title: "错误",
       message: message,

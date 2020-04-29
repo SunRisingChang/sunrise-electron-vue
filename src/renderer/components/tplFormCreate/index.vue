@@ -55,7 +55,7 @@
       </el-table>
     </el-form>
     <!-- dom配置层 -->
-    <el-drawer title="DOM配置" :visible.sync="isDrawerShow" append-to-body :size="300">
+    <el-drawer title="DOM配置" :visible.sync="isDrawerShow" append-to-body size="300">
       <option-dom v-if="isDrawerShow" v-model="currEditDOM"></option-dom>
     </el-drawer>
     <!-- 生成JSON -->

@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-19 11:31:28 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-10-28 10:14:40
+ * @Last Modified time: 2020-04-25 22:47:20
  * @Description: 多功能数据表格
  */
 <template>
@@ -19,7 +19,7 @@
       <!-- 头部按钮区 -->
       <div class="table-title-right">
         <!-- 表格自动刷新 -->
-        <el-button v-if="autoUpdate" type="text" :class="timerSwitch?'icon-color-success':'icon-color-info'" icon="icon-ali ali-shuaxin" :title="timerSwitch?'关闭自动刷新':'开启自动刷新'" @click='handleTimerSwitch'></el-button>
+        <el-button v-if="autoUpdate" type="text" :class="timerSwitch?'icon-color-success':'icon-color-info'" icon="icon-ali ali-shuaxin" :title="timerSwitch?'关闭自动刷新':'开启自动刷新'" @click="handleTimerSwitch"></el-button>
         <!-- 导出到文件 -->
         <el-popover v-if="csvButton" placement="right" trigger="click">
           <el-button slot="reference" type="text" icon="icon-ali ali-ic_download" title="导出CSV"></el-button>
@@ -35,9 +35,7 @@
           <el-button slot="reference" type="text" icon="icon-ali ali-liebiaolist29" title="列选择" />
           <el-checkbox-group v-model="checkColumn">
             <el-row v-for="item in checkboxColumn" :key="item.key">
-              <el-checkbox :label='item.key'>
-                {{item.label}}
-              </el-checkbox>
+              <el-checkbox :label="item.key">{{item.label}}</el-checkbox>
             </el-row>
           </el-checkbox-group>
         </el-popover>
@@ -45,14 +43,15 @@
     </div>
     <!-- 表格 -->
     <div class="table-body-wrap">
-      <el-table ref="theTable" v-loading='loading' v-bind="tableAttrs" v-on="this.$listeners">
-        <el-table-column fixed align="center" type="index" width="50" :index='doGetTableIndex' show-overflow-tooltip />
+      <!-- title 覆盖 $props 中的title-->
+      <el-table ref="theTable" v-loading="loading" v-bind="tableAttrs" v-on="this.$listeners" title>
+        <el-table-column label="#" fixed align="center" type="index" width="50" :index="doGetTableIndex" show-overflow-tooltip />
         <slot></slot>
       </el-table>
     </div>
     <!-- 表格脚 -->
-    <div :class='tableFootWrapStyle'>
-      <el-pagination v-bind="pageAttrs" @current-change='changePage' @size-change='changeSize' />
+    <div :class="tableFootWrapStyle">
+      <el-pagination v-bind="pageAttrs" @current-change="changePage" @size-change="changeSize" />
     </div>
   </div>
 </template>
@@ -98,9 +97,7 @@ let DefaultCSVOptions = {
   //自定义列
   columns: null,
   //列过滤方法，该函数 Function(row,index,list) 的返回值用来决定该列是否导出
-  columnFilterMethod: column =>
-    ["index", "selection", "expand"].indexOf(column.type) === -1 &&
-    column.property,
+  columnFilterMethod: column => ["index", "selection", "expand"].indexOf(column.type) === -1 && column.property,
   //数据过滤方法，该函数 Function(row,index,list) 的返回值用来决定该数据是否导出
   dataFilterMethod: (row, index, list) => {
     return true;
@@ -184,11 +181,7 @@ export default {
       //表格数据
       tableData: [],
       //分页数据
-      paginationOptions: Object.assign(
-        {},
-        DefaultPageOptions,
-        this.pageOptions
-      ),
+      paginationOptions: Object.assign({}, DefaultPageOptions, this.pageOptions),
       //查询参数
       queryParames: {},
       //列复选框
@@ -211,12 +204,7 @@ export default {
     },
     //分页参数
     pageAttrs() {
-      return Object.assign(
-        {},
-        DefaultPageOptions,
-        this.$props.pageOptions,
-        this.paginationOptions
-      );
+      return Object.assign({}, DefaultPageOptions, this.$props.pageOptions, this.paginationOptions);
     },
     //表格脚样式
     tableFootWrapStyle() {
@@ -294,14 +282,10 @@ export default {
             currentPageNum: this.paginationOptions.currentPage,
             pageSize: this.paginationOptions.pageSize
           };
-          let resp = await this.loadDataFunc(
-            Object.assign({}, params, pageInfo)
-          );
+          let resp = await this.loadDataFunc(Object.assign({}, params, pageInfo));
           //解析服务器响应数据
           this.tableData = resp.data.dataBody;
-          this.paginationOptions.currentPage = parseInt(
-            resp.data.currentPageNum
-          );
+          this.paginationOptions.currentPage = parseInt(resp.data.currentPageNum);
           this.paginationOptions.pageSize = parseInt(resp.data.pageSize);
           this.paginationOptions.total = parseInt(resp.data.totalRecords);
           this.queryParames = params;
@@ -323,16 +307,8 @@ export default {
     },
     //获取列表索引
     doGetTableIndex(index) {
-      if (
-        this.paginationOptions.currentPage &&
-        this.paginationOptions.pageSize
-      ) {
-        return (
-          (this.paginationOptions.currentPage - 1) *
-            this.paginationOptions.pageSize +
-          index +
-          1
-        );
+      if (this.paginationOptions.currentPage && this.paginationOptions.pageSize) {
+        return (this.paginationOptions.currentPage - 1) * this.paginationOptions.pageSize + index + 1;
       }
       return index + 1;
     },
@@ -352,16 +328,9 @@ export default {
         opts.filename += ".csv";
       }
       //获取列数组
-      let columns = this.$refs["theTable"]
-        ? this.$refs["theTable"].columns
-        : [];
+      let columns = this.$refs["theTable"] ? this.$refs["theTable"].columns : [];
       //获取表格数据字符串
-      let csvContent = Utils.getCsvContent(
-        opts,
-        this.tableData,
-        columns,
-        this.$el
-      );
+      let csvContent = Utils.getCsvContent(opts, this.tableData, columns, this.$el);
       //下载
       if (!opts.download) {
         return Promise.resolve(csvContent);

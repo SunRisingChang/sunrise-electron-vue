@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-13 10:57:44 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 18:50:15
+ * @Last Modified time: 2020-04-26 11:22:39
  * @Description: 用户编辑
  */
 <template>
@@ -48,7 +48,7 @@
         </el-col>
         <el-col>
           <el-form-item label="联系电话 :" prop="userPhone">
-            <el-input v-model="formData.userPhone" maxlength="10" show-word-limit></el-input>
+            <el-input v-model="formData.userPhone" maxlength="20" show-word-limit></el-input>
           </el-form-item>
         </el-col>
         <el-col>
@@ -142,7 +142,6 @@ export default {
       try {
         await this.$refs["editForm"].validate();
         this.$emit("updataData", this.formData);
-        this.$emit("close");
       } catch (error) {}
     }
   }

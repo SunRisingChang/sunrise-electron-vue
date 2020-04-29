@@ -17,7 +17,7 @@ export default {
         process.env.NODE_ENV === "development"
           ? location.host
           : config.prodProxyUrl.substring(7);
-      new SocketService("ws://" + baseUrl + "/socket/anon/systemMessage");
+      new SocketService("ws://" + baseUrl + "/socket/systemMessage");
     }
   }
 };

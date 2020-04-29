@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:48:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 12:29:20
+ * @Last Modified time: 2020-04-29 08:49:19
  * @Description: 内容装配页
  */
 <template>
@@ -65,19 +65,18 @@ export default {
       immediate: true
     }
   },
-  mounted: function() {
+  async mounted() {
     //通知vuex注册窗口改变事件
     this.$store.dispatch("base/monitorWinSize");
     //主题初始化操作
     this.$store.dispatch("base/changeTheme");
     //获取后台初始化信息
-    this.$store.dispatch("base/initSystem").then(resp => {
-      this.loading = false;
-    });
+    await this.$store.dispatch("base/initSystem");
     //检查登录状态
     this.$store.dispatch("base/isLogged");
     //启动长连接监听
     SysServices.run();
+    this.loading = false;
   },
   methods: {
     changLayout(val) {
