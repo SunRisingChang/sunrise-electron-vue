@@ -19,12 +19,13 @@
     "update:icon": "node build/updateIcon.js"
   },
   "main": "background.js",
-  "iconfontId": "font_747224_umvotio2z8b",
+  "iconfontId": "font_747224_3l2tykv4q46",
   "dependencies": {
     "axios": "^0.18.0",
     "clipboard-copy": "^3.1.0",
     "codemirror": "^5.48.0",
     "core-js": "^2.6.5",
+    "crypto-js": "^4.0.0",
     "driver.js": "^0.9.7",
     "echarts": "^4.2.1",
     "electron-updater": "^4.2.5",

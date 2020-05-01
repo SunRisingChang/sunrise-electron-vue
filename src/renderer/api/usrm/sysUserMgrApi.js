@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-17 16:10:36
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-06 09:23:03
+ * @Last Modified time: 2020-04-29 17:34:28
  * @Description: 系统用户管理对外接口
  */
 import ajax from "@/lib/ajax";
@@ -31,5 +31,9 @@ export default {
   //用户注销
   userDest(params) {
     return ajax.put("/usrm/userMgr/userDest/" + params);
+  },
+  //密码重置
+  pwdRest(params) {
+    return ajax.put("/usrm/userMgr/pwdRest/" + params);
   }
 };

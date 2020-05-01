@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-13 10:57:44 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-26 11:22:39
+ * @Last Modified time: 2020-04-29 18:05:06
  * @Description: 用户编辑
  */
 <template>
@@ -31,7 +31,7 @@
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col>
+        <el-col v-if="!formData.uuid">
           <el-form-item label="初始密码 :" prop="acPwd">
             <el-input v-model="formData.acPwd" maxlength="30" show-word-limit></el-input>
           </el-form-item>
@@ -141,7 +141,9 @@ export default {
     async handleUpdateData() {
       try {
         await this.$refs["editForm"].validate();
-        this.$emit("updataData", this.formData);
+        let data = Object.assign({}, this.formData);
+        if (data.acPwd) data.acPwd = this.$utils.encodePasswd(data.acPwd);
+        this.$emit("updataData", data);
       } catch (error) {}
     }
   }

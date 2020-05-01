@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-12 15:25:40 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-28 00:50:24
+ * @Last Modified time: 2020-04-29 19:03:56
  * @Description: 用户管理
  */
 <template>
@@ -75,10 +75,11 @@
               <data-table-column prop="userEmail" label="邮件" show-overflow-tooltip></data-table-column>
               <data-table-column prop="userBirthday" label="出生日期" show-overflow-tooltip :formatter="$utils.tableColTimeFormt"></data-table-column>
               <data-table-column prop="lastLogDate" label="最后登录" show-overflow-tooltip :formatter="$utils.tableColTimeFormt"></data-table-column>
-              <data-table-column prop="op" label="操作" align="center" width="150">
+              <data-table-column prop="op" label="操作" align="center" width="170">
                 <template slot-scope="scope">
                   <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handleEditUser(scope.row)" size="mini" icon="el-icon-edit" title="编辑" />
-                  <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handleDelUser(scope.row)" size="mini" icon="el-icon-delete" title="删除" />
+                  <el-button type="text" @click="handleDelUser(scope.row)" size="mini" icon="el-icon-delete" title="删除" />
+                  <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handlePwdRest(scope.row)" size="mini" icon="icon-ali ali-key" title="重置密码" />
                   <el-button :disabled="scope.row.acStat==='2'||scope.row.acStat==='3'" type="text" @click="handleUserLock(false,scope.row)" size="mini" icon="icon-fa fa-lock" title="锁定"></el-button>
                   <el-button :disabled="scope.row.acStat==='1'||scope.row.acStat==='3'" type="text" @click="handleUserUnlock(false,scope.row)" size="mini" icon="icon-fa fa-unlock" title="解锁"></el-button>
                   <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handleUserDest(false,scope.row)" size="mini" icon="el-icon-switch-button" title="注销"></el-button>
@@ -303,6 +304,17 @@ export default {
         await SysUserMgrApi.saveSysUser(data);
         this.showUserDia = false;
         this.handleQueryUser();
+      } catch (error) {}
+    },
+    //重置密码
+    async handlePwdRest(row) {
+      try {
+        await this.$confirm("此操作将重置该账户密码,且不可撤销, 是否继续?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        });
+        await SysUserMgrApi.pwdRest([row.uuid]);
       } catch (error) {}
     }
   }

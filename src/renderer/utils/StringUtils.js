@@ -2,9 +2,12 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 11:44:39
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-05-20 11:47:53
+ * @Last Modified time: 2020-04-29 13:09:25
  * @Description: 字符串工具
  */
+import XEUtils from "xe-utils";
+import CryptoJS from 'crypto-js'
+
 export default {
   /**
    * 获取字符串字节长度
@@ -21,5 +24,16 @@ export default {
       }
     }
     return length;
+  },
+  /**
+   * 密码加密,MD5(Hex(SHA256(pwd)))
+   * @param {*} pwd 密码明文
+   */
+  encodePasswd(pwd) {
+    if (XEUtils.isString(pwd)) {
+      const SHA256_Hex = CryptoJS.SHA256(pwd).toString(CryptoJS.enc.Hex)
+      return CryptoJS.MD5(SHA256_Hex).toString()
+    }
+    return pwd;
   }
 };

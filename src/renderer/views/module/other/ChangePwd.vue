@@ -1,14 +1,14 @@
 /**
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:02:54 
- * @Last Modified by: Sun Rising 
- * @Last Modified time: 2019-07-10 19:02:54 
+ * @Last Modified by: Sun Rising
+ * @Last Modified time: 2020-04-29 15:09:44
  * @Description: 密码修改
  */
 <template>
-  <dialog-drag title="密码修改" :visible.sync="isShowChangePwd" width='400px'>
+  <dialog-drag title="密码修改" :visible.sync="isShowChangePwd" width="400px">
     <flex-container>
-      <flex-item width='100%'>
+      <flex-item width="100%">
         <el-form ref="editForm" :model="formData" :rules="formRules" label-position="right" label-width="90px" class="form-style-line" status-icon>
           <el-form-item label="原始密码 :" prop="oldPwd">
             <el-input type="password" v-model="formData.oldPwd" maxlength="20" placeholder="原始密码"></el-input>
@@ -21,7 +21,7 @@
           </el-form-item>
         </el-form>
       </flex-item>
-      <flex-container class="footer" justifyContent='flex-end'>
+      <flex-container class="footer" justifyContent="flex-end">
         <el-button @click="$store.commit('base/setIsShowChangePwd', false)">取 消</el-button>
         <el-button @click="handleUpdateData" type="primary">确 定</el-button>
       </flex-container>
@@ -88,7 +88,10 @@ export default {
     async handleUpdateData() {
       try {
         await this.$refs["editForm"].validate();
-        await VuexApi.changePwd(this.formData);
+        await VuexApi.changePwd({
+          oldPwd: this.$utils.encodePasswd(this.formData.oldPwd),
+          newPwd: this.$utils.encodePasswd(this.formData.newPwd)
+        });
         this.$store.dispatch("base/logout");
       } catch (error) {}
     }

@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-26 07:58:29
+ * @Last Modified time: 2020-05-01 16:05:06
  * @Description:应用配置参数
  */
 export default {
@@ -36,7 +36,7 @@ export default {
   //默认语言
   currLanguage: "zh",
   //是否为调试模式
-  isDebug: false,
+  isDebug: true,
   //是否启用前端日志
   frontLogEnable: true,
   //交互式添加路由的前缀

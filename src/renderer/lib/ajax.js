@@ -51,7 +51,6 @@ let ajax = axios.create({
 // 添加请求拦截器,transformRequest之后执行
 ajax.interceptors.request.use(
   config => {
-    console.log("http start!");
     app.$Progress.start();
     return config;
   },
@@ -63,8 +62,6 @@ ajax.interceptors.request.use(
 // 添加响应拦截器，transformResponse之后执行
 ajax.interceptors.response.use(
   response => {
-    console.log("response success!");
-    console.log(response.status);
     return new Promise((resolve, reject) => {
       try {
         let _handle = response.data.handle;
@@ -78,10 +75,10 @@ ajax.interceptors.response.use(
           XEUtils.sayOpWarn(_handle.code + " , " + _handle.message);
           reject(_handle);
         }
-        // post请求且处理成功
-        if (response.config.method === 'post')
-          XEUtils.sayOpSuccess(_handle.code + " , " + _handle.message);
-        // 请求成功
+        // 处理成功提示
+        if (['post', 'put', 'delete'].includes(response.config.method) && !response.config.url.includes("/anon/"))
+          if (_handle.code === AppConfig.httpConst.HTTP_HANDLE_OK)
+            XEUtils.sayOpSuccess(_handle.code + " , " + _handle.message);
         resolve(_handle);
       } catch (error) {
         console.log(error);

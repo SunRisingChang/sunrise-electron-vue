@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 08:38:18
+ * @Last Modified time: 2020-04-29 13:09:49
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -299,6 +299,7 @@ export default {
     //登陆
     async login({ commit }, data) {
       try {
+        data.passWd = XEUtils.encodePasswd(data.passWd);
         let resp = await VuexApi.login(data);
         dataStorage.getSessionStorage().setItem("user", resp.data);
         commit("setIsShowCaptcha", false);

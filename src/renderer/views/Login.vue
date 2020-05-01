@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 12:10:57 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 12:09:45
+ * @Last Modified time: 2020-04-29 13:42:42
  * @Description: 登陆页面
  */
 <template>
@@ -142,7 +142,7 @@ export default {
             background: "rgba(0, 0, 0, 0.7)"
           });
           await this.$utils.sleep(3000);
-          await this.$store.dispatch("base/login", this.loginForm);
+          await this.$store.dispatch("base/login", Object.assign({}, this.loginForm));
         }
       } catch (error) {
       } finally {
