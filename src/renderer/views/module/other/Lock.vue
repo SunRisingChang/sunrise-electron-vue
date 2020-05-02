@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:02:24 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 08:42:34
+ * @Last Modified time: 2020-05-02 14:49:28
  * @Description: 锁屏页面
  */
 <template>
@@ -25,6 +25,7 @@
 </template>
 <script>
 import VuexApi from "@/api/vuexApi";
+import { SocketService } from "@/services/service/SocketService.js";
 
 export default {
   data() {
@@ -44,8 +45,14 @@ export default {
   },
   mounted: function() {
     this.$store.dispatch("base/changeTheme");
+    this.stopWebSocket();
   },
   methods: {
+    // 处理检查长连接状态，此时应该断开长连接
+    stopWebSocket() {
+      const websocket = SocketService.websocket;
+      if (websocket) websocket.close();
+    },
     async lockLogin() {
       let loading;
       try {

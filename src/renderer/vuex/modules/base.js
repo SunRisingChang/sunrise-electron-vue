@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-13 11:08:52
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 13:09:49
+ * @Last Modified time: 2020-05-02 15:27:33
  * @Description: vuex 核心模块 base
  */
 import config from "@/resources/appConfig";
@@ -11,7 +11,6 @@ import { getRouterUniqueKey } from "@/lib/util";
 import { RouterAssembly } from "@/lib/routerAssembly";
 import dataStorage from "@/lib/dataStorage";
 import XEUtils from "xe-utils";
-
 import VuexApi from "@/api/vuexApi";
 
 let defaultTabsData = {
@@ -118,10 +117,13 @@ export default {
       XEUtils.remove(state.noticeMsg, item => item === noticeMsg);
     },
     setNoticeMsgReaded(state, noticeMsg) {
-      let currNoticeMsg = state.noticeMsg.find(
+      // 直接修改无法触发getters
+      let _noticeMsg = JSON.parse(JSON.stringify(state.noticeMsg))
+      let currNoticeMsg = _noticeMsg.find(
         value => value.timestamp === noticeMsg.timestamp
       );
       currNoticeMsg.isRead = true;
+      state.noticeMsg = _noticeMsg
     }
   },
   actions: {

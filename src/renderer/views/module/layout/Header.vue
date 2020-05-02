@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 19:06:08 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 08:28:59
+ * @Last Modified time: 2020-05-02 15:31:45
  * @Description: 头部显示区
  */
 <template>
@@ -20,7 +20,7 @@
         <el-button type="text" icon="icon-fa fa-paper-plane-o" @click="handelOpenGuide" title="引导"></el-button>
       </flex-item>
       <flex-item class="margin-right-20">
-        <el-badge class="mark" :value="noticeMsgNum">
+        <el-badge class="mark" :value="noticeMsgNum!=0?noticeMsgNum:null">
           <el-button type="text" icon="icon-fa fa-bell-o" @click="$router.push({ path: '/noticeMsg' })"></el-button>
         </el-badge>
       </flex-item>
@@ -68,6 +68,7 @@
 </template>
 <script>
 import steps from "@/resources/defineSteps.js";
+import { mapGetters } from "vuex";
 
 export default {
   computed: {
@@ -76,13 +77,7 @@ export default {
       if (this.$route.matched[0].path) levelList = levelList.concat(this.$route.matched);
       return levelList;
     },
-    noticeMsgNum: function() {
-      let num = 0;
-      this.$store.state.base.noticeMsg.forEach(value => {
-        if (!value.isRead) num++;
-      });
-      return num !== 0 ? num : null;
-    }
+    ...mapGetters(["noticeMsgNum"])
   },
   methods: {
     handleSetLanguage(lang) {

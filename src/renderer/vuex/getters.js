@@ -14,5 +14,9 @@ export default {
       if (value.keepAlive) kr.push(value.key);
     });
     return kr;
+  },
+  // 未读的信息数
+  noticeMsgNum: state => {
+    return state.base.noticeMsg.filter(value => !value.isRead).length
   }
 };

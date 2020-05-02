@@ -4,18 +4,27 @@
 import { dictMsg, sessionMsg } from "./SocketMsgAnalysis";
 
 export class SocketService {
+
+  static websocket;
+
   constructor(url) {
-    let websocket = new WebSocket(url);
-    websocket.onopen = e => {
-      console.log("长连接打开成功!");
+    SocketService.websocket = new WebSocket(url);
+    SocketService.websocket.onopen = e => {
+      console.log("websocket已连接!");
     };
-    websocket.onmessage = e => {
+    SocketService.websocket.onmessage = e => {
       //按照类型进行分类传入不同的方法进行解析入vuex
       let message = JSON.parse(e.data);
       if (message.type == "101") dictMsg(message);
       if (message.type == "102") sessionMsg(message);
     };
-    websocket.onerror = e => { };
-    websocket.onclose = e => { };
+    SocketService.websocket.onerror = e => {
+      console.log("websocket发生错误");
+      console.log(new Date().getTime());
+      console.log(e);
+    };
+    SocketService.websocket.onclose = e => {
+      console.log("websocket已断开");
+    };
   }
 }
