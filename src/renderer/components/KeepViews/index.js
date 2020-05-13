@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-08 13:00:30
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 13:21:46
+ * @Last Modified time: 2020-05-08 08:47:27
  */
 /**
  * 编写理由：因使用tabs来实现路由分页显示并保存路由页面的状态，使用vue官方提供的<keep-alive>来实现，但是该组件的
@@ -88,7 +88,7 @@ function pruneCacheEntry(cache, key, keys, current) {
 const patternTypes = [String, RegExp, Array];
 
 export default {
-  name: "keep-views",
+  name: "KeepViews",
   abstract: true,
 
   props: {

@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2018-12-14 10:10:18 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 13:11:42
+ * @Last Modified time: 2020-05-08 08:45:47
  * @Description: 为可视化选择cron表达式
  */
 <template>
@@ -33,6 +33,7 @@ import CronMain from "./src/Crontab-Main";
 import CronExpressionValidator from "../../lib/cronValidator.js";
 
 export default {
+  name: "CronTab",
   components: { CronMain },
   props: {
     title: { type: String, default: "高级设置" },

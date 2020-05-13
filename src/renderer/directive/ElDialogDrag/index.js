@@ -2,29 +2,30 @@
  * @Author: Sun Rising
  * @Date: 2019-05-31 12:12:31
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-05-31 18:08:11
+ * @Last Modified time: 2020-05-08 10:42:29
  * @Description:el-dialog拖拽指令
  */
 export default {
+  name: 'Drag',
   bind(el, binding, vnode, oldnode) {
     let dlg = el.getElementsByClassName("el-dialog")[0];
 
     dlg.offsetX = 0;
     dlg.offsetY = 0;
 
-    let move = function(e) {
+    let move = function (e) {
       dlg.style.marginLeft = "0px";
       dlg.style.marginTop = "0px";
       dlg.style.left = e.pageX - dlg.offsetX + "px";
       dlg.style.top = e.pageY - dlg.offsetY + "px";
     };
 
-    let up = function() {
+    let up = function () {
       removeEventListener("mousemove", move);
       removeEventListener("mouseup", up);
     };
 
-    let down = function(e) {
+    let down = function (e) {
       dlg.offsetX = e.pageX - dlg.offsetLeft;
       dlg.offsetY = e.pageY - dlg.offsetTop;
 
@@ -36,6 +37,6 @@ export default {
     header.style.cursor = "move";
     header.addEventListener("mousedown", down);
   },
-  inserted(el, binding, vnode, oldnode) {},
-  update(el, binding, vnode, oldnode) {}
+  inserted(el, binding, vnode, oldnode) { },
+  update(el, binding, vnode, oldnode) { }
 };

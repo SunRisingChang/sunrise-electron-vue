@@ -8,6 +8,15 @@ module.exports = {
     //自动改变引入路径已匹配文件路径，必要时可以进行图片的压缩或重命名。
     "postcss-url": {},
     //自动添加CSS属性前缀，以便浏览器支持特殊属性
-    autoprefixer: {}
+    autoprefixer: {
+      // 解决 webpack4 配置 .browserslistrc 失效
+      overrideBrowserslist: [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8",
+        "ios >= 8",
+        "android >= 4.0"
+      ]
+    }
   }
 };

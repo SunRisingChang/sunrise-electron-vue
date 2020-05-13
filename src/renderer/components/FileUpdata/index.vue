@@ -2,7 +2,10 @@
   <el-upload ref="elUpload" class="file-upload" v-bind="this.$props" v-on="this.$listeners">
     <template v-if="drag">
       <i class="el-icon-upload"></i>
-      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      <div class="el-upload__text">
+        将文件拖到此处，或
+        <em>点击上传</em>
+      </div>
       <div v-if="tip" class="el-upload__tip" slot="tip">{{tip}}</div>
     </template>
   </el-upload>
@@ -12,6 +15,7 @@
 import { Upload } from "element-ui";
 
 export default {
+  name: "FileUpdata",
   props: {
     ...Upload.props,
     tip: {

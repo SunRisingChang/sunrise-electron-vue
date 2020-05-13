@@ -27,6 +27,7 @@ module.exports = {
         }
       ]
     },
+    devtool: 'source-map',
     //公共资源合并
     optimization: {
       splitChunks: {
@@ -109,7 +110,7 @@ module.exports = {
   devServer: {
     open: !process.argv.includes("electron:serve"),
     host: "localhost",
-    port: 9080,
+    port: 8080,
     https: false,
     hotOnly: false,
     proxy: {

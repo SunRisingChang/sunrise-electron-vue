@@ -15,11 +15,15 @@ let transformRequest = function (data) {
 };
 
 /**
- * 在传递给 then/catch 前，允许修改响应数据
+ * 在拦截器之前执行，在传递给 then/catch 前，允许修改响应数据
  * @param {*} data
  */
 let transformResponse = function (data) {
-  return JSON.parse(data);
+  try {
+    return JSON.parse(data);
+  } catch (error) {
+    return {}
+  }
 };
 
 let ajax = axios.create({
@@ -88,11 +92,10 @@ ajax.interceptors.response.use(
     });
   },
   error => {
-    let response = error.response.data;
-    if (response) {
-      XEUtils.sayOpError(response.message + " , " + response.error);
-    }
-    console.log("response filed!" + error);
+    let response = error.response;
+    XEUtils.sayOpError(`HTTP连接已断开 , ${response.status}`);
+    console.log("response filed!");
+    console.log(error);
   }
 );
 

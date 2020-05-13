@@ -30,6 +30,7 @@ import App from "./App"; //装配页
 import "@/style"; //样式
 import Components from "@/components"; //自定义组件
 import Directives from "@/directive"; //自定义指令
+import Filters from "@/filters"; //自定义过滤器
 //------------ 全局资源 结束 ------------------
 
 //------------ Vue全局配置 开始 ---------------
@@ -63,6 +64,7 @@ Vue.use(VCharts);
 Vue.use(MavonEditor);
 Vue.use(Directives);
 Vue.use(Components);
+Vue.use(Filters);
 //------------ Vue插件装配 结束 -----------------
 
 export default new Vue({

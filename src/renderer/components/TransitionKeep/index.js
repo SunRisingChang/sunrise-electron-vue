@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-07-12 12:56:43
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-12 12:59:03
+ * @Last Modified time: 2020-05-08 08:48:51
  * @Description: 重写该组件的placeholder方法，解决在其下使用keep-views时，keep-views会销毁导致缓存路由丢失的问题
  */
 
@@ -175,7 +175,7 @@ function isSameChild(child, oldChild) {
 }
 
 export default {
-  name: "transition",
+  name: "TransitionKeep",
   props: transitionProps,
   abstract: true,
 
@@ -243,10 +243,10 @@ export default {
           ? id + "comment"
           : id + child.tag
         : isPrimitive(child.key)
-        ? String(child.key).indexOf(id) === 0
-          ? child.key
-          : id + child.key
-        : child.key;
+          ? String(child.key).indexOf(id) === 0
+            ? child.key
+            : id + child.key
+          : child.key;
 
     const data = ((
       child.data || (child.data = {})
