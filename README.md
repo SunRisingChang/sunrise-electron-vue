@@ -154,12 +154,6 @@ npm run build
 # 构建win桌面生产环境(精简打包)
 npm run electron:build
 
-# 构建win桌面生产环境(使用内置模板t1)
-npm run electron:build:win:t1
-
-# 构建win桌面生产环境(使用内置模板t2)
-npm run electron:build:win:t2
-
 # 构建linux桌面生产环境
 npm run electron:build:linux
 
