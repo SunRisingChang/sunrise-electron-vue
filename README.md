@@ -127,8 +127,11 @@ _sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electro
 ## 开发
 
 ```bash
-# 克隆项目
-git clone https://gitee.com/sunrise-chang/electron-vue-sunrise.git
+# github克隆项目
+git clone https://github.com/SunRisingChang/sunrise-electron-vue.git
+
+# gitee克隆项目
+git clone https://gitee.com/sunrise-chang/sunrise-electron-vue.git
 
 # 进入项目目录
 cd electron-vue-sunrise
