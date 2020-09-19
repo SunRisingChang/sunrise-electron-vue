@@ -2,12 +2,12 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-09-05 22:35:53
+ * @Last Modified time: 2020-09-19 15:04:29
  * @Description:应用配置参数
  */
 export default {
   //生产环境后台地址
-  prodProxyUrl: "http://localhost:9999",
+  prodProxyUrl: "http://212.64.66.153:9999",
   //开发环境下二级域名
   devProxyUrl: "/api",
   //默认布局
@@ -36,7 +36,7 @@ export default {
   //默认语言
   currLanguage: "zh",
   //是否为调试模式
-  isDebug: true,
+  isDebug: false,
   //是否启用前端日志
   frontLogEnable: true,
   //交互式添加路由的前缀
