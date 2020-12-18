@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2020-04-12 09:44:37 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-23 17:15:27
+ * @Last Modified time: 2020-12-18 16:50:26
  * @Description: 主窗体 生命周期管理类
  */
 import { BrowserWindow, Tray, Menu } from "electron";
@@ -12,8 +12,7 @@ import { BrowserWindow, Tray, Menu } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 
 // 应用图标
-const iconImgUrl = 'build/electron-icon/icon.ico';
-
+const iconImgUrl = `${__static}/electron-icon/icon.ico`;
 class Window {
 
 	// 创建主窗口

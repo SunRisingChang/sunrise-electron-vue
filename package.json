@@ -1,5 +1,7 @@
 {
   "name": "electron-vue-sunrise",
+  "description": "electron-vue-sunrise",
+  "author": "sunrise",
   "version": "0.0.1",
   "private": true,
   "scripts": {

@@ -135,7 +135,7 @@ module.exports = {
       builderOptions: {
         win: {
           // 图标路径 windows系统中icon需要256*256的ico格式图片，更换应用图标亦在此处
-          icon: "build/electron-icon/icon.ico",
+          icon: "public/electron-icon/icon.ico",
           artifactName: "${productName}_Setup_${version}.${ext}",
           target: [
             {
@@ -166,14 +166,14 @@ module.exports = {
           ]
         },
         mas: {
-          icon: "build/electron-icon/icon.icns",
-          entitlements: "build/entitlements.mas.plist",
+          icon: "public/electron-icon/icon.icns",
+          entitlements: "public/entitlements.mas.plist",
           provisioningProfile: "embedded.provisionprofile"
         },
         mac: {
-          icon: "build/electron-icon/icon.icns",
+          icon: "public/electron-icon/icon.icns",
           category: "public.app-category.finance",
-          entitlements: "build/entitlements.mac.plist",
+          entitlements: "public/entitlements.mac.plist",
           extendInfo: {
             ElectronTeamID: "electron-vue-sunrise",
             "com.apple.developer.team-identifier": "electron-vue-sunrise",
@@ -204,11 +204,11 @@ module.exports = {
           // 允许修改安装目录，建议为 true，是否允许用户改变安装目录，默认是不允许
           allowToChangeInstallationDirectory: true,
           // 安装图标
-          installerIcon: "build/electron-icon/icon.ico",
+          installerIcon: "public/electron-icon/icon.ico",
           // 卸载图标
-          uninstallerIcon: "build/electron-icon/icon.ico",
+          uninstallerIcon: "public/electron-icon/icon.ico",
           // 安装时头部图标
-          installerHeaderIcon: "build/electron-icon/icon.ico",
+          installerHeaderIcon: "public/electron-icon/icon.ico",
           // 创建桌面图标
           createDesktopShortcut: true,
           // 创建开始菜单图标

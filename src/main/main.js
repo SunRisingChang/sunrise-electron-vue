@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2020-04-12 12:32:21 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-13 09:50:29
+ * @Last Modified time: 2020-12-18 16:48:24
  * @Description: 整个生命周期的监控
  */
 /**
@@ -13,6 +13,7 @@ import { app, shell, protocol } from "electron";
 import Window from "./window";
 import Update from "./update";
 import TitleBar from "./titleBar";
+const path = require('path')
 
 class App {
 
