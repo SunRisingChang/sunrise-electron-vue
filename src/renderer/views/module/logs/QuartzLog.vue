@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-12 15:25:40 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-26 09:37:08
+ * @Last Modified time: 2020-12-18 15:51:15
  * @Description: quartz日志
  */
 <template>
@@ -10,12 +10,20 @@
     <flex-item :grow="1" width="100%">
       <el-card>
         <flex-container slot="header" justifyContent="space-between">
-          <flex-item alignItems="center">
-            <i class="el-icon-watch margin-right-6 font-size-16"></i>任务日志
-          </flex-item>
+          <flex-item alignItems="center"> <i class="el-icon-watch margin-right-6 font-size-16"></i>任务日志 </flex-item>
           <flex-item alignItems="center">
             <el-button type="primary" @click="handleQueryLogQuartz" size="mini" circle icon="el-icon-search" title="查询"></el-button>
-            <el-button size="mini" @click="$refs['logQuartzForm'].resetFields();startTime=[];" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
+            <el-button
+              size="mini"
+              @click="
+                $refs['logQuartzForm'].resetFields();
+                startTime = [];
+              "
+              circle
+              plain
+              icon="el-icon-refresh-left"
+              title="重置"
+            ></el-button>
           </flex-item>
         </flex-container>
         <flex-container direction="column" wrap="nowrap">
@@ -59,7 +67,7 @@
             <data-table ref="logQuartzTable" border index auto-load highlight-current-row auto-update column-button csv-button title="Data Table" :load-data-func="loadLogQuartz" :row-class-name="doRowClassName">
               <data-table-column prop="qtzName" label="任务名称" show-overflow-tooltip></data-table-column>
               <data-table-column prop="qtzGroup" label="任务组" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="logLeve" label="日志等级" width="80" :formatter="row=>$utils.tableColDictFormt('LogLeve',row.logLeve)"></data-table-column>
+              <data-table-column prop="logLeve" label="日志等级" width="80" :formatter="(row) => $utils.tableColDictFormt('LogLeve', row.logLeve)"></data-table-column>
               <data-table-column prop="svrName" label="服务器名称" show-overflow-tooltip></data-table-column>
               <data-table-column prop="svrAddr" label="服务器地址" width="120"></data-table-column>
               <data-table-column prop="startTime" label="开始时间" width="140" :formatter="$utils.tableColTimeFormt"></data-table-column>
@@ -77,10 +85,8 @@
 
     <!-- 任务 -->
     <dialog-drag title="任务编辑" :visible.sync="showLogQuartzDia">
-      <span slot="title">
-        <i class="el-icon-edit margin-right-4"></i>任务日志详情
-      </span>
-      <quartz-log-eye :initData="logquartz" @close="showLogQuartzDia=false"></quartz-log-eye>
+      <span slot="title"> <i class="el-icon-edit margin-right-4"></i>任务日志详情 </span>
+      <quartz-log-eye :initData="logquartz" @close="showLogQuartzDia = false"></quartz-log-eye>
     </dialog-drag>
   </flex-container>
 </template>
@@ -91,7 +97,7 @@ import QuartzLogEye from "./QuartzLog_eye";
 
 export default {
   components: {
-    QuartzLogEye
+    QuartzLogEye,
   },
   data() {
     return {
@@ -103,12 +109,12 @@ export default {
         qtzGroup: "",
         logLeve: "",
         svrName: "",
-        svrAddr: ""
+        svrAddr: "",
       },
       //组件传值
       logquartz: {},
       //开始时间查询
-      startTime: []
+      startTime: [],
     };
   },
   methods: {
@@ -131,17 +137,17 @@ export default {
       if (this.startTime && this.startTime.length === 2) {
         Object.assign(params, {
           startTimeStart: this.startTime[0].getTime(),
-          startTimeEnd: this.startTime[1].getTime()
+          startTimeEnd: this.startTime[1].getTime(),
         });
       }
-      this.$refs["logQuartzTable"].loadData(params);
+      this.$refs["logQuartzTable"].loadData(params, true);
     },
     //查看任务
     handleEyeLogQuartz(row) {
       this.logquartz = Object.assign({}, row);
       this.showLogQuartzDia = true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

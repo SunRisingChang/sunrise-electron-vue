@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-09-19 15:04:29
+ * @Last Modified time: 2020-12-18 15:39:36
  * @Description:应用配置参数
  */
 export default {

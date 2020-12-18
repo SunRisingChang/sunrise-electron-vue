@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-12 15:25:40 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 19:03:56
+ * @Last Modified time: 2020-12-18 15:53:16
  * @Description: 用户管理
  */
 <template>
@@ -10,16 +10,24 @@
     <flex-item :grow="1" width="100%">
       <el-card>
         <flex-container slot="header" justifyContent="space-between">
-          <flex-item alignItems="center">
-            <i class="el-icon-s-custom margin-right-6 font-size-16"></i>用户信息
-          </flex-item>
+          <flex-item alignItems="center"> <i class="el-icon-s-custom margin-right-6 font-size-16"></i>用户信息 </flex-item>
           <flex-item alignItems="center">
             <el-button v-button-auth="'user-add'" type="primary" size="mini" @click="handleAddUser" circle icon="el-icon-plus" title="添加"></el-button>
             <el-button v-button-auth="'user-query'" type="primary" @click="handleQueryUser" size="mini" circle icon="el-icon-search" title="查询"></el-button>
-            <el-button size="mini" @click="$refs['userForm'].resetFields();lastLogDate=[]" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
-            <el-button :disabled="!tableSelection.length>0" size="mini" circle @click="handleUserLock(true)" plain icon="icon-fa fa-lock" title="批量锁定"></el-button>
-            <el-button :disabled="!tableSelection.length>0" size="mini" circle @click="handleUserUnlock(true)" plain icon="icon-fa fa-unlock" title="批量解锁"></el-button>
-            <el-button :disabled="!tableSelection.length>0" size="mini" circle @click="handleUserDest(true)" plain icon="el-icon-switch-button" title="批量注销"></el-button>
+            <el-button
+              size="mini"
+              @click="
+                $refs['userForm'].resetFields();
+                lastLogDate = [];
+              "
+              circle
+              plain
+              icon="el-icon-refresh-left"
+              title="重置"
+            ></el-button>
+            <el-button :disabled="!tableSelection.length > 0" size="mini" circle @click="handleUserLock(true)" plain icon="icon-fa fa-lock" title="批量锁定"></el-button>
+            <el-button :disabled="!tableSelection.length > 0" size="mini" circle @click="handleUserUnlock(true)" plain icon="icon-fa fa-unlock" title="批量解锁"></el-button>
+            <el-button :disabled="!tableSelection.length > 0" size="mini" circle @click="handleUserDest(true)" plain icon="el-icon-switch-button" title="批量注销"></el-button>
           </flex-item>
         </flex-container>
         <flex-container direction="column" wrap="nowrap">
@@ -60,29 +68,29 @@
             </el-form>
           </flex-item>
           <flex-item>
-            <data-table ref="userTable" border index auto-load highlight-current-row auto-update column-button csv-button title="Data Table" :load-data-func="loadUser" :pageOptions="pageOptions" @selection-change="(val)=>this.tableSelection=val">
+            <data-table ref="userTable" border index auto-load highlight-current-row auto-update column-button csv-button title="Data Table" :load-data-func="loadUser" :pageOptions="pageOptions" @selection-change="(val) => (this.tableSelection = val)">
               <data-table-column prop="selection" type="selection" align="center" width="50" fixed="left"></data-table-column>
               <data-table-column prop="acName" label="账户名称" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="acStat" label="状态" show-overflow-tooltip :formatter="row=>$utils.tableColDictFormt('AcStat',row.acStat)"></data-table-column>
+              <data-table-column prop="acStat" label="状态" show-overflow-tooltip :formatter="(row) => $utils.tableColDictFormt('AcStat', row.acStat)"></data-table-column>
               <data-table-column prop="orgUuid" label="隶属组织" show-overflow-tooltip width="150">
                 <template slot-scope="scope">
                   <el-cascader class="cascader-table-disabled" :options="orgTree" :value="scope.row.orgUuid" :props="orgViewProps" disabled></el-cascader>
                 </template>
               </data-table-column>
               <data-table-column prop="userName" label="用户姓名" show-overflow-tooltip></data-table-column>
-              <data-table-column prop="userSex" label="性别" show-overflow-tooltip :formatter="row=>$utils.tableColDictFormt('Sex',row.userSex)"></data-table-column>
+              <data-table-column prop="userSex" label="性别" show-overflow-tooltip :formatter="(row) => $utils.tableColDictFormt('Sex', row.userSex)"></data-table-column>
               <data-table-column prop="userPhone" label="联系电话" show-overflow-tooltip></data-table-column>
               <data-table-column prop="userEmail" label="邮件" show-overflow-tooltip></data-table-column>
               <data-table-column prop="userBirthday" label="出生日期" show-overflow-tooltip :formatter="$utils.tableColTimeFormt"></data-table-column>
               <data-table-column prop="lastLogDate" label="最后登录" show-overflow-tooltip :formatter="$utils.tableColTimeFormt"></data-table-column>
               <data-table-column prop="op" label="操作" align="center" width="170">
                 <template slot-scope="scope">
-                  <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handleEditUser(scope.row)" size="mini" icon="el-icon-edit" title="编辑" />
+                  <el-button :disabled="scope.row.acStat === '3'" type="text" @click="handleEditUser(scope.row)" size="mini" icon="el-icon-edit" title="编辑" />
                   <el-button type="text" @click="handleDelUser(scope.row)" size="mini" icon="el-icon-delete" title="删除" />
-                  <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handlePwdRest(scope.row)" size="mini" icon="icon-ali ali-key" title="重置密码" />
-                  <el-button :disabled="scope.row.acStat==='2'||scope.row.acStat==='3'" type="text" @click="handleUserLock(false,scope.row)" size="mini" icon="icon-fa fa-lock" title="锁定"></el-button>
-                  <el-button :disabled="scope.row.acStat==='1'||scope.row.acStat==='3'" type="text" @click="handleUserUnlock(false,scope.row)" size="mini" icon="icon-fa fa-unlock" title="解锁"></el-button>
-                  <el-button :disabled="scope.row.acStat==='3'" type="text" @click="handleUserDest(false,scope.row)" size="mini" icon="el-icon-switch-button" title="注销"></el-button>
+                  <el-button :disabled="scope.row.acStat === '3'" type="text" @click="handlePwdRest(scope.row)" size="mini" icon="icon-ali ali-key" title="重置密码" />
+                  <el-button :disabled="scope.row.acStat === '2' || scope.row.acStat === '3'" type="text" @click="handleUserLock(false, scope.row)" size="mini" icon="icon-fa fa-lock" title="锁定"></el-button>
+                  <el-button :disabled="scope.row.acStat === '1' || scope.row.acStat === '3'" type="text" @click="handleUserUnlock(false, scope.row)" size="mini" icon="icon-fa fa-unlock" title="解锁"></el-button>
+                  <el-button :disabled="scope.row.acStat === '3'" type="text" @click="handleUserDest(false, scope.row)" size="mini" icon="el-icon-switch-button" title="注销"></el-button>
                 </template>
               </data-table-column>
             </data-table>
@@ -93,10 +101,8 @@
 
     <!-- 用户信息修改|添加面板 -->
     <dialog-drag title="用户信息编辑" :visible.sync="showUserDia">
-      <span slot="title">
-        <i class="el-icon-edit margin-right-4"></i>用户信息编辑
-      </span>
-      <user-mgr-edit :initData="editUser" @updataData="doUpdataUser" @close="showUserDia=false"></user-mgr-edit>
+      <span slot="title"> <i class="el-icon-edit margin-right-4"></i>用户信息编辑 </span>
+      <user-mgr-edit :initData="editUser" @updataData="doUpdataUser" @close="showUserDia = false"></user-mgr-edit>
     </dialog-drag>
   </flex-container>
 </template>
@@ -139,17 +145,17 @@ let DefaultUser = {
   updatedUser: "",
   // 更新时间
   updatedTime: "",
-  roleUuids: []
+  roleUuids: [],
 };
 
 export default {
   components: {
-    UserMgrEdit
+    UserMgrEdit,
   },
   provide() {
     return {
       orgTree: this.orgTree,
-      orgTreeProps: this.orgTreeProps
+      orgTreeProps: this.orgTreeProps,
     };
   },
   data() {
@@ -162,14 +168,14 @@ export default {
         checkStrictly: true,
         emitPath: false,
         value: "uuid",
-        label: "orgName"
+        label: "orgName",
       },
       //组织反显配置
       orgViewProps: {
         checkStrictly: true,
         emitPath: false,
         value: "uuid",
-        label: "orgName"
+        label: "orgName",
       },
       //显示用户信息修改|添加面板
       showUserDia: false,
@@ -181,16 +187,16 @@ export default {
         userStat: "",
         // 性别
         userSex: "",
-        orgUuid: ""
+        orgUuid: "",
       },
       // 最后登录时间
       lastLogDate: [],
       //分页参数
       pageOptions: {
-        pagerCount: 5
+        pagerCount: 5,
       },
       //组件传值
-      editUser: {}
+      editUser: {},
     };
   },
   mounted() {
@@ -201,11 +207,11 @@ export default {
     async initOrgTree() {
       try {
         let resp = await SysOrgMgrApi.getOrgTree();
-        this.$utils.eachTree(resp.data, item => {
+        this.$utils.eachTree(resp.data, (item) => {
           if (item.children.length === 0) delete item.children;
         });
         this.$utils.clear(this.orgTree);
-        resp.data.forEach(element => this.orgTree.push(element));
+        resp.data.forEach((element) => this.orgTree.push(element));
       } catch (error) {}
     },
     //用户信息查询接口
@@ -219,10 +225,10 @@ export default {
       if (this.lastLogDate && this.lastLogDate.length === 2) {
         Object.assign(params, {
           lastLogDateStart: this.lastLogDate[0].getTime(),
-          lastLogDateEnd: this.lastLogDate[1].getTime()
+          lastLogDateEnd: this.lastLogDate[1].getTime(),
         });
       }
-      this.$refs["userTable"].loadData(params);
+      this.$refs["userTable"].loadData(params, true);
     },
     //修改用户信息
     handleEditUser(row) {
@@ -247,7 +253,7 @@ export default {
       try {
         let uuids = [];
         if (isSelect) {
-          this.tableSelection.forEach(value => {
+          this.tableSelection.forEach((value) => {
             uuids.push(value.uuid);
           });
         } else {
@@ -264,7 +270,7 @@ export default {
       try {
         let uuids = [];
         if (isSelect) {
-          this.tableSelection.forEach(value => {
+          this.tableSelection.forEach((value) => {
             uuids.push(value.uuid);
           });
         } else {
@@ -282,11 +288,11 @@ export default {
         await this.$confirm("此操作会将用户置于最终状态且不可逆, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
-          type: "warning"
+          type: "warning",
         });
         let uuids = [];
         if (isSelect) {
-          this.tableSelection.forEach(value => {
+          this.tableSelection.forEach((value) => {
             uuids.push(value.uuid);
           });
         } else {
@@ -312,11 +318,11 @@ export default {
         await this.$confirm("此操作将重置该账户密码,且不可撤销, 是否继续?", "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
-          type: "warning"
+          type: "warning",
         });
         await SysUserMgrApi.pwdRest([row.uuid]);
       } catch (error) {}
-    }
-  }
+    },
+  },
 };
 </script>

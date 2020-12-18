@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-05-19 11:31:28 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-25 22:47:20
+ * @Last Modified time: 2020-12-18 15:50:10
  * @Description: 多功能数据表格
  */
 <template>
@@ -13,21 +13,21 @@
       <div class="table-title-left">
         <span>
           <i class="icon-ali ali-table1 table-icon" />
-          {{title}}
+          {{ title }}
         </span>
       </div>
       <!-- 头部按钮区 -->
       <div class="table-title-right">
         <!-- 表格自动刷新 -->
-        <el-button v-if="autoUpdate" type="text" :class="timerSwitch?'icon-color-success':'icon-color-info'" icon="icon-ali ali-shuaxin" :title="timerSwitch?'关闭自动刷新':'开启自动刷新'" @click="handleTimerSwitch"></el-button>
+        <el-button v-if="autoUpdate" type="text" :class="timerSwitch ? 'icon-color-success' : 'icon-color-info'" icon="icon-ali ali-shuaxin" :title="timerSwitch ? '关闭自动刷新' : '开启自动刷新'" @click="handleTimerSwitch"></el-button>
         <!-- 导出到文件 -->
         <el-popover v-if="csvButton" placement="right" trigger="click">
           <el-button slot="reference" type="text" icon="icon-ali ali-ic_download" title="导出CSV"></el-button>
           <el-row>
-            <el-button class="icon-size-14" type="text" style="width:100%" size="mini" icon="icon-ali ali-file-csv" @click="exportCsv({original:true})">原始数据</el-button>
+            <el-button class="icon-size-14" type="text" style="width: 100%" size="mini" icon="icon-ali ali-file-csv" @click="exportCsv({ original: true })">原始数据</el-button>
           </el-row>
           <el-row>
-            <el-button class="icon-size-14" type="text" style="width:100%" size="mini" icon="icon-ali ali-file-csv" @click="exportCsv({original:false})">渲染数据</el-button>
+            <el-button class="icon-size-14" type="text" style="width: 100%" size="mini" icon="icon-ali ali-file-csv" @click="exportCsv({ original: false })">渲染数据</el-button>
           </el-row>
         </el-popover>
         <!-- 列选择器 -->
@@ -35,7 +35,7 @@
           <el-button slot="reference" type="text" icon="icon-ali ali-liebiaolist29" title="列选择" />
           <el-checkbox-group v-model="checkColumn">
             <el-row v-for="item in checkboxColumn" :key="item.key">
-              <el-checkbox :label="item.key">{{item.label}}</el-checkbox>
+              <el-checkbox :label="item.key">{{ item.label }}</el-checkbox>
             </el-row>
           </el-checkbox-group>
         </el-popover>
@@ -79,7 +79,7 @@ let DefaultPageOptions = {
   //每页显示个数选择器的选项设置
   pageSizes: [10, 20, 40, 60, 100],
   //是否禁用
-  disabled: false
+  disabled: false,
 };
 
 //默认的CSV导出参数
@@ -97,11 +97,11 @@ let DefaultCSVOptions = {
   //自定义列
   columns: null,
   //列过滤方法，该函数 Function(row,index,list) 的返回值用来决定该列是否导出
-  columnFilterMethod: column => ["index", "selection", "expand"].indexOf(column.type) === -1 && column.property,
+  columnFilterMethod: (column) => ["index", "selection", "expand"].indexOf(column.type) === -1 && column.property,
   //数据过滤方法，该函数 Function(row,index,list) 的返回值用来决定该数据是否导出
   dataFilterMethod: (row, index, list) => {
     return true;
-  }
+  },
 };
 
 export default {
@@ -111,67 +111,67 @@ export default {
     //分页参数
     pageOptions: {
       type: Object,
-      default: function() {
+      default: function () {
         return {};
-      }
+      },
     },
     //csv参数
     csvOptions: {
       type: Object,
-      default: function() {
+      default: function () {
         return {};
-      }
+      },
     },
     //接收列表数据查询方法
     loadDataFunc: {
       type: Function,
-      default: null
+      default: null,
     },
     //表格标题
     title: {
       type: String,
-      default: "Data Table"
+      default: "Data Table",
     },
     //是否开启索引列，该索引列是基于记录总数非基于列表显示总数
     index: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //是否开启动态列显示
     columnButton: {
       type: Boolean,
-      default: true
+      default: true,
     },
     //是否开启CSV下载
     csvButton: {
       type: Boolean,
-      default: true
+      default: true,
     },
     //初始加载表格
     autoLoad: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //是否显示自动刷新
     autoUpdate: {
       type: Boolean,
-      default: false
+      default: false,
     },
     //自动刷新间隔s
     interval: {
       type: Number,
-      default: 5000
+      default: 5000,
     },
     //定时器开关
     runTimer: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   provide() {
     return {
       //向子组件广播
-      $table: this
+      $table: this,
     };
   },
   data() {
@@ -191,7 +191,7 @@ export default {
       //定时器
       timer: null,
       //定时器开关
-      timerSwitch: this.runTimer
+      timerSwitch: this.runTimer,
     };
   },
   computed: {
@@ -213,7 +213,7 @@ export default {
       } else {
         return "table-foot-wrap";
       }
-    }
+    },
   },
   mounted() {
     //初始化选择的列
@@ -225,13 +225,13 @@ export default {
     //定时刷新表格
     this.checkTimer(this.timerSwitch);
   },
-  activated: function() {
+  activated: function () {
     this.checkTimer(this.timerSwitch);
   },
-  deactivated: function() {
+  deactivated: function () {
     this.clearTimer();
   },
-  destroyed: function() {
+  destroyed: function () {
     this.clearTimer();
   },
   methods: {
@@ -262,25 +262,25 @@ export default {
     },
     //初始化选择的列
     initCheckColumn() {
-      this.$slots.default.forEach(value => {
+      this.$slots.default.forEach((value) => {
         let comOpt = value.componentOptions;
         if (comOpt && comOpt.propsData && comOpt.propsData.prop) {
           this.checkboxColumn.push({
             key: comOpt.propsData.prop,
-            label: comOpt.propsData.label
+            label: comOpt.propsData.label,
           });
           this.checkColumn.push(comOpt.propsData.prop);
         }
       });
     },
     //查询表格列表
-    async loadData(params) {
+    async loadData(params, isReset = false) {
       try {
         if (this.loadDataFunc) {
           this.doLock();
           let pageInfo = {
-            currentPageNum: this.paginationOptions.currentPage,
-            pageSize: this.paginationOptions.pageSize
+            currentPageNum: !isReset ? this.paginationOptions.currentPage : 1,
+            pageSize: !isReset ? this.paginationOptions.pageSize : this.pageOptions.pageSize || DefaultPageOptions.pageSize,
           };
           let resp = await this.loadDataFunc(Object.assign({}, params, pageInfo));
           //解析服务器响应数据
@@ -341,8 +341,8 @@ export default {
     //获取table实例
     getEl() {
       return this.$refs["theTable"];
-    }
-  }
+    },
+  },
 };
 </script>
 

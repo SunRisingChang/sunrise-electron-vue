@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-06-12 15:25:40 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-10 19:04:19
+ * @Last Modified time: 2020-12-18 15:51:07
  * @Description: 交互日志
  */
 <template>
@@ -10,12 +10,20 @@
     <flex-item :grow="1" width="100%">
       <el-card>
         <flex-container slot="header" justifyContent="space-between">
-          <flex-item alignItems="center">
-            <i class="el-icon-connection margin-right-6 font-size-16"></i>交互日志
-          </flex-item>
+          <flex-item alignItems="center"> <i class="el-icon-connection margin-right-6 font-size-16"></i>交互日志 </flex-item>
           <flex-item alignItems="center">
             <el-button type="primary" @click="handleQueryLogOper" size="mini" circle icon="el-icon-search" title="查询"></el-button>
-            <el-button size="mini" @click="$refs['logOperForm'].resetFields();startTime=[];" circle plain icon="el-icon-refresh-left" title="重置"></el-button>
+            <el-button
+              size="mini"
+              @click="
+                $refs['logOperForm'].resetFields();
+                startTime = [];
+              "
+              circle
+              plain
+              icon="el-icon-refresh-left"
+              title="重置"
+            ></el-button>
           </flex-item>
         </flex-container>
         <flex-container direction="column" wrap="nowrap">
@@ -81,10 +89,8 @@
 
     <!-- 任务 -->
     <dialog-drag title="任务编辑" :visible.sync="showLogOperDia">
-      <span slot="title">
-        <i class="el-icon-edit margin-right-4"></i>交互日志详情
-      </span>
-      <oper-log-eye :initData="logOper" @close="showLogOperDia=false"></oper-log-eye>
+      <span slot="title"> <i class="el-icon-edit margin-right-4"></i>交互日志详情 </span>
+      <oper-log-eye :initData="logOper" @close="showLogOperDia = false"></oper-log-eye>
     </dialog-drag>
   </flex-container>
 </template>
@@ -95,7 +101,7 @@ import OperLogEye from "./OperLog_eye";
 
 export default {
   components: {
-    OperLogEye
+    OperLogEye,
   },
   data() {
     return {
@@ -107,12 +113,12 @@ export default {
         qtzGroup: "",
         logLeve: "",
         svrName: "",
-        svrAddr: ""
+        svrAddr: "",
       },
       //组件传值
       logOper: {},
       //开始时间查询
-      startTime: []
+      startTime: [],
     };
   },
   methods: {
@@ -135,17 +141,17 @@ export default {
       if (this.startTime && this.startTime.length === 2) {
         Object.assign(params, {
           startTimeStart: this.startTime[0].getTime(),
-          startTimeEnd: this.startTime[1].getTime()
+          startTimeEnd: this.startTime[1].getTime(),
         });
       }
-      this.$refs["logOperTable"].loadData(params);
+      this.$refs["logOperTable"].loadData(params, true);
     },
     //查看任务
     handleEyeLogOper(row) {
       this.logOper = Object.assign({}, row);
       this.showLogOperDia = true;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
