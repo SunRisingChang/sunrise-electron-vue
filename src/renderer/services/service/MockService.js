@@ -14,7 +14,7 @@ export class MockService {
     const _P =
       process.env.NODE_ENV === "development"
         ? AppConfig.devProxyUrl
-        : AppConfig.prodProxyUrl;
+        : AppConfig.isSeparateDeploy ? AppConfig.prodProxyUrl : "";
 
     // 服务器默认格式
     let _R = respData => {

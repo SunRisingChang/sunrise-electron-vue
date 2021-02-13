@@ -32,7 +32,7 @@ let ajax = axios.create({
   baseURL:
     process.env.NODE_ENV === "development"
       ? AppConfig.devProxyUrl
-      : AppConfig.prodProxyUrl,
+      : AppConfig.isSeparateDeploy ? AppConfig.prodProxyUrl : "",
   headers: {
     "Content-Type": "application/json;charset=utf-8"
     // "Content-Type": "application/x-www-form-urlencoded"

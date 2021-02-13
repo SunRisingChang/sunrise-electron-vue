@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2019-05-20 11:44:39
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-02 14:35:24
+ * @Last Modified time: 2021-02-13 14:13:40
  * @Description: 其它工具
  */
 import appConfig from "@/resources/appConfig";
@@ -23,7 +23,7 @@ export default {
     return (
       (process.env.NODE_ENV === "development"
         ? appConfig.devProxyUrl
-        : appConfig.prodProxyUrl) + url
+        : appConfig.isSeparateDeploy ? appConfig.prodProxyUrl : "") + url
     );
   },
   /**

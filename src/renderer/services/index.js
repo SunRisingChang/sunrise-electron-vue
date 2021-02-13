@@ -13,10 +13,7 @@ export default {
   run() {
     //长连接，服务器推送
     if (!config.isDebug) {
-      let baseUrl =
-        process.env.NODE_ENV === "development"
-          ? location.host
-          : config.prodProxyUrl.substring(7);
+      let baseUrl = config.isSeparateDeploy ? config.prodProxyUrl.substring(7) : location.host;
       new SocketService("ws://" + baseUrl + "/socket/systemMessage");
     }
   }

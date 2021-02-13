@@ -2,10 +2,12 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-12-18 16:52:16
+ * @Last Modified time: 2021-02-13 14:05:20
  * @Description:应用配置参数
  */
 export default {
+  // 是否是分离部署：前端和后端使用不同的端口
+  isSeparateDeploy: false,
   //生产环境后台地址
   prodProxyUrl: "http://212.64.66.153:9999",
   //开发环境下二级域名
@@ -36,7 +38,7 @@ export default {
   //默认语言
   currLanguage: "zh",
   //是否为调试模式
-  isDebug: true,
+  isDebug: false,
   //是否启用前端日志
   frontLogEnable: true,
   //交互式添加路由的前缀
