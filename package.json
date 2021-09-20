@@ -19,7 +19,7 @@
   "main": "background.js",
   "iconfontId": "font_747224_3l2tykv4q46",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.2",
     "clipboard-copy": "^3.1.0",
     "codemirror": "^5.48.0",
     "core-js": "^2.6.5",
