@@ -2,7 +2,7 @@
  * @Author: Sun Rising
  * @Date: 2018-12-14 10:02:02
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2021-02-13 14:05:20
+ * @Last Modified time: 2021-09-20 19:55:21
  * @Description:应用配置参数
  */
 export default {
@@ -28,17 +28,17 @@ export default {
   language: [
     {
       title: "中文",
-      code: "zh"
+      code: "zh",
     },
     {
       title: "English",
-      code: "en"
-    }
+      code: "en",
+    },
   ],
   //默认语言
   currLanguage: "zh",
   //是否为调试模式
-  isDebug: false,
+  isDebug: true,
   //是否启用前端日志
   frontLogEnable: true,
   //交互式添加路由的前缀
@@ -52,11 +52,11 @@ export default {
     firefox: 0,
     chrome: 0,
     safari: 0,
-    opera: 0
+    opera: 0,
   },
   //是否显示页脚
   footerOption: {
-    show: false
+    show: false,
   },
   httpConst: {
     // 请求要求进行身份验证
@@ -86,6 +86,6 @@ export default {
     // 务器异常
     HTTP_ERROR: 500,
     // 求的资源不可用
-    HTTP_NOHANDLER_FOUND: 404
-  }
+    HTTP_NOHANDLER_FOUND: 404,
+  },
 };
