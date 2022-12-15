@@ -58,7 +58,7 @@
     "electron": "7.2.4",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-loader": "^4.0.0",
     "iconv-lite": "^0.5.0",
     "image-webpack-loader": "^5.0.0",
