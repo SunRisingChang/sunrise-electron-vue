@@ -35,7 +35,7 @@ import Filters from "@/filters"; //自定义过滤器
 
 //------------ Vue全局配置 开始 ---------------
 import LogFrontService from "@/services/service/LogFrontService";
-Vue.config.errorHandler = LogFrontService.errorHandler;
+// Vue.config.errorHandler = LogFrontService.errorHandler;
 Vue.config.productionTip = false;
 //------------ Vue全局配置 结束 ---------------
 

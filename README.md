@@ -51,6 +51,14 @@ _sunrise-electron-vue_ [[Gitee]](https://gitee.com/sunrise-chang/sunrise-electro
   <img width="900" src="./docs/img/MainPage.png">
 </p>
 
+## 开发环境
+
+```txt
+node：14.19.3
+npm：6.14.17
+仓库：https://npmmirror.com/mirrors/electron/
+```
+
 ## 功能
 
 ```bash

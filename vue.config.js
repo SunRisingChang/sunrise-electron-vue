@@ -75,22 +75,6 @@ module.exports = {
       }
     }
   },
-  chainWebpack: config => {
-    // 压缩图片
-    config.module
-      .rule("images")
-      .use("image-webpack-loader")
-      .loader("image-webpack-loader")
-      .options({
-        bypassOnDebug: true
-      })
-      .end();
-    // 分析插件
-    // config
-    //   .plugin("webpack-bundle-analyzer")
-    //   .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin)
-    //   .end();
-  },
   //打包输出路径
   outputDir: "dist/web",
   productionSourceMap: false,

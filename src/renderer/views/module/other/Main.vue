@@ -2,7 +2,7 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-08 21:15:16 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2019-07-15 16:18:22
+ * @Last Modified time: 2023-03-08 06:55:37
  * @Description: 主页仪表盘
  */
 <template>
@@ -132,7 +132,8 @@
                 </p>
                 <p>Github: <el-link href="https://github.com/SunRisingChang" target="_blank">链接</el-link>
                 </p>
-                <p>Marketplace: <el-link href="https://marketplace.visualstudio.com/publishers/SunRising" target="_blank">链接</el-link>
+                <p>Marketplace: <el-link href="https://marketplace.visualstudio.com/publishers/SunRising"
+                    target="_blank">链接</el-link>
                 </p>
               </flex-container>
             </flex-item>
@@ -239,15 +240,18 @@ export default {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
     border-radius: 2px;
     color: #fff;
-    & > div {
+
+    &>div {
       margin: 0 10px;
       display: flex;
       font-size: 14px;
+
       &:nth-child(1) {
         justify-content: space-between;
         align-items: center;
         margin-top: 10px;
-        & > span:nth-child(2) {
+
+        &>span:nth-child(2) {
           border-radius: 2px;
           width: 40px;
           font-size: 12px;
@@ -257,112 +261,129 @@ export default {
           box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         }
       }
+
       &:nth-child(2) {
         height: 50px;
         line-height: 50px;
         font-size: 24px;
       }
+
       &:nth-child(3),
       &:nth-child(4) {
         margin-bottom: 10px;
       }
     }
   }
+
   .item-block1 {
     /* autoprefixer: ignore next */
-    background: -webkit-gradient(linear, top, #0073b7, #0073b7);
+    background: -webkit-gradient(linear, to top, #0073b7, #0073b7);
     /* autoprefixer: ignore next */
-    background: -webkit-linear-gradient(top, #0073b7, #0073b7);
+    background: -webkit-linear-gradient(to top, #0073b7, #0073b7);
     /* autoprefixer: ignore next */
-    background: -moz-linear-gradient(top, #0073b7, #0073b7);
+    background: -moz-linear-gradient(to top, #0073b7, #0073b7);
     /* autoprefixer: ignore next */
-    background: -o-linear-gradient(top, #0073b7, #0073b7);
+    background: -o-linear-gradient(to top, #0073b7, #0073b7);
     /* autoprefixer: ignore next */
-    background: linear-gradient(top, #0073b7, #0073b7);
-    & > div {
+    background: linear-gradient(to top, #0073b7, #0073b7);
+
+    &>div {
       &:nth-child(1) {
-        & > span:nth-child(2) {
+        &>span:nth-child(2) {
           background-color: #18bc9c;
         }
       }
     }
   }
+
   .item-block2 {
     /* autoprefixer: ignore next */
-    background: -webkit-gradient(linear, top, #50a6e0, #3699db);
+    background: -webkit-gradient(linear, to top, #50a6e0, #3699db);
     /* autoprefixer: ignore next */
-    background: -webkit-linear-gradient(top, #50a6e0, #3699db);
+    background: -webkit-linear-gradient(to top, #50a6e0, #3699db);
     /* autoprefixer: ignore next */
-    background: -moz-linear-gradient(top, #50a6e0, #3699db);
+    background: -moz-linear-gradient(to top, #50a6e0, #3699db);
     /* autoprefixer: ignore next */
-    background: -o-linear-gradient(top, #50a6e0, #3699db);
+    background: -o-linear-gradient(to top, #50a6e0, #3699db);
     /* autoprefixer: ignore next */
-    background: linear-gradient(top, #50a6e0, #3699db);
-    & > div {
+    background: linear-gradient(to top, #50a6e0, #3699db);
+
+    &>div {
       &:nth-child(1) {
-        & > span:nth-child(2) {
+        &>span:nth-child(2) {
           background-color: #3498db;
         }
       }
     }
   }
+
   .item-block3 {
     /* autoprefixer: ignore next */
-    background: -webkit-gradient(linear, top, #918ec2, #635fa9);
+    background: -webkit-gradient(linear, to top, #918ec2, #635fa9);
     /* autoprefixer: ignore next */
-    background: -webkit-linear-gradient(top, #918ec2, #635fa9);
+    background: -webkit-linear-gradient(to top, #918ec2, #635fa9);
     /* autoprefixer: ignore next */
-    background: -moz-linear-gradient(top, #918ec2, #635fa9);
+    background: -moz-linear-gradient(to top, #918ec2, #635fa9);
     /* autoprefixer: ignore next */
-    background: -o-linear-gradient(top, #918ec2, #635fa9);
+    background: -o-linear-gradient(to top, #918ec2, #635fa9);
     /* autoprefixer: ignore next */
-    background: linear-gradient(top, #918ec2, #635fa9);
-    & > div {
+    background: linear-gradient(to top, #918ec2, #635fa9);
+
+    &>div {
       &:nth-child(1) {
-        & > span:nth-child(2) {
+        &>span:nth-child(2) {
           background-color: #2c3e50;
         }
       }
     }
   }
+
   .item-block4 {
     /* autoprefixer: ignore next */
-    background: -webkit-gradient(linear, top, #1cdab5, #18be9d);
+    background: -webkit-gradient(linear, to top, #1cdab5, #18be9d);
     /* autoprefixer: ignore next */
-    background: -webkit-linear-gradient(top, #1cdab5, #18be9d);
+    background: -webkit-linear-gradient(to top, #1cdab5, #18be9d);
     /* autoprefixer: ignore next */
-    background: -moz-linear-gradient(top, #1cdab5, #18be9d);
+    background: -moz-linear-gradient(to top, #1cdab5, #18be9d);
     /* autoprefixer: ignore next */
-    background: -o-linear-gradient(top, #1cdab5, #18be9d);
+    background: -o-linear-gradient(to top, #1cdab5, #18be9d);
     /* autoprefixer: ignore next */
-    background: linear-gradient(top, #1cdab5, #18be9d);
-    & > div {
+    background: linear-gradient(to top, #1cdab5, #18be9d);
+
+    &>div {
       &:nth-child(1) {
-        & > span:nth-child(2) {
+        &>span:nth-child(2) {
           background-color: #2c3e50;
         }
       }
     }
   }
+
   .item3-block {
     height: 400px;
+
     .el-card__body {
       overflow: hidden;
     }
+
     & .el-scrollbar {
       height: 339px;
       width: 100%;
+
       .is-horizontal {
         display: none;
       }
     }
   }
+
   .item3-block1 {
     .userInfo {
       font-size: 14px;
+
       p {
         margin-bottom: 5px;
       }
+
       div {
         background-color: #f2f2f2;
         padding: 10px;
@@ -370,15 +391,19 @@ export default {
       }
     }
   }
+
   .item3-block3 {
     p {
       margin-bottom: 5px;
+
       &:nth-child(2) {
         margin-bottom: 10px;
       }
     }
+
     .verInfo {
       font-size: 14px;
+
       div {
         background-color: #f2f2f2;
         padding: 10px;

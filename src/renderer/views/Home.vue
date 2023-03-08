@@ -2,11 +2,12 @@
  * @Author: Sun Rising 
  * @Date: 2019-07-10 18:48:35 
  * @Last Modified by: Sun Rising
- * @Last Modified time: 2020-04-29 08:49:19
+ * @Last Modified time: 2023-03-08 06:29:22
  * @Description: 内容装配页
  */
 <template>
-  <el-container v-loading="loading" :element-loading-text="$t('loading')" element-loading-spinner="icon-ali ali-jiazai1" element-loading-background="rgba(0, 0, 0, 0.6)">
+  <el-container v-loading="loading" :element-loading-text="$t('loading')" element-loading-spinner="icon-ali ali-jiazai1"
+    element-loading-background="rgba(0, 0, 0, 0.6)">
     <vue-progress-bar></vue-progress-bar>
     <el-aside ref="aside" class="sun-aside" width="auto">
       <Aside />
@@ -32,7 +33,8 @@
         <Footer />
       </el-footer>
     </el-container>
-    <div class="bg-mask" v-if="$store.state.base.defaultLayout==='miniLayout'&&!$store.state.base.isCollapse" @click="$store.commit('base/setCollapse',{isCollapse:!$store.state.base.isCollapse})"></div>
+    <div class="bg-mask" v-if="$store.state.base.defaultLayout === 'miniLayout' && !$store.state.base.isCollapse"
+      @click="$store.commit('base/setCollapse', { isCollapse: !$store.state.base.isCollapse })"></div>
     <change-pwd v-if="$store.state.base.isShowChangePwd"></change-pwd>
   </el-container>
 </template>
@@ -132,56 +134,68 @@ export default {
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 @keyframes collapseOpen {
   0% {
     width: 0px;
   }
+
   100% {
     width: 250px;
   }
 }
+
 .collapseClose {
   animation-name: collapseClose;
   animation-duration: 0.3s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 @keyframes collapseClose {
   0% {
     width: 250px;
   }
+
   100% {
     width: 0px;
   }
 }
+
 .leftFade {
   animation-name: leftFade;
   animation-duration: 0.3s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 @keyframes leftFade {
   0% {
     width: 64px;
   }
+
   100% {
     width: 0px;
   }
 }
+
 .fadeLeft {
   animation-name: fadeLeft;
   animation-duration: 0.3s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 @keyframes fadeLeft {
   0% {
     width: 0px;
   }
+
   100% {
     width: 64px;
   }
 }
+
 .bg-mask {
   position: fixed;
   top: 0px;
