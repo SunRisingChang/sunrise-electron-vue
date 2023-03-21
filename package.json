@@ -72,5 +72,8 @@
     "vue-html-loader": "~1.2.4",
     "vue-template-compiler": "~2.6.10",
     "webpack-bundle-analyzer": "~3.3.2"
+  },
+  "engines": {
+    "node": "14"
   }
 }
